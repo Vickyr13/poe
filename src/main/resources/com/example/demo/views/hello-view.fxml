@@ -1,14 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="login-bg" stylesheets="@../style/login.css">
          <children>
-            <AnchorPane prefHeight="400.0" prefWidth="323.0" />
+            <AnchorPane layoutX="-2.0" prefHeight="400.0" prefWidth="303.0" style="-fx-background-color: #975300;">
+               <children>
+                  <ImageView fitHeight="400.0" fitWidth="312.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/imglogin.jpg" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="301.0" prefHeight="400.0" prefWidth="300.0">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="50.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Downloads/bf481115335525bfb8779125e7b66d73.gif" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
