@@ -16,7 +16,7 @@
    <children>
       <AnchorPane layoutX="221.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
          <children>
-            <Label layoutX="367.0" layoutY="9.0" text="Dashboard" textFill="WHITE">
+            <Label layoutX="367.0" layoutY="9.0" styleClass="label-Titulos" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="50.0" />
                </font>
@@ -27,7 +27,7 @@
          <children>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../Downloads/images44-removebg-preview.png" />
+                  <Image url="@../img/images44-removebg-preview.png" />
                </image>
             </ImageView>
             <Label layoutX="112.0" layoutY="23.0" text="Sal," textFill="WHITE">
@@ -52,7 +52,7 @@
             </Label>
             <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" text="Usuarios" textFill="WHITE">
+                  <Label layoutX="76.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Usuarios" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -60,7 +60,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="DashboardPanel" layoutY="183.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" stylesheets="@../style/login.css">
                <children>
-                  <Label layoutX="66.0" layoutY="11.0" text="Dashboard" textFill="WHITE">
+                  <Label layoutX="66.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -68,7 +68,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
-                  <Label layoutX="70.0" layoutY="11.0" text="Productos" textFill="WHITE">
+                  <Label layoutX="70.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Productos" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -76,7 +76,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" text="Ordenes" textFill="WHITE">
+                  <Label layoutX="76.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -84,7 +84,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
-                  <Label layoutX="66.0" layoutY="11.0" text="Categorias" textFill="WHITE">
+                  <Label layoutX="66.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Categorias" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
