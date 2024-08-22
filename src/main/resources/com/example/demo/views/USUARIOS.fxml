@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0C4C81;">
+         <children>
+            <Pane layoutX="235.0" prefHeight="80.0" prefWidth="1045.0" style="-fx-background-color: #0F2027;">
+               <children>
+                  <Label layoutX="448.0" layoutY="30.0" styleClass="label-titulo" stylesheets="@../style/login.css" text="USUARIOS" textFill="WHITE">
+                     <font>
+                        <Font size="50.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Pane prefHeight="720.0" prefWidth="238.0" style="-fx-background-color: #0F2027;">
+               <children>
+                  <Label layoutX="119.0" layoutY="33.0" text="Sal" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="138.0" layoutY="33.0" text="  Limon" textFill="#47c863">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="124.0" layoutY="49.0" text="Y" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="137.0" layoutY="49.0" text=" Chile" textFill="#f20e0e">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Pane layoutY="132.0" prefHeight="61.0" prefWidth="238.0">
+                     <children>
+                        <Label layoutY="18.0" prefHeight="17.0" prefWidth="238.0" text="               Dashboard" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="-1.0" layoutY="193.0" prefHeight="61.0" prefWidth="238.0">
+                     <children>
+                        <Label layoutX="-6.0" layoutY="19.0" prefHeight="17.0" prefWidth="238.0" text="                   Usuarios" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="254.0" prefHeight="61.0" prefWidth="238.0">
+                     <children>
+                        <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                Productos" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="315.0" prefHeight="61.0" prefWidth="238.0">
+                     <children>
+                        <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                  Ordenes" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutY="376.0" prefHeight="61.0" prefWidth="238.0">
+                     <children>
+                        <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                Categorias" textAlignment="CENTER" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="36.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Downloads/images44-removebg-preview.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <TableView editable="true" layoutX="366.0" layoutY="174.0" prefHeight="458.0" prefWidth="759.0" tableMenuButtonVisible="true">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Nombre" />
+                <TableColumn prefWidth="75.0" text="Apellido" />
+                  <TableColumn prefWidth="75.0" text="Contraseña" />
+                  <TableColumn prefWidth="75.0" text="Estado" />
+                  <TableColumn prefWidth="75.0" text="Contacto" />
+                  <TableColumn prefWidth="75.0" text="Acciones" />
+              </columns>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
