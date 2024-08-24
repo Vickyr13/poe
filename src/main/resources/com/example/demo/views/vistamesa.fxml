@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.RadialGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<Pane fx:controller="com.example.demo.controller.vistamesaController" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.vistamesaController">
    <children>
       <Pane prefHeight="119.0" prefWidth="1008.0" style="-fx-background-color: #003E45;">
          <children>
@@ -68,9 +61,9 @@
       <Pane layoutX="1009.0" layoutY="163.0" prefHeight="556.0" prefWidth="271.0" style="-fx-background-color: #003E45;">
          <children>
             <Label layoutX="70.0" layoutY="5.0" textFill="WHITE" />
-            <Button layoutX="34.0" layoutY="510.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #E26913;" text="Agregar" />
-            <Button layoutX="161.0" layoutY="510.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #258254;" text="Pagar" />
-            <TableView layoutX="4.0" layoutY="55.0" prefHeight="432.0" prefWidth="264.0">
+            <Button layoutX="28.0" layoutY="495.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #E26913;" text="Agregar" />
+            <Button layoutX="161.0" layoutY="495.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #258254;" text="Pagar" />
+            <TableView layoutX="4.0" layoutY="55.0" prefHeight="392.0" prefWidth="264.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Cantidad" />
                 <TableColumn prefWidth="128.800048828125" text="Orden del plato" />
@@ -78,7 +71,7 @@
               </columns>
             </TableView>
             <Label layoutX="14.0" layoutY="15.0" text="Vinicio" textFill="#f2f2f2" />
-            <Label layoutX="63.0" layoutY="17.0" text="Mesa #18" textFill="WHITE" />
+            <Label layoutX="63.0" layoutY="17.0" text="Mesa #5" textFill="WHITE" />
             <Label layoutX="203.0" layoutY="17.0" />
             <Label layoutX="146.0" layoutY="16.0" text="21/08/2024   12:33" textFill="WHITE" />
          </children>
@@ -153,7 +146,7 @@
             <Label layoutX="50.0" layoutY="69.0" text="Mesa #4" />
          </children>
       </Pane>
-      <Pane layoutX="810.0" layoutY="140.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
+      <Pane fx:id="mesa5" layoutX="810.0" layoutY="140.0" onMouseClicked="#mesa5" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -165,8 +158,8 @@
       </Pane>
       <Button layoutX="280.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Iniciar pedido" />
       <Button layoutX="530.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Pedido sin mesa" />
-      <Button layoutX="40.0" layoutY="663.0" mnemonicParsing="false" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Domicilo" />
-      <Button layoutX="770.0" layoutY="663.0" mnemonicParsing="false" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Limpiar mesa" />
+      <Button layoutX="40.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Domicilo" />
+      <Button layoutX="770.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Limpiar mesa" />
       <Pane layoutX="270.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
             <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
