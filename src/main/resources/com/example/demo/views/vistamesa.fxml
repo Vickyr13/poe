@@ -158,7 +158,7 @@
       </Pane>
       <Button layoutX="280.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Iniciar pedido" />
       <Button layoutX="530.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Pedido sin mesa" />
-      <Button layoutX="40.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Domicilo" />
+      <Button fx:id="but_Domicilio" layoutX="40.0" layoutY="663.0" mnemonicParsing="false" onAction="#but_Domicilio" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Domicilo" />
       <Button layoutX="770.0" layoutY="663.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Limpiar mesa" />
       <Pane layoutX="270.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
