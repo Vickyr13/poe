@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.VentanaDomicilioController">
+    <children>
+        <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="15.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 25px;">
+            <children>
+            <Label text="Sal limón y chile">
+               <font>
+                  <Font size="15.0" />
+               </font></Label>
+                <HBox alignment="CENTER" spacing="15.0">
+                    <children>
+                        <TextField fx:id="tex_Nombre" promptText="Nombre" />
+                        <TextField fx:id="tex_Telefono" promptText="Teléfono" />
+                    </children>
+                </HBox>
+                <TextArea prefHeight="100.0" prefWidth="400.0" promptText="Dirección del cliente" />
+                <HBox alignment="CENTER" spacing="30.0">
+                    <children>
+                        <Button style="-fx-background-color: #ff6666; -fx-text-fill: white;" text="Cancelar" />
+                        <Button style="-fx-background-color: #66cc66; -fx-text-fill: white;" text="Confirmar" />
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+        </VBox>
+    </children>
+</Pane>

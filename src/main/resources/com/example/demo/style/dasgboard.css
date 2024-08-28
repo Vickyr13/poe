@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+.Label-label{
+    -fx-text-inner-color: #fff;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.label-Titulos{
+    -fx-text-inner-color: #fff;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 50px;
+    -fx-font-weight: bold;
+}

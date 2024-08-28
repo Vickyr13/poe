@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* Estilo moderno para el botón */
+.my-button {
+  -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradiente de color de fondo */
+  -fx-text-fill: white; /* Color del texto */
+  -fx-font-family: 'JetBrains Mono', monospace; /* Fuente moderna */
+  -fx-font-size: 15px; /* Tamaño de fuente */
+  -fx-padding: 10px 20px; /* Relleno del botón */
+  -fx-border-radius: 25px; /* Borde redondeado */
+  -fx-background-radius: 25px; /* Fondo redondeado */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.0, 0, 5); /* Sombra */
+  -fx-cursor: hand; /* Cursor en forma de mano */
+  -fx-border: none; /* Sin borde */
+  -fx-border-width: 0; /* Ancho del borde */
+}
+
+
+/* Estilo al pasar el cursor sobre el botón */
+.my-button:hover {
+  -fx-background-color: linear-gradient(#feb47b, #ff7e5f); /* Inversión del gradiente */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.0, 0, 2); /* Sombra más pronunciada */
+}
+
+/* Estilo moderno para el panel */
+.my-panel {
+  -fx-font-family: 'JetBrains Mono', monospace; /* Fuente moderna */
+  -fx-font-size: 15px; /* Tamaño de fuente */
+  -fx-background-radius: 10px; /* Fondo redondeado */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0.0, 0, 10); /* Sombra */
+}
+
+.estiloLetra{
+  -fx-font-family: 'JetBrains Mono', monospace;
+}
+
+
+.panel-principal {
+  -fx-background-radius: 25px;
+  fx-background-color: #476497;    /*posible color*/
+  -fx-background-color: #049C93;
+  fx-background-color: #41989D;    /*posible color*/
+  -fx-border-radius: 25px; /* Aplica el mismo radio para los bordes */
+}
+
+
+.redondeadear{
+  -fx-font-family: 'JetBrains Mono', monospace;
+  -fx-font-size: 15px; /* Tamaño de fuente */
+  -fx-background-radius: 25px;
+}
+

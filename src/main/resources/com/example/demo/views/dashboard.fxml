@@ -1,28 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844; -fx-padding: 10 10 10 10;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="224.0" prefHeight="80.0" prefWidth="1058.0" style="-fx-background-color: #0F2027;">
+      <AnchorPane layoutX="221.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
          <children>
-            <Label layoutX="367.0" layoutY="9.0" text="Dashboard" textFill="WHITE">
+            <Label layoutX="367.0" layoutY="9.0" styleClass="label-Titulos" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="50.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane prefHeight="720.0" prefWidth="192.0" style="-fx-background-color: #0F2027;">
+      <AnchorPane layoutY="1.0" prefHeight="742.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
          <children>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../../../../../Downloads/images44-removebg-preview.png" />
+                  <Image url="@../img/images44-removebg-preview.png" />
                </image>
             </ImageView>
             <Label layoutX="112.0" layoutY="23.0" text="Sal," textFill="WHITE">
@@ -45,12 +50,122 @@
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <AnchorPane layoutY="233.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" />
-            <AnchorPane layoutY="183.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" />
-            <AnchorPane layoutX="1.0" layoutY="284.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" />
-            <AnchorPane layoutX="2.0" layoutY="336.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" />
-            <AnchorPane layoutX="2.0" layoutY="387.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" />
+            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="76.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Usuarios" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" stylesheets="@../style/login.css">
+               <children>
+                  <Label layoutX="66.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="70.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Productos" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="76.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Ordenes" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
+            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="66.0" layoutY="11.0" styleClass="Label-label" stylesheets="@../style/dasgboard.css" text="Categorias" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane layoutX="274.0" layoutY="114.0" prefHeight="133.0" prefWidth="172.0" style="-fx-background-color: #D9D9D9; -fx-padding: 4;">
+         <children>
+            <Label layoutX="14.0" layoutY="67.0" text="000$">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="14.0" text="Ventas">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <PieChart layoutX="672.0" layoutY="114.0" prefHeight="295.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" title="Más ventas">
+         <effect>
+            <Bloom />
+         </effect>
+      </PieChart>
+      <AnchorPane layoutX="462.0" layoutY="114.0" prefHeight="133.0" prefWidth="172.0" style="-fx-background-color: #D9D9D9; -fx-padding: 4;">
+         <children>
+            <Label layoutX="14.0" layoutY="67.0" text="000$">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="14.0" text="Ordenes Anuales">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="274.0" layoutY="266.0" prefHeight="133.0" prefWidth="172.0" style="-fx-background-color: #D9D9D9; -fx-padding: 4;">
+         <children>
+            <Label layoutX="14.0" layoutY="67.0" text="000$">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="14.0" text="Ingreso anual">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="472.79999999999995" layoutY="266.0" prefHeight="133.0" prefWidth="172.0" style="-fx-background-color: #D9D9D9; -fx-padding: 4;" AnchorPane.rightAnchor="658.6000000000001">
+         <children>
+            <Label layoutX="14.0" layoutY="67.0" text="000$">
+               <font>
+                  <Font size="45.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="14.0" text="Ingreso Mensual">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <PieChart layoutX="894.0" layoutY="114.0" prefHeight="295.0" prefWidth="200.0" style="-fx-background-color: #D9D9D9;" title="Más ventas">
+         <effect>
+            <Bloom />
+         </effect>
+      </PieChart>
+      <BarChart fx:id="BarrasChart" layoutX="256.0" layoutY="481.0" prefHeight="261.0" prefWidth="502.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <ComboBox fx:id="cboMeses" layoutX="597.0" layoutY="456.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

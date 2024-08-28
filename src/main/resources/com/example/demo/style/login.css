@@ -10,3 +10,33 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
+
+.label {
+    -fx-text-fill: #f8f8f2;
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-font-size: 12px;
+}
+
+.text-field, .password-field {
+    -fx-background-color:transparent;
+    -fx-padding: 0px 3px 3px 25px;
+    -fx-text-inner-color: #fff;
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-font-size: 12px;
+    -fx-background-color: #0F2027;
+    -fx-border-radius: 6;
+     -fx-pref-width: 250px;
+     -fx-pref-height: 35px;
+}
+
+.button-init{
+ -fx-background-color:transparent;
+     -fx-padding: 0px 3px 3px 25px;
+     -fx-text-inner-color: #fff;
+     -fx-font-family: "JetBrains Mono", monospace;
+     -fx-font-size: 12px;
+     -fx-background-color:linear-gradient(to bottom right, #006197, #003E45);
+     -fx-border-radius: 6;
+     -fx-pref-width: 250px;
+     -fx-pref-height: 35px;
+}
