@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Pane layoutX="-2.0" layoutY="1.0" prefHeight="720.0" prefWidth="255.0" styleClass="panel1" stylesheets="@../style/vista-pedido.css">
+               <children>
+                  <Pane layoutY="-16.0" prefHeight="144.0" prefWidth="253.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="117.0" layoutY="30.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Sal Limon" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="123.0" layoutY="63.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Y Chile" textFill="WHITE">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="97.0" fitWidth="100.0" layoutX="14.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/logopng1.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="3.0" layoutY="210.0" prefHeight="83.0" prefWidth="247.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="76.0" layoutY="23.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Entradas" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="3.0" layoutY="293.0" prefHeight="83.0" prefWidth="247.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="87.0" layoutY="24.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Bebida" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="2.0" layoutY="127.0" prefHeight="84.0" prefWidth="249.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="68.0" layoutY="23.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Plato Fuerte" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="3.0" layoutY="374.0" prefHeight="83.0" prefWidth="246.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="87.0" layoutY="24.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Postres" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="2.0" layoutY="457.0" prefHeight="83.0" prefWidth="249.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="87.0" layoutY="24.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Cocteles" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="2.0" layoutY="538.0" prefHeight="83.0" prefWidth="248.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="87.0" layoutY="24.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Extras" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="2.0" layoutY="621.0" prefHeight="83.0" prefWidth="248.0" style="-fx-border-color: white;">
+                     <children>
+                        <Label layoutX="53.0" layoutY="26.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Comida Rapida" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="250.0" layoutY="-10.0" prefHeight="731.0" prefWidth="779.0" styleClass="panel2" stylesheets="@../style/vista-pedido.css">
+               <children>
+                  <Pane layoutX="38.0" layoutY="46.0" prefHeight="73.0" prefWidth="687.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
+                     <children>
+                        <TextField layoutX="78.0" layoutY="8.0" prefHeight="58.0" prefWidth="600.0" promptText="Buscar" style="-fx-background-radius: 25px; -fx-background-color: white;" styleClass="hover" stylesheets="@../style/vista-pedido.css">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </TextField>
+                        <ImageView fitHeight="39.0" fitWidth="64.0" layoutX="21.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../img/lupa.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="27.0" layoutY="153.0" prefHeight="555.0" prefWidth="715.0">
+                     <children>
+                        <TableView layoutX="1.0" layoutY="-1.0" prefHeight="556.0" prefWidth="718.0">
+                          <columns>
+                            <TableColumn prefWidth="389.9999694824219" text="Plato" />
+                            <TableColumn prefWidth="116.6666259765625" text="Precio" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+            <Pane layoutX="1020.0" layoutY="-10.0" prefHeight="732.0" prefWidth="264.0" styleClass="panel3" stylesheets="@../style/vista-pedido.css">
+               <children>
+                  <Pane layoutY="12.0" prefHeight="98.0" prefWidth="265.0" styleClass="panel3" stylesheets="@../style/vista-pedido.css">
+                     <children>
+                        <Label layoutX="100.0" layoutY="36.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Mesa #" textFill="WHITE">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <TableView layoutX="7.0" layoutY="118.0" prefHeight="488.0" prefWidth="251.0">
+                     <columns>
+                        <TableColumn prefWidth="63.33343505859375" text="Cantidad" />
+                        <TableColumn prefWidth="109.3333740234375" text="Orden del plato" />
+                        <TableColumn prefWidth="105.333251953125" text="Precio" />
+                     </columns>
+                  </TableView>
+                  <Button layoutX="36.0" layoutY="640.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="201.0" stylesheets="@../style/vista-pedido.css" text="Enviar" textAlignment="RIGHT" textFill="WHITE">
+                     <styleClass>
+                        <String fx:value="boton" />
+                        <String fx:value="tipografia" />
+                     </styleClass>
+                  </Button>
+                  <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="55.0" layoutY="653.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/mdi--check-outline.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+   </children>
+</StackPane>
