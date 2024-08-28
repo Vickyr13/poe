@@ -12,14 +12,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
             <Pane layoutX="-2.0" layoutY="1.0" prefHeight="720.0" prefWidth="255.0" styleClass="panel1" stylesheets="@../style/vista-pedido.css">
                <children>
-                  <Pane layoutY="-5.0" prefHeight="133.0" prefWidth="253.0" style="-fx-border-color: white;">
+                  <Pane layoutY="-16.0" prefHeight="144.0" prefWidth="253.0" style="-fx-border-color: white;">
                      <children>
                         <Label layoutX="117.0" layoutY="30.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Sal Limon" textFill="WHITE">
                            <font>
@@ -149,12 +148,17 @@
                         <TableColumn prefWidth="105.333251953125" text="Precio" />
                      </columns>
                   </TableView>
-                  <Button layoutX="69.0" layoutY="640.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="150.0" stylesheets="@../style/vista-pedido.css" text="Enviar">
+                  <Button layoutX="36.0" layoutY="640.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="201.0" stylesheets="@../style/vista-pedido.css" text="Enviar" textAlignment="RIGHT" textFill="WHITE">
                      <styleClass>
                         <String fx:value="boton" />
                         <String fx:value="tipografia" />
                      </styleClass>
                   </Button>
+                  <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="55.0" layoutY="653.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/mdi--check-outline.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>
