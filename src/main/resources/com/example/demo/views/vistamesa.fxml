@@ -19,7 +19,7 @@
          <children>
             <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/logo-del-restaurante.jpg" />
+                  <Image url="@../img/logopng1.png" />
                </image>
             </ImageView>
             <Label layoutX="329.0" layoutY="20.0" text="SAL LIMÓN Y CHILE">
@@ -46,7 +46,7 @@
       </Pane>
       <Pane layoutX="1009.0" prefHeight="163.0" prefWidth="271.0" style="-fx-background-color: #006197;">
          <children>
-            <Label layoutX="86.0" layoutY="131.0" text="VINICIO">
+            <Label layoutX="110.0" layoutY="134.0" styleClass="tipografia" stylesheets="@../style/vista-pedido.css" text="Mesero">
                <textFill>
                   <LinearGradient endX="1.0" endY="1.0">
                      <stops>
@@ -63,6 +63,11 @@
                      </stops>
                   </LinearGradient>
                </textFill></Label>
+            <ImageView fitHeight="139.0" fitWidth="144.0" layoutX="70.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/person-icon.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane layoutX="1009.0" layoutY="163.0" prefHeight="556.0" prefWidth="271.0" style="-fx-background-color: #003E45;">
@@ -77,7 +82,7 @@
                   <TableColumn prefWidth="72.79998779296875" text="Precio" />
               </columns>
             </TableView>
-            <Label layoutX="14.0" layoutY="15.0" text="Vinicio" textFill="#f2f2f2" />
+            <Label layoutX="14.0" layoutY="17.0" stylesheets="@../style/vista-pedido.css" text="Mesero" textFill="#f2f2f2" />
             <Label layoutX="63.0" layoutY="17.0" text="Mesa #18" textFill="WHITE" />
             <Label layoutX="203.0" layoutY="17.0" />
             <Label layoutX="146.0" layoutY="16.0" text="21/08/2024   12:33" textFill="WHITE" />
@@ -85,7 +90,7 @@
       </Pane>
       <Pane layoutX="90.0" layoutY="140.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -95,7 +100,7 @@
       </Pane>
       <Pane layoutX="90.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -105,27 +110,27 @@
       </Pane>
       <Pane layoutX="90.0" layoutY="389.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="66.0" text="Mesa #11" />
+            <Label layoutX="49.0" layoutY="62.0" text="Mesa #11" />
          </children>
       </Pane>
       <Pane layoutX="90.0" layoutY="510.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="35.0" layoutY="66.0" text="Mesa #16" />
+            <Label layoutX="47.0" layoutY="66.0" text="Mesa #16" />
          </children>
       </Pane>
       <Pane layoutX="270.0" layoutY="140.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="35.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -135,7 +140,7 @@
       </Pane>
       <Pane layoutX="450.0" layoutY="140.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="39.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -169,7 +174,7 @@
       <Button layoutX="770.0" layoutY="663.0" mnemonicParsing="false" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Limpiar mesa" />
       <Pane layoutX="270.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -179,17 +184,17 @@
       </Pane>
       <Pane layoutX="450.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="66.0" text="Mesa #8" />
+            <Label layoutX="52.0" layoutY="70.0" text="Mesa #8" />
          </children>
       </Pane>
       <Pane layoutX="630.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -199,7 +204,7 @@
       </Pane>
       <Pane layoutX="810.0" layoutY="265.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -209,27 +214,27 @@
       </Pane>
       <Pane layoutX="270.0" layoutY="389.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="66.0" text="Mesa #12" />
+            <Label layoutX="49.0" layoutY="70.0" text="Mesa #12" />
          </children>
       </Pane>
       <Pane layoutX="450.0" layoutY="389.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="66.0" text="Mesa #13" />
+            <Label layoutX="49.0" layoutY="70.0" text="Mesa #13" />
          </children>
       </Pane>
       <Pane layoutX="630.0" layoutY="389.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="36.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -239,7 +244,7 @@
       </Pane>
       <Pane layoutX="810.0" layoutY="389.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -249,27 +254,27 @@
       </Pane>
       <Pane layoutX="270.0" layoutY="510.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="66.0" text="Mesa #17" />
+            <Label layoutX="49.0" layoutY="62.0" text="Mesa #17" />
          </children>
       </Pane>
       <Pane layoutX="450.0" layoutY="510.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
             </ImageView>
-            <Label layoutX="39.0" layoutY="66.0" text="Mesa #18" />
+            <Label layoutX="49.0" layoutY="62.0" text="Mesa #18" />
          </children>
       </Pane>
       <Pane layoutX="630.0" layoutY="510.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
@@ -279,7 +284,7 @@
       </Pane>
       <Pane layoutX="810.0" layoutY="510.0" prefHeight="100.0" prefWidth="150.0" style="-fx-background-color: #4198DD;">
          <children>
-            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="30.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="70.0" fitWidth="78.0" layoutX="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/mesa-vista-mesa.png" />
                </image>
