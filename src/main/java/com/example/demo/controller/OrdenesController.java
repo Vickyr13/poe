@@ -13,8 +13,7 @@ public class OrdenesController {
 
     @FXML
     public void initialize() {
-        // Agregar elementos a los ComboBox
-        Cobo1.getItems().addAll("Año", "Mes", "Semana");
+        Cobo1.getItems().addAll("Mes", "Semana", "Año");
         Combo2.getItems().addAll("Mesero", "Cocina", "Admin");
     }
 
