@@ -17,11 +17,6 @@
    <children>
       <Pane prefHeight="119.0" prefWidth="1008.0" style="-fx-background-color: #003E45;">
          <children>
-            <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/logo-del-restaurante.jpg" />
-               </image>
-            </ImageView>
             <Label layoutX="329.0" layoutY="20.0" text="SAL LIMÓN Y CHILE">
                <font>
                   <Font size="40.0" />
@@ -42,6 +37,11 @@
                      </stops>
                   </RadialGradient>
                </textFill></Label>
+            <ImageView fitHeight="97.0" fitWidth="92.0" layoutX="31.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logopng1.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane layoutX="1009.0" prefHeight="163.0" prefWidth="271.0" style="-fx-background-color: #006197;">

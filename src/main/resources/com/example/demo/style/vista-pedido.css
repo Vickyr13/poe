@@ -1,0 +1,29 @@
+.tipografia{
+-fx-text-inner-color: blank;
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.panel1{
+ -fx-background-color:  #66B5FF;
+ -fx-border-color: #fff;
+}
+
+.panel2{
+    -fx-background-color:  #006197;
+     -fx-border-color: #fff;
+
+}
+.panel3{
+    -fx-background-color:  #003E45;
+     -fx-border-color: #fff;
+
+}
+
+.boton{
+    -fx-background-color: #47C863;
+    -fx-background-radius: 80px;
+    -fx-font-size: 25px;
+}
+
