@@ -1,0 +1,31 @@
+.nav{
+ -fx-background-color:  #003E45;
+}
+
+.body{
+    -fx-background-color: #002844;
+}
+
+.titulo{
+        -fx-text-inner-color: white;
+        -fx-font-family: "JetBrains Mono", monospace;
+        -fx-font-size: 36px;
+        -fx-font-weight: bold;
+}
+
+.orden{
+    -fx-background-color: #fff;
+}
+
+.numero-orden{
+        -fx-text-inner-color: black;
+        -fx-font-family: "JetBrains Mono", monospace;
+        -fx-font-size: 20px;
+        -fx-font-weight: bold;
+}
+.boton-finalizar{
+    -fx-background-color: #DCDCDC;
+    -fx-text-fill: red;
+    -fx-background-radius: 80px;
+    -fx-font-size: 20px;
+}
