@@ -21,6 +21,9 @@
     @FXML
     private Button pagar;
 
+    @FXML
+    private  Pane panel;
+
 
     private  String rutaPedido = "/com/example/demo/views/vista-pedido.fxml";
     private String rutaDomicilio= "/com/example/demo/views/ventanaDomicilio.fxml";
@@ -28,8 +31,19 @@
 
 
     @FXML
-        public void but_pagar() {
+    public void inicilite(){
 
+
+
+
+    }
+
+
+
+
+
+    @FXML
+        public void but_pagar() {
 
         }
 
