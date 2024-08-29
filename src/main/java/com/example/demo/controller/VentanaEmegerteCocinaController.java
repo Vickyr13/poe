@@ -1,8 +1,15 @@
 
 package com.example.demo.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class VentanaEmegerteCocinaController {
     @FXML
@@ -15,6 +22,8 @@ public class VentanaEmegerteCocinaController {
     private ComboBox<String> combo4;
     @FXML
     private ComboBox<String> combo5;
+    @FXML
+    private Button but_agregar;
 
     @FXML
     private void initialize() {
@@ -24,5 +33,14 @@ public class VentanaEmegerteCocinaController {
         combo3.getItems().addAll("items1", "items2", "items3");
         combo4.getItems().addAll("items1", "items2", "items3");
         combo5.getItems().addAll("items1", "items2", "items3");
+    }
+
+    public void but_agregar(ActionEvent event) {
+
+
+
+        // Cierra la ventana actual (emergente)
+        Stage stage = (Stage) but_agregar.getScene().getWindow();
+        stage.close();
     }
 }

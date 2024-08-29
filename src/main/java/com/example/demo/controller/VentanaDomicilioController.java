@@ -14,17 +14,9 @@ public class VentanaDomicilioController {
     @FXML
     private Button atras;
     public void but_atras(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/vistamesa.fxml"));
-            Parent root = loader.load();
 
-            Stage stage = (Stage) atras.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
+                Stage stage = (Stage) atras.getScene().getWindow();
+                stage.close();
 
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 }

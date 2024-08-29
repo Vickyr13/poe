@@ -13,6 +13,7 @@
     import javafx.scene.control.Button;
 
 
+
     public class vistamesaController {
         @FXML
     private Pane Pmesa5;
@@ -29,18 +30,6 @@
     @FXML
         public void but_pagar() {
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/vista-pedido.fxml"));
-                Parent root = loader.load();
-
-                Stage stage = (Stage) pagar.getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
         }
 
@@ -122,8 +111,15 @@
             navegar(rutaPedido);
         }
 
+        // vistas emejertes
+
         public void but_LimpiarMesa(ActionEvent actionEvent) {
-            navegar(rutaPentiende);
+            navegarNo(rutaPentiende);
+        }
+
+        public void but_domicilio(ActionEvent actionEvent) {
+
+            navegarNo(rutaDomicilio);
         }
 
 
@@ -144,10 +140,31 @@
             }
         }
 
-        public void but_domicilio(ActionEvent actionEvent) {
 
-            navegar(rutaDomicilio);
+        public void navegarNo(String ruta){
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
+                Parent root = loader.load();
+
+                // Crear un nuevo Stage para la ventana emergente
+                Stage newStage = new Stage();
+                Scene scene = new Scene(root);
+
+                newStage.setScene(scene);
+
+                // Mostrar la nueva ventana encima de la actual
+                newStage.initOwner(Pmesa5.getScene().getWindow()); // Establece el propietario como la ventana actual
+                newStage.initModality(Modality.APPLICATION_MODAL); // Hace que la ventana sea modal (bloquea la interacción con la ventana principal)
+                newStage.showAndWait(); // Espera a que la ventana se cierre antes de volver al control de la ventana principal
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
+
+
 
 
     }
