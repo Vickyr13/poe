@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.w3c.dom.Node;
 
 import java.awt.*;
@@ -50,6 +51,7 @@ public class login_meserosController {
     @FXML
     private ImageView imgRetroceder;
 
+    @FXML
     public void initialize() {
         pwrdContra.setVisible(true);
     }
@@ -118,7 +120,11 @@ public class login_meserosController {
 
             Stage stage = (Stage) but_Continuar.getScene().getWindow();
             Scene scene = new Scene(root);
+
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.setResizable(false);
+            stage.centerOnScreen();
 
             stage.show();
         } catch (IOException e) {

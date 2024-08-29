@@ -13,18 +13,10 @@ import java.io.IOException;
 public class VentanaPedidoController {
     @FXML
     private Button atras;
+
+
     public void but_atras(ActionEvent actionEvent) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/vistamesa.fxml"));
-            Parent root = loader.load();
-
-            Stage stage = (Stage) atras.getScene().getWindow();
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Stage stage = (Stage) atras.getScene().getWindow();
+        stage.close();
     }
 }
