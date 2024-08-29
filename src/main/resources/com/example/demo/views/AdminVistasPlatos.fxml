@@ -1,10 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AdminVistaPlatosController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AdminVistaPlatosController">
    <children>
-      <AnchorPane layoutX="251.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane prefHeight="756.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
+         <children>
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/logopng1.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="112.0" layoutY="23.0" text="Sal," textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="138.0" layoutY="23.0" text="Limón" textFill="#47c863">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="112.0" layoutY="41.0" text="y" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="125.0" layoutY="41.0" text="Chile" textFill="#f20e0e">
+               <font>
+                  <Font name="Cambria Bold" size="14.0" />
+               </font>
+            </Label>
+            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Usuarios" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" stylesheets="@../style/login.css">
+               <children>
+                  <Label layoutX="61.0" layoutY="12.0" prefHeight="27.0" prefWidth="98.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="70.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Productos" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Ordenes" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="66.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Categorias" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="222.0" prefHeight="80.0" prefWidth="1073.0" style="-fx-background-color: #0F2027;">
+         <children>
+            <Label layoutX="367.0" layoutY="9.0" stylesheets="@../style/dasgboard.css" text="Productos" textFill="WHITE">
+               <font>
+                  <Font name="Cambria Bold" size="50.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="label-Titulos" />
+                  <String fx:value="estiloLetra" />
+               </styleClass>
+            </Label>
+         </children>
+      </AnchorPane>
+      <TableView fx:id="tableProductos" layoutX="315.0" layoutY="169.0" prefHeight="530.0" prefWidth="860.0">
+        <columns>
+          <TableColumn minWidth="78.75" prefWidth="215.0" text="id_producto" />
+          <TableColumn minWidth="0.0" prefWidth="215.0" text="Producto" />
+            <TableColumn prefWidth="215.0" text="foto" />
+            <TableColumn prefWidth="215.0" text="Descripción" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAgregar" layoutX="1033.0" layoutY="109.0" mnemonicParsing="false" stylesheets="@../style/vistaMesa.css" text="Agregar Producto" />
    </children>
 </AnchorPane>
