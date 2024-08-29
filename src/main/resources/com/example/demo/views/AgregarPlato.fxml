@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="1120.0" prefWidth="851.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AgregarPlatoController">
    <children>
       <Pane layoutX="-6.0" layoutY="-2.0" prefHeight="1127.0" prefWidth="863.0" style="-fx-background-color: #002844;">
@@ -19,22 +18,22 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="176.0" layoutY="125.0" prefHeight="25.0" prefWidth="528.0" text="Nombre plato">
+            <TextField fx:id="Txt_NombreP" layoutX="176.0" layoutY="125.0" prefHeight="25.0" prefWidth="528.0" text="Nombre plato">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="173.0" layoutY="251.0" prefHeight="30.0" prefWidth="530.0" text="Precio">
+            <TextField fx:id="Precio_plato" layoutX="173.0" layoutY="251.0" prefHeight="30.0" prefWidth="530.0" text="Precio">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="168.0" layoutY="398.0" prefHeight="30.0" prefWidth="533.0" text="Guarnicion1">
+            <TextField fx:id="Guar1" layoutX="168.0" layoutY="398.0" prefHeight="30.0" prefWidth="533.0" text="Guarnicion1">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField layoutX="164.0" layoutY="520.0" prefHeight="30.0" prefWidth="531.0" text="Guarnicion2">
+            <TextField fx:id="Guar2" layoutX="164.0" layoutY="520.0" prefHeight="30.0" prefWidth="531.0" text="Guarnicion2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -64,7 +63,7 @@
                   <Image url="@../img/icon-add-image.jpg" />
                </image>
             </ImageView>
-            <Button layoutX="288.0" layoutY="995.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="289.0" text="Agregar platillo">
+            <Button fx:id="Btn_Agregar_Plato" layoutX="288.0" layoutY="995.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="289.0" text="Agregar platillo">
                <font>
                   <Font size="14.0" />
                </font>
