@@ -9,22 +9,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane>
          <children>
-            <Pane layoutX="-3.0" layoutY="-2.0" prefHeight="126.0" prefWidth="1285.0" styleClass="nav" stylesheets="@../style/vista-cocinca.css">
+            <Pane layoutX="-3.0" layoutY="-2.0" prefHeight="103.0" prefWidth="1285.0" styleClass="nav" stylesheets="@../style/vista-cocinca.css">
                <children>
-                  <ImageView fitHeight="97.0" fitWidth="111.0" layoutX="18.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="85.0" fitWidth="91.0" layoutX="18.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/logopng1.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="159.0" layoutY="19.0" prefHeight="85.0" prefWidth="346.0" styleClass="titulo" stylesheets="@../style/vista-cocinca.css" text="Sal Limon Y Chile" textFill="WHITE" />
+                  <Label layoutX="152.0" layoutY="10.0" prefHeight="85.0" prefWidth="346.0" styleClass="titulo" stylesheets="@../style/vista-cocinca.css" text="Sal Limon Y Chile" textFill="WHITE" />
                </children>
             </Pane>
-            <Pane layoutY="123.0" prefHeight="597.0" prefWidth="1280.0" styleClass="body" stylesheets="@../style/vista-cocinca.css">
+            <Pane layoutY="101.0" prefHeight="619.0" prefWidth="1280.0" styleClass="body" stylesheets="@../style/vista-cocinca.css">
                <children>
                   <Pane layoutX="26.0" layoutY="16.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../style/vista-cocinca.css">
                      <children>

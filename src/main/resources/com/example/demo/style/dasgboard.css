@@ -13,3 +13,12 @@
     -fx-font-size: 50px;
     -fx-font-weight: bold;
 }
+
+.estiloLetra{
+  -fx-font-family: 'JetBrains Mono', monospace;
+}
+
+.panels{
+    -fx-border-radius: 25px;
+
+}

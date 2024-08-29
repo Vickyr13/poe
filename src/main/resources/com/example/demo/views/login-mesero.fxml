@@ -7,8 +7,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.login_meserosController">
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -19,22 +19,22 @@
             </ImageView>
             <Pane layoutX="187.0" layoutY="126.0" prefHeight="274.0" prefWidth="226.0" style="-fx-background-color: rgba(0, 97, 151, 0.7); -fx-background-radius: 50px;">
                <children>
-                  <Button layoutX="22.0" layoutY="23.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="1" textFill="WHITE" />
-                  <Button layoutX="165.0" layoutY="23.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="3" textFill="WHITE" />
-                  <Button layoutX="94.0" layoutY="23.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="2" textFill="WHITE" />
-                  <Button layoutX="22.0" layoutY="90.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="4" textFill="WHITE" />
-                  <Button layoutX="95.0" layoutY="90.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="5" textFill="WHITE" />
-                  <Button layoutX="165.0" layoutY="90.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="6" textFill="WHITE" />
-                  <Button layoutX="22.0" layoutY="158.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="7" textFill="WHITE" />
-                  <Button layoutX="94.0" layoutY="158.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="8" textFill="WHITE" />
-                  <Button layoutX="165.0" layoutY="158.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="9" textFill="WHITE" />
-                  <Button layoutX="95.0" layoutY="217.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="0" textFill="WHITE" />
-                  <ImageView fitHeight="45.0" fitWidth="46.0" layoutX="23.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="btn1" layoutX="22.0" layoutY="23.0" mnemonicParsing="false" onAction="#Pucharbtn1" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="1" textFill="WHITE" />
+                  <Button fx:id="btn3" layoutX="165.0" layoutY="23.0" mnemonicParsing="false" onAction="#pucharbtn3" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="3" textFill="WHITE" />
+                  <Button fx:id="btn2" layoutX="94.0" layoutY="23.0" mnemonicParsing="false" onAction="#pucharbtn2" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="2" textFill="WHITE" />
+                  <Button fx:id="btn4" layoutX="22.0" layoutY="90.0" mnemonicParsing="false" onAction="#pucharbtn4" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="4" textFill="WHITE" />
+                  <Button fx:id="btn5" layoutX="95.0" layoutY="90.0" mnemonicParsing="false" onAction="#pucharbtn5" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="5" textFill="WHITE" />
+                  <Button fx:id="btn6" layoutX="165.0" layoutY="90.0" mnemonicParsing="false" onAction="#pucharbtn6" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="6" textFill="WHITE" />
+                  <Button fx:id="btn7" layoutX="22.0" layoutY="158.0" mnemonicParsing="false" onAction="#pucharbtn7" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="7" textFill="WHITE" />
+                  <Button fx:id="btn8" layoutX="94.0" layoutY="158.0" mnemonicParsing="false" onAction="#pucharbtn8" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="8" textFill="WHITE" />
+                  <Button fx:id="btn9" layoutX="165.0" layoutY="158.0" mnemonicParsing="false" onAction="#pucharbtn9" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="9" textFill="WHITE" />
+                  <Button fx:id="btn0" layoutX="95.0" layoutY="217.0" mnemonicParsing="false" onAction="#pucharbtn0" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="0" textFill="WHITE" />
+                  <ImageView fx:id="imgRetroceder" fitHeight="45.0" fitWidth="46.0" layoutX="23.0" layoutY="217.0" onMouseClicked="#pucharCancelar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/boton-x.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="45.0" fitWidth="52.0" layoutX="166.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="imgContinuar" fitHeight="45.0" fitWidth="54.0" layoutX="166.0" layoutY="217.0" onMouseClicked="#pucharContinuar" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/flecha-correcta.png" />
                      </image>
@@ -46,7 +46,8 @@
                   <Image url="@../img/logopng1.png" />
                </image>
             </ImageView>
-            <PasswordField layoutX="193.0" layoutY="82.0" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #006197; -fx-background-radius: 25px;" />
+            <PasswordField fx:id="pwrdContra" layoutX="193.0" layoutY="82.0" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #006197; -fx-background-radius: 25px;" />
+            <Button fx:id="btnContinuar" layoutX="438.0" layoutY="311.0" mnemonicParsing="false" onAction="#Continuar" text="Button" />
          </children>
       </Pane>
    </children>

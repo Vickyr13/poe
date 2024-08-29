@@ -29,3 +29,14 @@
     -fx-background-radius: 80px;
     -fx-font-size: 20px;
 }
+
+.boton-finalizar:hover {
+    -fx-background-color: #bdc3c7;
+    -fx-scale-x: 1.1; /* Aumenta el tamaño en el eje X */
+    -fx-scale-y: 1.1; /* Aumenta el tamaño en el eje Y */
+}
+
+.boton-finalizar:pressed {
+    -fx-scale-x: 0.95; /* Reduce el tamaño en el eje X */
+    -fx-scale-y: 0.95; /* Reduce el tamaño en el eje Y */
+}
