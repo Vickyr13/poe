@@ -27,6 +27,14 @@
     -fx-font-size: 25px;
 }
 
+.boton-agregar{
+    -fx-font-size: 25px;
+    -fx-background-color:  #006197;
+    -fx-border-radius: 50px;
+    -fx-border-color: white;
+    -fx-background-radius: 50px;
+}
+
 .boton:hover {
     -fx-background-color: #45a049;
     -fx-scale-x: 1.1; /* Aumenta el tamaño en el eje X */
@@ -34,6 +42,20 @@
 }
 
 .boton:pressed {
+    -fx-scale-x: 0.95; /* Reduce el tamaño en el eje X */
+    -fx-scale-y: 0.95; /* Reduce el tamaño en el eje Y */
+}
+
+.boton-agregar:hover {
+    -fx-background-color: white;
+    -fx-text-fill: #006197;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 10, 0, 0, 0);
+    -fx-scale-x: 1.1; /* Aumenta el tamaño en el eje X */
+    -fx-scale-y: 1.1; /* Aumenta el tamaño en el eje Y */
+
+}
+
+.boton-agregar:pressed {
     -fx-scale-x: 0.95; /* Reduce el tamaño en el eje X */
     -fx-scale-y: 0.95; /* Reduce el tamaño en el eje Y */
 }

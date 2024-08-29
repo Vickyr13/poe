@@ -125,12 +125,18 @@
                   </Pane>
                   <Pane layoutX="27.0" layoutY="153.0" prefHeight="555.0" prefWidth="715.0">
                      <children>
-                        <TableView layoutX="1.0" layoutY="-1.0" prefHeight="556.0" prefWidth="718.0">
+                        <TableView layoutX="25.0" layoutY="5.0" prefHeight="489.0" prefWidth="675.0">
                           <columns>
                             <TableColumn prefWidth="389.9999694824219" text="Plato" />
                             <TableColumn prefWidth="116.6666259765625" text="Precio" />
                           </columns>
                         </TableView>
+                        <Button layoutX="530.0" layoutY="507.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="178.0" stylesheets="@../style/vista-pedido.css" text="Agregar" textAlignment="RIGHT" textFill="WHITE">
+                           <styleClass>
+                              <String fx:value="boton-agregar" />
+                              <String fx:value="tipografia" />
+                           </styleClass>
+                        </Button>
                      </children>
                   </Pane>
                </children>
@@ -146,20 +152,20 @@
                         </Label>
                      </children>
                   </Pane>
-                  <TableView layoutX="7.0" layoutY="118.0" prefHeight="488.0" prefWidth="251.0">
+                  <TableView layoutX="7.0" layoutY="118.0" prefHeight="515.0" prefWidth="251.0">
                      <columns>
                         <TableColumn prefWidth="63.33343505859375" text="Cantidad" />
                         <TableColumn prefWidth="109.3333740234375" text="Orden del plato" />
                         <TableColumn prefWidth="105.333251953125" text="Precio" />
                      </columns>
                   </TableView>
-                  <Button layoutX="36.0" layoutY="640.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="201.0" stylesheets="@../style/vista-pedido.css" text="Enviar" textAlignment="RIGHT" textFill="WHITE">
+                  <Button layoutX="32.0" layoutY="649.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="205.0" stylesheets="@../style/vista-pedido.css" text="Enviar" textAlignment="RIGHT" textFill="WHITE">
                      <styleClass>
                         <String fx:value="boton" />
                         <String fx:value="tipografia" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="55.0" layoutY="653.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="39.0" fitWidth="48.0" layoutX="42.0" layoutY="658.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/mdi--check-outline.png" />
                      </image>

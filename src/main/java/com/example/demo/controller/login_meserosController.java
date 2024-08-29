@@ -20,7 +20,7 @@ import java.util.EventObject;
 public class login_meserosController {
 
     @FXML
-    private static Button btnContinuar;
+    private Button but_Continuar;
     @FXML
     private Button btn1;
     @FXML
@@ -101,33 +101,46 @@ public class login_meserosController {
     public void pucharContinuar(MouseEvent mouseEvent) throws IOException {
 
 
-        if(pwrdContra.equals("0000")){
-            Redireccionar("vistamesa.fxml");
-        }
-
-
     }
 
-   public static void Redireccionar(String dirección) throws IOException {
-
-       try {
-           FXMLLoader loader = new FXMLLoader(login_meserosController.class.getResource("/com/example/demo/views/vista-pedido.fxml"));
-           Parent root = loader.load();
-
-           Stage stage = (Stage) btnContinuar.getScene().getWindow();
-           Scene scene = new Scene(root);
-           stage.setScene(scene);
-
-           stage.show();
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-
-   }
-
+    //NO FUNCIONA PARA NADA
+   @FXML
     public void Continuar(ActionEvent actionEvent) throws IOException {
-        if(pwrdContra.equals("0000")){
-            Redireccionar("vistamesa.fxml");
+
+    }
+
+
+    //metodo para ir a distintas vistas
+    public void imgContinuar(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(tenerRuta(pwrdContra.getText())));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) but_Continuar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+    //odtener y validar la contraseña
+        public String tenerRuta (String IDContra){
+        if (IDContra.equals("000")) {
+            return "/com/example/demo/views/vistamesa.fxml";
+        } else if (IDContra.equals("111")) {
+            return "/com/example/demo/views/hello-view.fxml";
+        } else if (IDContra.equals("222")) {
+            return "/com/example/demo/views/vista-cocina.fxml";
+        } else {
+
+            new Alert(Alert.AlertType.ERROR, "La contraseña está mal.").showAndWait();
+
+            return "";
+        }
+    }
+
+
 }
