@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="602.0" prefWidth="1138.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AgregarPlatoController">
+<AnchorPane prefHeight="602.0" prefWidth="1138.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AdminFormPlatillo">
    <children>
       <Pane layoutX="-6.0" layoutY="-6.0" prefHeight="608.0" prefWidth="1145.0" style="-fx-background-color: #002844;">
          <children>
@@ -54,17 +54,17 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="789.0" layoutY="106.0" text="Agregar fotografia" textFill="WHITE">
+            <Label layoutX="698.0" layoutY="101.0" text="Agregar fotografia" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <ImageView fitHeight="149.0" fitWidth="291.0" layoutX="772.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="144.0" fitWidth="149.0" layoutX="772.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/icon-add-image.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="Btn_Agregar_Plato" layoutX="449.0" layoutY="527.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="257.0" text="Agregar platillo">
+            <Button fx:id="Btn_Agregar_Plato" layoutX="242.0" layoutY="528.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="257.0" text="Agregar platillo">
                <font>
                   <Font size="14.0" />
                </font>

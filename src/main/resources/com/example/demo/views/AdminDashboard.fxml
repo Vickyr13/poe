@@ -55,23 +55,15 @@
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Usuarios" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Usuarios" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;" stylesheets="@../style/login.css">
-               <children>
-                  <Label layoutX="61.0" layoutY="12.0" prefHeight="27.0" prefWidth="98.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
-                     <font>
-                        <Font size="25.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
                   <Label layoutX="70.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Productos" textFill="WHITE">
                      <font>
@@ -79,7 +71,7 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" onMouseClicked="#ClickOrdenes" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
                   <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                      <font>
@@ -87,7 +79,7 @@
                      </font>
                   </Label>
                </children></AnchorPane>
-            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" onMouseClicked="#ClickCategorias" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
                <children>
                   <Label layoutX="66.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Categorias" textFill="WHITE">
                      <font>
@@ -95,6 +87,15 @@
                      </font>
                   </Label>
                </children></AnchorPane>
+            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: solid; -fx-border-color: #FFFFFF;">
+               <children>
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="panelventas" layoutX="307.0" layoutY="114.0" prefHeight="133.0" prefWidth="172.0" style="-fx-background-color: #D9D9D9; -fx-padding: 4;" styleClass="panels" stylesheets="@../style/dasgboard.css">
@@ -104,7 +105,7 @@
                   <Font size="45.0" />
                </font>
             </Label>
-            <Label layoutX="14.0" layoutY="14.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="Ventas">
+            <Label layoutX="14.0" layoutY="14.0" styleClass="estiloLetra" stylesheets="@../style/dasgboard.css" text="ordenes">
                <font>
                   <Font size="20.0" />
                </font>
