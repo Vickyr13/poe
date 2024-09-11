@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.Admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -57,7 +57,7 @@ public class AdminUsuariosController {
 
     public void CambiarVista(String Direccion){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/"+Direccion+".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) DashboardPanel.getScene().getWindow();

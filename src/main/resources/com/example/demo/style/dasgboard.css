@@ -19,5 +19,8 @@
 }
 
 .panels:hover{
-    -fx-border-radius: 25px;
+    -fx-background-color: #0C4C81;
+    -fx-cursor: hand;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 18px;
 }

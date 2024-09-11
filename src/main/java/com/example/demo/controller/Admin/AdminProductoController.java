@@ -1,44 +1,39 @@
-package com.example.demo.controller;
+package com.example.demo.controller.Admin;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-public class AdminOrdenesController {
-
-    @FXML
-    private Pane CategoriasPanel;
+public class AdminProductoController {
 
     @FXML
-    private ComboBox<String> Cobo1;
+    private AnchorPane CategoriasPanel;
 
     @FXML
-    private ComboBox<String> Combo2;
+    private AnchorPane DashboardPanel;
 
     @FXML
-    private Pane DashboardPanel;
+    private AnchorPane OrdenesPanel;
 
     @FXML
-    private Pane OrdenesPanel;
+    private AnchorPane ProductosPanel;
 
     @FXML
-    private Pane ProductosPanel;
+    private AnchorPane UsuariosPanel;
 
     @FXML
-    private Pane UsuariosPanel;
+    private Button btnAgregar;
 
     @FXML
-    public void initialize() {
-        Cobo1.getItems().addAll("Mes", "Semana", "Año");
-        Combo2.getItems().addAll("Mesero", "Cocina", "Admin");
-    }
+    private TableView<?> tableProductos;
 
     @FXML
     void ClickCategorias(MouseEvent event) {
@@ -64,10 +59,9 @@ public class AdminOrdenesController {
     void ClickUsuarios(MouseEvent event) {
         CambiarVista("AdminUsuarios");
     }
-
-    public void CambiarVista(String Direccion){
+    public void CambiarVista(String Dirección){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/"+Direccion+".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Dirección+".fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) DashboardPanel.getScene().getWindow();
@@ -79,4 +73,11 @@ public class AdminOrdenesController {
             e.printStackTrace();
         }
     }
+
 }
+
+
+
+
+
+

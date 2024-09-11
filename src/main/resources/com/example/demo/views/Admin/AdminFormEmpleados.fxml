@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="476.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AdminFormEmpleadosController">
+<AnchorPane prefHeight="476.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminFormEmpleadosController">
    <children>
       <Pane fx:id="Btn_Regresar" prefHeight="476.0" prefWidth="859.0" style="-fx-background-color: #002844;">
          <children>

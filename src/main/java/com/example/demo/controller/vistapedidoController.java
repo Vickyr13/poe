@@ -17,7 +17,6 @@ public class vistapedidoController {
     private Button but_pasarvista;
 
 
-
     public void but_Pasarvista(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/ventanaEmegerteCocina.fxml"));
@@ -41,18 +40,19 @@ public class vistapedidoController {
 
     public void but_menu(MouseEvent mouseEvent) {
 
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/vistamesa.fxml"));
-                Parent root = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/vistamesa.fxml"));
+            Parent root = loader.load();
 
-                Stage stage = (Stage) but_pasarvista.getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+            Stage stage = (Stage) but_pasarvista.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+}
+
 

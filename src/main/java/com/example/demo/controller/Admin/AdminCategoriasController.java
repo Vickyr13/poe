@@ -1,21 +1,20 @@
-package com.example.demo.controller;
+package com.example.demo.controller.Admin;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AdminProductoController {
+public class AdminCategoriasController {
 
     @FXML
-    private AnchorPane CategoriasPanel;
+    private AnchorPane CategoriasPAnel;
 
     @FXML
     private AnchorPane DashboardPanel;
@@ -31,9 +30,6 @@ public class AdminProductoController {
 
     @FXML
     private Button btnAgregar;
-
-    @FXML
-    private TableView<?> tableProductos;
 
     @FXML
     void ClickCategorias(MouseEvent event) {
@@ -59,9 +55,10 @@ public class AdminProductoController {
     void ClickUsuarios(MouseEvent event) {
         CambiarVista("AdminUsuarios");
     }
-    public void CambiarVista(String Dirección){
+
+    public void CambiarVista(String Direccion){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/"+Dirección+".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) DashboardPanel.getScene().getWindow();
@@ -73,11 +70,4 @@ public class AdminProductoController {
             e.printStackTrace();
         }
     }
-
 }
-
-
-
-
-
-

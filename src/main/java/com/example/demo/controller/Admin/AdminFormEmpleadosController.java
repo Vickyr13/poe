@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.Admin;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.RadioButton;

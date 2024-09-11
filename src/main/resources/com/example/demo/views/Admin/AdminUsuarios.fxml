@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
@@ -10,17 +11,25 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.AdminUsuariosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminUsuariosController">
    <children>
       <Pane fx:id="backPanel" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;">
          <children>
             <Pane layoutX="235.0" prefHeight="80.0" prefWidth="1045.0">
                <children>
-                  <Label layoutX="445.0" layoutY="23.0" styleClass="label-titulo" text="USUARIOS" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane layoutX="-16.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
+                     <children>
+                        <Label layoutX="367.0" layoutY="9.0" stylesheets="@../../style/dasgboard.css" text="Usuarios" textFill="WHITE">
+                           <font>
+                              <Font name="Cambria Bold" size="50.0" />
+                           </font>
+                           <styleClass>
+                              <String fx:value="label-Titulos" />
+                              <String fx:value="estiloLetra" />
+                           </styleClass>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
             <Pane prefHeight="720.0" prefWidth="238.0" style="-fx-background-color: #0F2027;">
@@ -41,7 +50,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Pane fx:id="DashboardPanel" layoutY="132.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0">
+                  <Pane fx:id="DashboardPanel" layoutY="132.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
                         <Label layoutY="18.0" prefHeight="17.0" prefWidth="238.0" text="               Dashboard" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -50,7 +59,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="UsuariosPanel" layoutX="-1.0" layoutY="193.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0">
+                  <Pane fx:id="UsuariosPanel" layoutX="-1.0" layoutY="193.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
                         <Label layoutX="-6.0" layoutY="19.0" prefHeight="17.0" prefWidth="238.0" text="                   Usuarios" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -59,7 +68,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="ProductosPanel" layoutY="254.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0">
+                  <Pane fx:id="ProductosPanel" layoutY="254.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
                         <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                Productos" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -68,7 +77,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="OrdenesPanel" layoutY="315.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0">
+                  <Pane fx:id="OrdenesPanel" layoutY="315.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
                         <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                  Ordenes" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -77,7 +86,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoriasPanel" layoutY="376.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="238.0">
+                  <Pane fx:id="CategoriasPanel" layoutY="376.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
                         <Label layoutX="7.0" layoutY="17.0" prefHeight="27.0" prefWidth="232.0" text="                Categorias" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -88,7 +97,7 @@
                   </Pane>
                   <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="36.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/images44-removebg-preview.png" />
+                        <Image url="@../../img/images44-removebg-preview.png" />
                      </image>
                   </ImageView>
                </children>
