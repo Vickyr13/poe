@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.Mesero;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,7 +19,7 @@ public class vistapedidoController {
 
     public void but_Pasarvista(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/ventanaEmegerteCocina.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/ventanaEmegerteCocina.fxml"));
             Parent root = loader.load();
 
             // Crear un nuevo Stage para la ventana emergente
@@ -41,7 +41,7 @@ public class vistapedidoController {
     public void but_menu(MouseEvent mouseEvent) {
 
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/vistamesa.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) but_pasarvista.getScene().getWindow();

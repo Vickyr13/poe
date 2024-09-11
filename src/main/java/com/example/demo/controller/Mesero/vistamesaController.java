@@ -1,4 +1,4 @@
-    package com.example.demo.controller;
+    package com.example.demo.controller.Mesero;
 
     import javafx.event.ActionEvent;
     import javafx.fxml.FXML;
@@ -25,22 +25,14 @@
     private  Pane panel;
 
 
-    private  String rutaPedido = "/com/example/demo/views/vista-pedido.fxml";
-    private String rutaDomicilio= "/com/example/demo/views/ventanaDomicilio.fxml";
-    private String rutaPentiende= "/com/example/demo/views/ventanaPedido.fxml";
+    private  String rutaPedido = "/com/example/demo/views/Mesero/vista-pedido.fxml";
+    private String rutaDomicilio= "/com/example/demo/views/Mesero/ventanaDomicilio.fxml";
+    private String rutaPentiende= "/com/example/demo/views/Mesero/ventanaPedido.fxml";
 
 
     @FXML
     public void inicilite(){
-
-
-
-
     }
-
-
-
-
 
     @FXML
         public void but_pagar() {
@@ -153,7 +145,6 @@
                 e.printStackTrace();
             }
         }
-
 
         public void navegarNo(String ruta){
 

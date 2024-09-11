@@ -1,5 +1,6 @@
 package com.example.demo.controller.Admin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -59,6 +60,12 @@ public class AdminProductoController {
     void ClickUsuarios(MouseEvent event) {
         CambiarVista("AdminUsuarios");
     }
+
+    @FXML
+    void AbrirForm(ActionEvent event) {
+        CambiarVista("AdminFormPlatillo");
+    }
+
     public void CambiarVista(String Dirección){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Dirección+".fxml"));

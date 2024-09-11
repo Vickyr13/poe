@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane stylesheets="@../style/vistaMesa.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.VentanaDomicilioController">
+<Pane stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.VentanaDomicilioController">
     <children>
         <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="15.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 25px;">
             <children>

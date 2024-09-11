@@ -1,6 +1,5 @@
-package com.example.demo.controller;
+package com.example.demo.controller.Mesero;
 
-import com.example.demo.HelloApplication;
 import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,11 +11,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.w3c.dom.Node;
 
-import java.awt.*;
 import java.io.IOException;
-import java.util.EventObject;
 
 public class login_meserosController {
 
@@ -134,12 +130,12 @@ public class login_meserosController {
 
     //odtener y validar la contraseña
         public String tenerRuta (String IDContra){
-        if (IDContra.equals("000")) {
-            return "/com/example/demo/views/vistamesa.fxml";
+        if (IDContra.equals("000") || IDContra.equals("444")) {
+            return "/com/example/demo/views/Mesero/vistamesa.fxml";
         } else if (IDContra.equals("111")) {
-            return "/com/example/demo/views/hello-view.fxml";
+            return "/com/example/demo/views/Admin/hello-view.fxml";
         } else if (IDContra.equals("222")) {
-            return "/com/example/demo/views/vista-cocina.fxml";
+            return "/com/example/demo/views/Mesero/vista-cocina.fxml";
         } else {
 
             new Alert(Alert.AlertType.ERROR, "La contraseña está mal.").showAndWait();
@@ -147,6 +143,4 @@ public class login_meserosController {
             return "";
         }
     }
-
-
 }

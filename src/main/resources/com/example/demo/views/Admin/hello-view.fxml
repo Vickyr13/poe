@@ -11,13 +11,13 @@
 
 <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane styleClass="login-bg" stylesheets="@../style/login.css">
+      <AnchorPane styleClass="login-bg" stylesheets="@../../style/login.css">
          <children>
             <AnchorPane layoutX="-2.0" prefHeight="400.0" prefWidth="303.0" style="-fx-background-color: #975300;">
                <children>
                   <ImageView fitHeight="400.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/imglogin.jpg" />
+                        <Image url="@../../img/imglogin.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -26,15 +26,15 @@
                <children>
                   <ImageView fitHeight="119.0" fitWidth="121.0" layoutX="91.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/logopng1.png" />
+                        <Image url="@../../img/logopng1.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="101.0" layoutY="179.0" styleClass="label-titulo" stylesheets="@../style/login.css" text="BIENVENIDOS" textFill="#fcfafa">
+                  <Label layoutX="101.0" layoutY="179.0" styleClass="label-titulo" stylesheets="@../../style/login.css" text="BIENVENIDOS" textFill="#fcfafa">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="56.0" layoutY="229.0" prefWidth="203.0" styleClass="password-field" stylesheets="@../style/login.css" />
+                  <TextField layoutX="56.0" layoutY="229.0" prefWidth="203.0" styleClass="password-field" stylesheets="@../../style/login.css" />
                   <PasswordField layoutX="56.0" layoutY="285.0" />
                </children></AnchorPane>
          </children>

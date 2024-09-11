@@ -4,14 +4,14 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.login_meserosController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.login_meserosController">
 
    <children>
       <Pane prefHeight="400.0" prefWidth="600.0">
          <children>
             <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/login-mesero.jpg" />
+                  <Image url="@../../img/login-mesero.jpg" />
                </image>
             </ImageView>
             <Pane layoutX="187.0" layoutY="126.0" prefHeight="274.0" prefWidth="226.0" style="-fx-background-color: rgba(0, 97, 151, 0.7); -fx-background-radius: 50px;">
@@ -28,23 +28,22 @@
                   <Button fx:id="btn0" layoutX="95.0" layoutY="217.0" mnemonicParsing="false" onAction="#pucharbtn0" prefHeight="45.0" prefWidth="46.0" style="-fx-background-color: #006197; -fx-border-color: white;" text="0" textFill="WHITE" />
                   <ImageView fx:id="imgRetroceder" fitHeight="45.0" fitWidth="46.0" layoutX="23.0" layoutY="217.0" onMouseClicked="#pucharCancelar" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/boton-x.png" />
+                        <Image url="@../../img/boton-x.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="imgContinuar" fitHeight="45.0" fitWidth="54.0" layoutX="166.0" layoutY="217.0" onMouseClicked="#imgContinuar" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/flecha-correcta.png" />
+                        <Image url="@../../img/flecha-correcta.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
             <ImageView fitHeight="68.0" fitWidth="81.0" layoutX="266.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/logopng1.png" />
+                  <Image url="@../../img/logopng1.png" />
                </image>
             </ImageView>
             <PasswordField fx:id="pwrdContra" layoutX="193.0" layoutY="82.0" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #006197; -fx-background-radius: 25px;" />
-            <Button fx:id="but_Continuar" layoutX="438.0" layoutY="311.0" mnemonicParsing="false" onAction="#Continuar" text="Button" />
          </children>
       </Pane>
    </children>

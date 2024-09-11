@@ -13,19 +13,19 @@
    <children>
       <Pane>
          <children>
-            <Pane layoutX="-3.0" layoutY="-2.0" prefHeight="103.0" prefWidth="1285.0" styleClass="nav" stylesheets="@../style/vista-cocinca.css">
+            <Pane layoutX="-3.0" layoutY="-2.0" prefHeight="103.0" prefWidth="1285.0" styleClass="nav" stylesheets="@../../style/vista-cocinca.css">
                <children>
                   <ImageView fitHeight="85.0" fitWidth="91.0" layoutX="18.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../img/logopng1.png" />
+                        <Image url="@../../img/logopng1.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="152.0" layoutY="10.0" prefHeight="85.0" prefWidth="346.0" styleClass="titulo" stylesheets="@../style/vista-cocinca.css" text="Sal Limon Y Chile" textFill="WHITE" />
+                  <Label layoutX="152.0" layoutY="10.0" prefHeight="85.0" prefWidth="346.0" styleClass="titulo" stylesheets="@../../style/vista-cocinca.css" text="Sal Limon Y Chile" textFill="WHITE" />
                </children>
             </Pane>
-            <Pane layoutY="101.0" prefHeight="619.0" prefWidth="1280.0" styleClass="body" stylesheets="@../style/vista-cocinca.css">
+            <Pane layoutY="101.0" prefHeight="619.0" prefWidth="1280.0" styleClass="body" stylesheets="@../../style/vista-cocinca.css">
                <children>
-                  <Pane layoutX="26.0" layoutY="16.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../style/vista-cocinca.css">
+                  <Pane layoutX="26.0" layoutY="16.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../../style/vista-cocinca.css">
                      <children>
                         <TableView layoutX="10.0" layoutY="11.0" prefHeight="458.0" prefWidth="276.0">
                            <columns>
@@ -33,11 +33,11 @@
                               <TableColumn prefWidth="109.3333740234375" text="Orden del plato" />
                            </columns>
                         </TableView>
-                        <Label layoutX="115.0" layoutY="475.0" styleClass="numero-orden" stylesheets="@../style/vista-cocinca.css" text="Mesa #" />
-                        <Button layoutX="76.0" layoutY="505.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../style/vista-cocinca.css" text="Finalizar" />
+                        <Label layoutX="115.0" layoutY="475.0" styleClass="numero-orden" stylesheets="@../../style/vista-cocinca.css" text="Mesa #" />
+                        <Button layoutX="76.0" layoutY="505.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../../style/vista-cocinca.css" text="Finalizar" />
                      </children>
                   </Pane>
-                  <Pane layoutX="336.0" layoutY="16.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../style/vista-cocinca.css">
+                  <Pane layoutX="336.0" layoutY="16.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../../style/vista-cocinca.css">
                      <children>
                         <TableView layoutX="9.0" layoutY="13.0" prefHeight="458.0" prefWidth="276.0">
                            <columns>
@@ -46,11 +46,11 @@
                               <TableColumn prefWidth="105.333251953125" />
                            </columns>
                         </TableView>
-                        <Label layoutX="114.0" layoutY="478.0" styleClass="numero-orden" stylesheets="@../style/vista-cocinca.css" text="Mesa #" />
-                        <Button layoutX="61.0" layoutY="508.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../style/vista-cocinca.css" text="Finalizar" />
+                        <Label layoutX="114.0" layoutY="478.0" styleClass="numero-orden" stylesheets="@../../style/vista-cocinca.css" text="Mesa #" />
+                        <Button layoutX="61.0" layoutY="508.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../../style/vista-cocinca.css" text="Finalizar" />
                      </children>
                   </Pane>
-                  <Pane layoutX="646.0" layoutY="15.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../style/vista-cocinca.css">
+                  <Pane layoutX="646.0" layoutY="15.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../../style/vista-cocinca.css">
                      <children>
                         <TableView layoutX="5.0" layoutY="12.0" prefHeight="458.0" prefWidth="283.0">
                            <columns>
@@ -59,11 +59,11 @@
                               <TableColumn prefWidth="105.333251953125" />
                            </columns>
                         </TableView>
-                        <Label layoutX="114.0" layoutY="477.0" styleClass="numero-orden" stylesheets="@../style/vista-cocinca.css" text="Mesa #" />
-                        <Button layoutX="61.0" layoutY="507.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../style/vista-cocinca.css" text="Finalizar" />
+                        <Label layoutX="114.0" layoutY="477.0" styleClass="numero-orden" stylesheets="@../../style/vista-cocinca.css" text="Mesa #" />
+                        <Button layoutX="61.0" layoutY="507.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../../style/vista-cocinca.css" text="Finalizar" />
                      </children>
                   </Pane>
-                  <Pane layoutX="956.0" layoutY="15.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../style/vista-cocinca.css">
+                  <Pane layoutX="956.0" layoutY="15.0" prefHeight="560.0" prefWidth="294.0" styleClass="orden" stylesheets="@../../style/vista-cocinca.css">
                      <children>
                         <TableView layoutX="6.0" layoutY="12.0" prefHeight="458.0" prefWidth="283.0">
                            <columns>
@@ -72,8 +72,8 @@
                               <TableColumn prefWidth="105.333251953125" />
                            </columns>
                         </TableView>
-                        <Label layoutX="122.0" layoutY="479.0" styleClass="numero-orden" stylesheets="@../style/vista-cocinca.css" text="Mesa #" />
-                        <Button layoutX="69.0" layoutY="509.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../style/vista-cocinca.css" text="Finalizar" />
+                        <Label layoutX="122.0" layoutY="479.0" styleClass="numero-orden" stylesheets="@../../style/vista-cocinca.css" text="Mesa #" />
+                        <Button layoutX="69.0" layoutY="509.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="172.0" styleClass="boton-finalizar" stylesheets="@../../style/vista-cocinca.css" text="Finalizar" />
                      </children>
                   </Pane>
                </children>
