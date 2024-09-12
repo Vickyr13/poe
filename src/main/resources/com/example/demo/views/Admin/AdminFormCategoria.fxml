@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="550.0" prefWidth="455.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminFormCategoria">
+   <children>
+      <Label layoutX="174.0" layoutY="14.0" styleClass="Label-label" stylesheets="@../../style/dasgboard.css" text="Agregar Categoria" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="33.0" layoutY="56.0" styleClass="Label-label" stylesheets="@../../style/dasgboard.css" text="Nueva Categoria" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="Txt_NombreP" layoutX="33.0" layoutY="83.0" prefHeight="30.0" prefWidth="236.0" promptText="Categoria">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <ImageView fitHeight="135.0" fitWidth="157.0" layoutX="299.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/icon-add-image.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="28.0" layoutY="147.0" styleClass="Label-label" stylesheets="@../../style/dasgboard.css" text="Estado" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <RadioButton layoutX="24.0" layoutY="195.0" mnemonicParsing="false" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Activo" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="RdbEstado" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton layoutX="139.0" layoutY="195.0" mnemonicParsing="false" text="Inactivo" textFill="WHITE" toggleGroup="$RdbEstado">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </RadioButton>
+      <Label layoutX="31.0" layoutY="264.0" text="Descripción del producto:" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextArea layoutX="26.0" layoutY="292.0" prefHeight="132.0" prefWidth="376.0" />
+      <Button fx:id="Btn_Agregar_Plato" layoutX="121.0" layoutY="466.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="257.0" text="Agregar platillo">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
