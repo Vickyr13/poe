@@ -49,7 +49,6 @@ public class login_meserosController {
 
     @FXML
     public void initialize() {
-        pwrdContra.setVisible(true);
     }
 
     public void Pucharbtn1(ActionEvent actionEvent) {
@@ -96,16 +95,7 @@ public class login_meserosController {
         pwrdContra.deletePreviousChar();
     }
 
-    public void pucharContinuar(MouseEvent mouseEvent) throws IOException {
 
-
-    }
-
-    //NO FUNCIONA PARA NADA
-   @FXML
-    public void Continuar(ActionEvent actionEvent) throws IOException {
-
-    }
 
 
     //metodo para ir a distintas vistas
@@ -114,7 +104,7 @@ public class login_meserosController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(tenerRuta(pwrdContra.getText())));
             Parent root = loader.load();
 
-            Stage stage = (Stage) but_Continuar.getScene().getWindow();
+            Stage stage = (Stage) imgContinuar.getScene().getWindow();
             Scene scene = new Scene(root);
 
             stage.setScene(scene);
