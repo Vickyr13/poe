@@ -19,7 +19,7 @@
 
 .text-field, .password-field {
     -fx-background-color:transparent;
-    -fx-padding: 0px 3px 3px 25px;
+    -fx-padding: 0px 3px 3px 10px;
     -fx-text-inner-color: #fff;
     -fx-font-family: "JetBrains Mono", monospace;
     -fx-font-size: 12px;
@@ -31,12 +31,25 @@
 
 .button-init{
  -fx-background-color:transparent;
-     -fx-padding: 0px 3px 3px 25px;
+     -fx-padding: 0px 3px 3px 10px;
      -fx-text-inner-color: #fff;
      -fx-font-family: "JetBrains Mono", monospace;
      -fx-font-size: 12px;
+     -fx-font-weight: bold;
      -fx-background-color:linear-gradient(to bottom right, #006197, #003E45);
      -fx-border-radius: 6;
      -fx-pref-width: 250px;
      -fx-pref-height: 35px;
+}
+
+/* Efecto hover (al pasar el mouse sobre el botón) */
+.button-init:hover {
+    -fx-background-color: linear-gradient(to bottom right, #0086d4, #006b87);; /* Color al pasar el mouse */
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.7), 10, 0.7, 0, 0); /* Sombra más intensa */
+}
+
+/* Efecto de clic (al presionar el botón) */
+.button-init:pressed {
+    -fx-background-color: #003f7f; /* Color al presionar */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.9), 15, 0.9, 0, 0); /* Sombra más profunda */
 }
