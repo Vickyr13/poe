@@ -40,7 +40,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="Btn_Agregar_Plato" layoutX="121.0" layoutY="516.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="257.0" text="Agregar platillo">
+            <Button fx:id="Btn_Agregar_Plato" layoutX="121.0" layoutY="516.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="257.0" style="-fx-cursor: hand;" text="Agregar platillo">
                <font>
                   <Font size="14.0" />
                </font>
@@ -50,7 +50,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextArea layoutX="41.0" layoutY="352.0" prefHeight="150.0" prefWidth="433.0" />
+            <TextArea layoutX="41.0" layoutY="352.0" prefHeight="150.0" prefWidth="433.0" style="-fx-cursor: hand;" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="334.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/icon-add-image.jpg" />

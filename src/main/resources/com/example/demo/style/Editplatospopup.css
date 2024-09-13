@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 /* Estilo moderno para el botón */
-.my-button {
-  -fx-background-color: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradiente de color de fondo */
+.my-button-confirmar {
+  -fx-background-color: linear-gradient(to right, #339933,  #66cc66); /* Gradiente de color de fondo */
   -fx-text-fill: white; /* Color del texto */
   -fx-font-family: 'JetBrains Mono', monospace; /* Fuente moderna */
   -fx-font-size: 15px; /* Tamaño de fuente */
@@ -17,10 +17,54 @@
 
 
 /* Estilo al pasar el cursor sobre el botón */
-.my-button:hover {
-  -fx-background-color: linear-gradient(#feb47b, #ff7e5f); /* Inversión del gradiente */
+.my-button-confirmar:hover {
+  -fx-background-color: linear-gradient(#25e707, #0a4b00); /* Inversión del gradiente */
   -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.0, 0, 2); /* Sombra más pronunciada */
 }
+
+
+
+
+/* Estilo moderno para el botón */
+.my-button-cancelar {
+  -fx-background-color: linear-gradient(to right, #f44336,  #bd1515); /* Gradiente de color de fondo */
+  -fx-text-fill: white; /* Color del texto */
+  -fx-font-family: 'JetBrains Mono', monospace; /* Fuente moderna */
+  -fx-font-size: 15px; /* Tamaño de fuente */
+  -fx-padding: 10px 20px; /* Relleno del botón */
+  -fx-border-radius: 25px; /* Borde redondeado */
+  -fx-background-radius: 25px; /* Fondo redondeado */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0.0, 0, 5); /* Sombra */
+  -fx-cursor: hand; /* Cursor en forma de mano */
+  -fx-border: none; /* Sin borde */
+  -fx-border-width: 0; /* Ancho del borde */
+}
+
+
+/* Estilo al pasar el cursor sobre el botón */
+.my-button-cancelar:hover {
+  -fx-background-color: linear-gradient(#ff0000, #7e0606); /* Inversión del gradiente */
+  -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.0, 0, 2); /* Sombra más pronunciada */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* Estilo moderno para el panel */
 .my-panel {
