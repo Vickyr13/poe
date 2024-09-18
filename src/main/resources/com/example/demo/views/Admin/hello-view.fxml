@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.HelloController">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="630.0" styleClass="login-bg" stylesheets="@../../style/login.css">
          <children>
@@ -35,11 +30,11 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="24.0" layoutY="206.0" prefWidth="203.0" promptText="Ingresar usuario" styleClass="password-field" stylesheets="@../../style/login.css" />
-                  <PasswordField layoutX="26.0" layoutY="278.0" promptText="Ingresar contraseña" />
+                  <TextField fx:id="tex_usuario" layoutX="24.0" layoutY="206.0" prefWidth="203.0" promptText="Ingresar usuario" styleClass="password-field" stylesheets="@../../style/login.css" />
+                  <PasswordField fx:id="tex_contra" layoutX="26.0" layoutY="278.0" promptText="Ingresar contraseña" />
                   <Label layoutX="25.0" layoutY="176.0" stylesheets="@../../style/login.css" text="Usuario" />
                   <Label layoutX="26.0" layoutY="253.0" text="Contraseña" />
-                  <Button layoutX="26.0" layoutY="330.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="163.0" styleClass="button-init" stylesheets="@../../style/login.css" text="Iniciar Sesion" textFill="WHITE" />
+                  <Button fx:id="but_IniciarSesion" layoutX="26.0" layoutY="330.0" mnemonicParsing="false" onAction="#but_IniciarSesion" prefHeight="25.0" prefWidth="163.0" styleClass="button-init" stylesheets="@../../style/login.css" text="Iniciar Sesion" textFill="WHITE" />
                </children></AnchorPane>
          </children>
       </AnchorPane>
