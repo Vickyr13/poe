@@ -41,80 +41,117 @@
 
 
         public void mesa5(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
-    }
-
+            if (mouseEvent.getClickCount() == 2) {
+                navegar(rutaPedido);
+            }
+        }
 
         public void mesa1(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount() == 2) {
+                navegar(rutaPedido);
+            }else{
+                System.out.println("Prueva");
+            }
         }
 
         public void mesa7(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa11(MouseEvent mouseEvent) {
-            navegar(rutaPedido);}
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
+        }
 
         public void mesa16(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa2(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa3(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa4(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa8(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa9(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa10(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa12(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
-
         public void mesa13(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa14(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
-
         public void mesa15(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa17(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa18(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
-
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa19(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         public void mesa20(MouseEvent mouseEvent) {
-            navegar(rutaPedido);
+            if(mouseEvent.getClickCount()==2) {
+                navegar(rutaPedido);
+            }
         }
 
         // vistas emejertes
