@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminUsuariosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style/dasgboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminUsuariosController">
    <children>
       <Pane fx:id="backPanel" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;">
          <children>
@@ -50,45 +50,37 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
-                  <Pane fx:id="DashboardPanel" layoutY="132.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="DashboardPanel" layoutY="132.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css" />
+                  <Pane fx:id="UsuariosPanel" layoutY="269.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutY="18.0" prefHeight="17.0" prefWidth="238.0" text="               Dashboard" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="80.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="UsuariosPanel" layoutX="-1.0" layoutY="193.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="ProductosPanel" layoutY="330.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="-6.0" layoutY="19.0" prefHeight="17.0" prefWidth="238.0" text="                   Usuarios" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="77.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="ProductosPanel" layoutY="254.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="OrdenesPanel" layoutX="5.0" layoutY="398.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                Productos" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="80.0" layoutY="17.0" prefHeight="17.0" prefWidth="238.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="OrdenesPanel" layoutY="315.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="CategoriasPanel" layoutY="459.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutY="17.0" prefHeight="17.0" prefWidth="238.0" text="                  Ordenes" textAlignment="CENTER" textFill="WHITE">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                  </Pane>
-                  <Pane fx:id="CategoriasPanel" layoutY="376.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
-                     <children>
-                        <Label layoutX="7.0" layoutY="17.0" prefHeight="27.0" prefWidth="232.0" text="                Categorias" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="70.0" layoutY="17.0" prefHeight="27.0" prefWidth="232.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -100,6 +92,15 @@
                         <Image url="@../../img/images44-removebg-preview.png" />
                      </image>
                   </ImageView>
+                  <AnchorPane fx:id="DashboardPanel1" layoutX="9.0" layoutY="219.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: ;" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                     <children>
+                        <Label layoutX="66.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </Pane>
             <TableView editable="true" layoutX="366.0" layoutY="174.0" prefHeight="458.0" prefWidth="759.0" tableMenuButtonVisible="true">
@@ -117,5 +118,10 @@
             </TableView>
          </children>
       </Pane>
+      <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="24.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../img/logopng1.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

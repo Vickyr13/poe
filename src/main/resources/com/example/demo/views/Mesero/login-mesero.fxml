@@ -46,7 +46,7 @@
                   <Image url="@../../img/logopng1.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="pwrdContra" layoutX="193.0" layoutY="82.0" prefHeight="34.0" prefWidth="213.0" style="-fx-background-color: #006197; -fx-background-radius: 25px;" styleClass="password" stylesheets="@../../style/login-mesero.css" />
+            <PasswordField fx:id="pwrdContra" layoutX="193.0" layoutY="82.0" prefHeight="34.0" prefWidth="213.0" styleClass="password" stylesheets="@../../style/login-mesero.css" />
          </children>
       </Pane>
    </children>
