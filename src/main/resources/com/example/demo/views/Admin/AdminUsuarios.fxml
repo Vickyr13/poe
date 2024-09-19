@@ -89,7 +89,7 @@
                   </Pane>
                   <ImageView fitHeight="53.0" fitWidth="54.0" layoutX="36.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../img/images44-removebg-preview.png" />
+
                      </image>
                   </ImageView>
                   <AnchorPane fx:id="DashboardPanel1" layoutX="9.0" layoutY="219.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" style="-fx-border-style: ;" styleClass="panels" stylesheets="@../../style/dasgboard.css">
