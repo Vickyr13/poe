@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="550.0" prefWidth="455.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminFormCategoria">
    <children>
       <Label layoutX="174.0" layoutY="14.0" styleClass="Label-label" stylesheets="@../../style/dasgboard.css" text="Agregar Categoria" textFill="WHITE">
@@ -39,7 +38,7 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <RadioButton layoutX="24.0" layoutY="195.0" mnemonicParsing="false" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Activo" textFill="WHITE">
+      <RadioButton fx:id="rdoActivo" layoutX="24.0" layoutY="195.0" mnemonicParsing="false" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Activo" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -47,7 +46,7 @@
             <ToggleGroup fx:id="RdbEstado" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton layoutX="139.0" layoutY="195.0" mnemonicParsing="false" text="Inactivo" textFill="WHITE" toggleGroup="$RdbEstado">
+      <RadioButton fx:id="rdoInactivo" layoutX="139.0" layoutY="195.0" mnemonicParsing="false" text="Inactivo" textFill="WHITE" toggleGroup="$RdbEstado">
          <font>
             <Font size="14.0" />
          </font>
@@ -63,5 +62,6 @@
             <Font size="14.0" />
          </font>
       </Button>
+      <Button fx:id="btnVolver" layoutX="31.0" layoutY="15.0" mnemonicParsing="false" onAction="#REGRESAR" text="Volver" />
    </children>
 </AnchorPane>
