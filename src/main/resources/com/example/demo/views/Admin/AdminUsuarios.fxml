@@ -128,6 +128,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <Button fx:id="btnAgregar" layoutX="790.0" layoutY="670.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="52.0" prefWidth="400.0" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Agregar Producto" />
+      <Button fx:id="btnAgregar" layoutX="790.0" layoutY="670.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="52.0" prefWidth="400.0" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Agregar Emplado" />
    </children>
 </AnchorPane>
