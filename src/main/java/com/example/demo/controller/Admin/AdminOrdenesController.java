@@ -36,8 +36,11 @@ public class AdminOrdenesController {
 
     @FXML
     public void initialize() {
-        Cobo1.getItems().addAll("Mes", "Semana", "Año");
-        Combo2.getItems().addAll("Mesero", "Cocina", "Admin");
+        Cobo1.getItems().addAll("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+        );
+
+        Combo2.getItems().addAll("Semana 1", "Semana 2", "Semana 3");
     }
 
     @FXML

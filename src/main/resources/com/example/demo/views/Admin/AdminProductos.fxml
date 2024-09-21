@@ -99,7 +99,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableProductos" layoutX="239.0" layoutY="120.0" prefHeight="482.0" prefWidth="1026.0" style="-fx-background-radius: 25px;">
+      <TableView fx:id="tableProductos" layoutX="238.0" layoutY="141.0" prefHeight="482.0" prefWidth="1026.0" style="-fx-background-radius: 25px;">
         <columns>
           <TableColumn minWidth="78.75" prefWidth="215.0" text="Producto" />
           <TableColumn minWidth="0.0" prefWidth="183.99996948242188" text="Estado" />

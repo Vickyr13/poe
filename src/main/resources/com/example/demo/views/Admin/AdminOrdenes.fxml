@@ -1,80 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminOrdenesController">
+<AnchorPane prefHeight="756.0" prefWidth="1280.0" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminOrdenesController">
    <children>
-      <Pane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;">
+      <Pane prefHeight="756.0" prefWidth="1282.0" style="-fx-background-color: #002844;">
          <children>
-            <Pane layoutX="194.0" prefHeight="93.0" prefWidth="1086.0" style="-fx-background-color: #0F2027;">
+            <Pane layoutX="194.0" prefHeight="80.0" prefWidth="1087.0" style="-fx-background-color: #0F2027;">
                <children>
-                  <Label layoutX="498.0" layoutY="29.0" text="Ordenes" textFill="WHITE">
+                  <Label layoutX="403.0" layoutY="2.0" stylesheets="@../../style/dasgboard.css" text="Ordenes " textFill="WHITE">
                      <font>
-                        <Font size="24.0" />
+                        <Font name="Cambria Bold" size="50.0" />
                      </font>
+                     <styleClass>
+                        <String fx:value="label-Titulos" />
+                        <String fx:value="estiloLetra" />
+                     </styleClass>
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="720.0" prefWidth="238.0" style="-fx-background-color: #0F2027;">
+            <Pane prefHeight="756.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
                <children>
-                  <Label layoutX="119.0" layoutY="41.0" text="Sal" textFill="WHITE">
+                  <Label layoutX="112.0" layoutY="23.0" text="Sal" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="137.0" layoutY="41.0" text=" Limon" textFill="#47c863">
+                  <Label layoutX="138.0" layoutY="23.0" text=" Limon" textFill="#47c863">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="114.0" layoutY="61.0" text="  Y" textFill="WHITE">
+                  <Label layoutX="107.0" layoutY="41.0" text="  Y" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="143.0" layoutY="61.0" text="Chile" textFill="#f20e0e">
+                  <Label layoutX="129.0" layoutY="41.0" text="Chile" textFill="#f20e0e">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Pane fx:id="UsuariosPanel" layoutY="213.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="UsuariosPanel" layoutY="235.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="85.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="67.0" layoutY="15.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="DashboardPanel" layoutY="152.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="76.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                        <Label layoutX="67.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="ProductosPanel" layoutY="274.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="ProductosPanel" layoutY="287.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="79.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="OrdenesPanel" layoutY="330.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="OrdenesPanel" layoutY="339.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="85.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
+                        <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -83,7 +89,7 @@
                   </Pane>
                   <Pane fx:id="CategoriasPanel" layoutY="391.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="77.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="67.0" layoutY="14.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -97,33 +103,48 @@
                   </ImageView>
                </children>
             </Pane>
-            <Label layoutX="322.0" layoutY="156.0" text="Filtrar por:" textFill="WHITE">
+            <Label layoutX="322.0" layoutY="130.0" text="Filtrar por:" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="833.0" layoutY="161.0" text="Filtrar por:" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <ComboBox fx:id="Cobo1" layoutX="432.0" layoutY="157.0" promptText="Mes" />
-            <ComboBox fx:id="Combo2" layoutX="946.0" layoutY="162.0" promptText="Mesero" />
-            <TableView layoutX="322.0" layoutY="240.0" prefHeight="306.0" prefWidth="862.0">
+            <ComboBox fx:id="Cobo1" layoutX="539.0" layoutY="130.0" promptText="Mes" />
+            <ComboBox fx:id="Combo2" layoutX="416.0" layoutY="130.0" promptText="Semana 1" />
+            <TableView layoutX="241.0" layoutY="201.0" prefHeight="470.0" prefWidth="1021.0" style="-fx-background-radius: 25;">
               <columns>
-                <TableColumn prefWidth="75.0" text="Nombre" />
-                <TableColumn prefWidth="75.0" text="ID Orden " />
-                  <TableColumn prefWidth="75.0" text="Hora" />
-                  <TableColumn prefWidth="75.0" text="Fecha" />
-                  <TableColumn prefWidth="75.0" text="Mesa" />
-                  <TableColumn prefWidth="75.0" text="Dinero" />
+                <TableColumn prefWidth="204.26669311523438" text="Nombre" />
+                <TableColumn prefWidth="82.4000244140625" text="ID Orden " />
+                  <TableColumn prefWidth="169.33331298828125" text="Hora" />
+                  <TableColumn prefWidth="204.2667236328125" text="Fecha" />
+                  <TableColumn prefWidth="149.59991455078125" text="Mesa" />
+                  <TableColumn prefWidth="213.8665771484375" text="Dinero" />
               </columns>
             </TableView>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="24.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/logopng1.png" />
                </image>
             </ImageView>
+            <ComboBox layoutX="661.0" layoutY="130.0" prefHeight="25.0" prefWidth="79.0" promptText="Año" />
+            <Label layoutX="798.0" layoutY="130.0" text="Buscar" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Pane layoutX="872.0" layoutY="130.0" prefHeight="60.0" prefWidth="325.0" style="-fx-background-color: white; -fx-background-radius: 25px;">
+               <children>
+                  <TextField layoutX="34.0" layoutY="5.0" prefHeight="51.0" prefWidth="281.0" promptText="Buscar" style="-fx-background-radius: 25px; -fx-background-color: white;" styleClass="hover" stylesheets="@../../style/vista-pedido.css">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="38.0" fitWidth="32.0" layoutX="6.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../img/lupa.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
