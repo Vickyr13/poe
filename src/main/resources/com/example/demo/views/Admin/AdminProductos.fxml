@@ -99,7 +99,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableProductos" layoutX="238.0" layoutY="141.0" prefHeight="482.0" prefWidth="1026.0" style="-fx-background-radius: 25px;">
+      <TableView fx:id="tableProductos" layoutX="238.0" layoutY="141.0" prefHeight="482.0" prefWidth="1018.0" style="-fx-background-radius: 25px;">
         <columns>
           <TableColumn minWidth="78.75" prefWidth="215.0" text="Producto" />
           <TableColumn minWidth="0.0" prefWidth="183.99996948242188" text="Estado" />
@@ -110,6 +110,6 @@
         </columns>
       </TableView>
       <Button fx:id="btnAgregar" layoutX="790.0" layoutY="670.0" mnemonicParsing="false" onAction="#AbrirForm" prefHeight="52.0" prefWidth="400.0" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Agregar Producto" />
-      <Button layoutX="330.0" layoutY="663.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="400.0" style="-fx-background-color: E26913;" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Editar" />
+      <Button fx:id="btnEditar" layoutX="330.0" layoutY="670.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="52.0" prefWidth="400.0" style="-fx-background-color: E26913;" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Editar" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package com.example.demo.controller.Admin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -70,4 +71,9 @@ public class AdminUsuariosController {
         }
     }
 
+    public void btnAgregar(ActionEvent actionEvent) {
+    }
+
+    public void btnEditar(ActionEvent actionEvent) {
+    }
 }

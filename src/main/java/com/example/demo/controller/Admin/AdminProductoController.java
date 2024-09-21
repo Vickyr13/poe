@@ -81,6 +81,8 @@ public class AdminProductoController {
         }
     }
 
+    public void btnEditar(ActionEvent actionEvent) {
+    }
 }
 
 
