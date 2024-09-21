@@ -14,17 +14,17 @@
    <children>
       <AnchorPane prefHeight="756.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/logopng1.png" />
                </image>
             </ImageView>
-            <Label layoutX="112.0" layoutY="23.0" text="Sal," textFill="WHITE">
+            <Label layoutX="112.0" layoutY="24.0" text="Sal," textFill="WHITE">
                <font>
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <Label layoutX="138.0" layoutY="23.0" text="Limón" textFill="#47c863">
+            <Label layoutX="138.0" layoutY="24.0" text="Limón" textFill="#47c863">
                <font>
                   <Font name="Cambria Bold" size="14.0" />
                </font>
@@ -41,7 +41,7 @@
             </Label>
             <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -50,7 +50,7 @@
             </AnchorPane>
             <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="70.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -59,7 +59,7 @@
             </AnchorPane>
             <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" onMouseClicked="#ClickOrdenes" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -68,7 +68,7 @@
             </AnchorPane>
             <AnchorPane fx:id="CategoriasPanel" layoutX="2.0" layoutY="387.0" onMouseClicked="#ClickCategorias" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="66.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -77,7 +77,7 @@
             </AnchorPane>
             <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -86,7 +86,7 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="222.0" prefHeight="80.0" prefWidth="1073.0" style="-fx-background-color: #0F2027;">
+      <AnchorPane layoutX="222.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
          <children>
             <Label layoutX="367.0" layoutY="9.0" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
                <font>
@@ -99,14 +99,17 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableProductos" layoutX="315.0" layoutY="169.0" prefHeight="530.0" prefWidth="860.0">
+      <TableView fx:id="tableProductos" layoutX="239.0" layoutY="120.0" prefHeight="482.0" prefWidth="1026.0" style="-fx-background-radius: 25px;">
         <columns>
-          <TableColumn minWidth="78.75" prefWidth="215.0" text="id_producto" />
-          <TableColumn minWidth="0.0" prefWidth="215.0" text="Producto" />
-            <TableColumn prefWidth="215.0" text="foto" />
-            <TableColumn prefWidth="215.0" text="Descripción" />
+          <TableColumn minWidth="78.75" prefWidth="215.0" text="Producto" />
+          <TableColumn minWidth="0.0" prefWidth="183.99996948242188" text="Estado" />
+            <TableColumn prefWidth="150.39996337890625" text="categoria" />
+            <TableColumn prefWidth="220.53326416015625" text="Descripción" />
+            <TableColumn prefWidth="126.39990234375" text="Precio total" />
+            <TableColumn prefWidth="132.0000244140624" text="Foto" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="1033.0" layoutY="109.0" mnemonicParsing="false" onAction="#AbrirForm" stylesheets="@../../style/vistaMesa.css" text="Agregar Producto" />
+      <Button fx:id="btnAgregar" layoutX="790.0" layoutY="670.0" mnemonicParsing="false" onAction="#AbrirForm" prefHeight="52.0" prefWidth="400.0" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Agregar Producto" />
+      <Button layoutX="330.0" layoutY="663.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="400.0" style="-fx-background-color: E26913;" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Editar" />
    </children>
 </AnchorPane>

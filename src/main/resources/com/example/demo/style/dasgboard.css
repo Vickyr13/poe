@@ -24,3 +24,20 @@
     -fx-font-family: "JetBrains Mono";
     -fx-font-size: 18px;
 }
+
+
+/*---------------------------------------------------------*/
+
+/* Estilo específico para el botón de editar */
+.editButton {
+    -fx-background-color: #4caf50; /* Verde */
+    -fx-text-fill: white;
+    -fx-padding: 10;
+    -fx-font-size: 14px;
+    -fx-background-radius: 5;
+}
+
+/* Cambios al pasar el mouse sobre el botón de editar */
+.editButton:hover {
+    -fx-background-color: #45a049; /* Verde más oscuro */
+}

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844; -fx-padding: 10 10 10 10;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminDashboardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminDashboardController">
    <children>
       <AnchorPane layoutX="221.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
          <children>
@@ -28,7 +28,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="1.0" prefHeight="742.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
+      <AnchorPane layoutY="1.0" prefHeight="756.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
          <children>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -65,7 +65,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="70.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -73,7 +73,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" onMouseClicked="#ClickOrdenes" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -81,7 +81,7 @@
                </children></AnchorPane>
             <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" onMouseClicked="#ClickCategorias" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="66.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>

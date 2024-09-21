@@ -48,6 +48,7 @@
 
         public void mesa1(MouseEvent mouseEvent) {
             if(mouseEvent.getClickCount() == 2) {
+                int mesaId = 1;
                 navegar(rutaPedido);
             }else{
                 System.out.println("Prueva");
@@ -126,6 +127,7 @@
         }
         public void mesa15(MouseEvent mouseEvent) {
             if(mouseEvent.getClickCount()==2) {
+
                 navegar(rutaPedido);
             }
         }
