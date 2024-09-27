@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminCategoriasController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminCategoriasController">
    <children>
       <AnchorPane prefHeight="742.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
          <children>
@@ -106,6 +106,6 @@
             <TableColumn prefWidth="181.0" text="Fecha_Ingreso" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="998.0" layoutY="114.0" mnemonicParsing="false" stylesheets="@../../style/vistaMesa.css" text="Agregar Categoria" />
+      <Button fx:id="btnAgregar" layoutX="998.0" layoutY="114.0" mnemonicParsing="false" onAction="#btnAgregar" stylesheets="@../../style/vistaMesa.css" text="Agregar Categoria" />
    </children>
 </AnchorPane>

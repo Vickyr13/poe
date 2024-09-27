@@ -71,8 +71,7 @@ public class AdminUsuariosController {
         }
     }
 
-    public void btnAgregar(ActionEvent actionEvent) {
-    }
+    public void btnAgregar(ActionEvent actionEvent) {CambiarVista("AdminFormEmpleados");}
 
     public void btnEditar(ActionEvent actionEvent) {
     }

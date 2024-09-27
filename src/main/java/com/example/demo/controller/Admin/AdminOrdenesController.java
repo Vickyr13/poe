@@ -34,8 +34,7 @@ public class AdminOrdenesController {
     @FXML
     private Pane UsuariosPanel;
 
-    @FXML
-    public void initialize() {
+    @FXML    public void initialize() {
         Cobo1.getItems().addAll("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
                 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
         );

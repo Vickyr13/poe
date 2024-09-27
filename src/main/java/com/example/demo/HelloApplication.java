@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.controller.database.conneection;
+import com.example.demo.database.conneection;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,7 +13,7 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/admin/AdminDashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/admin/AdminFormEmpleados.fxml"));
         //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load()); // Crear la escena sin especificar tamaño
         stage.setTitle("Hello!");
@@ -25,12 +25,11 @@ public class HelloApplication extends Application {
         stage.sizeToScene(); // Ajusta el tamaño de la ventana para adaptarse a la escena
         stage.show();
 
-        try {
-            if(conneection.getConnection() != null) {
-                System.out.println("Conexión exitosa");
-            }
-        } catch (ClassNotFoundException e) {
-            System.out.println("Malio sal");
+
+        if(conneection.getConnection() != null) {
+            System.out.println("Conexión exitosa");
+        } else {
+            System.out.println("Conexión fallida");
         }
 
 

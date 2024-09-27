@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class AdminCategoriasController {
@@ -56,6 +57,7 @@ public class AdminCategoriasController {
         CambiarVista("AdminUsuarios");
     }
 
+
     public void CambiarVista(String Direccion){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
@@ -70,4 +72,6 @@ public class AdminCategoriasController {
             e.printStackTrace();
         }
     }
+
+    public void btnAgregar(javafx.event.ActionEvent actionEvent) {CambiarVista("AdminFormcategoria");}
 }
