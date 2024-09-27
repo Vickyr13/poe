@@ -21,7 +21,7 @@ public class EmpleadoDAO {
             try{
                 //query de insertar empleado
                 //se hace de esta forma para evitar ataques de inyeccion SQL
-                String query = "INSERT INTO empleados (nombre_Empleado, apellido_empleado, dui, email, telefono, fecha_contratacion, rol, estado_empleado) VALUES (?,?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO empleados (nombre_Empleado, apellido_empleado, dui, email, telefono, fecha_cotratacion, rol, estado_empleado) VALUES (?,?,?,?,?,?,?,?)";
 
                 //preparar la sentencia
                 java.sql.PreparedStatement pstmt = con.prepareStatement(query);
@@ -45,7 +45,11 @@ public class EmpleadoDAO {
 
     }
 
-
+    public static void pruebaconection(){
+        System.out.println(
+                "funciona"
+        );
+    }
 
 
 }

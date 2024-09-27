@@ -87,22 +87,20 @@ public class AdminFormEmpleadosController {
 
         if (RbtnActivo.isSelected()) {
             estado = 1;
-        } else if (RbtnActivo.isSelected()) {
+
+
+        } else if (RbtnInactivo.isSelected()) {
             estado = 0;
-
-            //Agregar el empleado a la base de datos o mostrar un mensaje de error
-
-            Empleado empleado = new Empleado(nombre, apellido, dui, telefono, email, contratacionDate, cargo, estado );
-
-            try {
-                querys.insertarEmpleado(empleado);
-            }catch(Exception e){
-                System.out.println("Error no sea como Javier..."+e.getMessage());
-            };
-
-
         }
+        //Agregar el empleado a la base de datos o mostrar un mensaje de error
 
+        Empleado empleado = new Empleado(nombre, apellido, dui, telefono, email, contratacionDate, cargo, estado );
+
+        try {
+            querys.insertarEmpleado(empleado);
+        }catch(Exception e){
+            System.out.println("Error no sea como Javier..."+e.getMessage());
+        };
 
     }
 
@@ -129,5 +127,6 @@ public class AdminFormEmpleadosController {
     public void IngresarEmpleado(ActionEvent actionEvent) {
         GuardarEmpleado();
         System.out.println("Ingresar");
+
     }
 }
