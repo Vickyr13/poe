@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -12,6 +13,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AdminUsuariosController {
+
+    @FXML
+    public Button btnAgregar;
+
+    @FXML
+    public Button btnEditar;
+
+    @FXML
+    public Button btnEliminar;
 
     @FXML
     private Pane CategoriasPanel;
@@ -74,5 +84,8 @@ public class AdminUsuariosController {
     public void btnAgregar(ActionEvent actionEvent) {CambiarVista("AdminFormEmpleados");}
 
     public void btnEditar(ActionEvent actionEvent) {
+    }
+
+    public void EliminarEmpleado(ActionEvent actionEvent) {
     }
 }

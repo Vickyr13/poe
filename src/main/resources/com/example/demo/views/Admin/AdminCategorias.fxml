@@ -99,13 +99,15 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView layoutX="286.0" layoutY="182.0" prefHeight="402.0" prefWidth="712.0">
+      <TableView layoutX="355.0" layoutY="148.0" prefHeight="402.0" prefWidth="682.0">
         <columns>
-          <TableColumn prefWidth="185.0" text="id_Categoria" />
-          <TableColumn prefWidth="201.0" text="Categoria" />
-            <TableColumn prefWidth="181.0" text="Fecha_Ingreso" />
+          <TableColumn prefWidth="239.199951171875" text="id_Categoria" />
+          <TableColumn prefWidth="251.20001220703125" text="Categoria" />
+            <TableColumn prefWidth="190.39999999999998" text="Fecha_Ingreso" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="998.0" layoutY="114.0" mnemonicParsing="false" onAction="#btnAgregar" stylesheets="@../../style/vistaMesa.css" text="Agregar Categoria" />
+      <Button fx:id="btnAgregar" layoutX="836.0" layoutY="604.0" mnemonicParsing="false" onAction="#AgregarCategoria" styleClass="boton-agregar" stylesheets="@../../style/vista-pedido.css" text="Agregar Categoria" textFill="WHITE" />
+      <Button fx:id="btnEditar" layoutX="577.0" layoutY="604.0" mnemonicParsing="false" onAction="#EditarCategoria" prefHeight="52.0" prefWidth="222.0" styleClass="boton-editar" stylesheets="@../../style/vista-pedido.css" text="Editar" textFill="WHITE" />
+      <Button fx:id="btnEliminar" layoutX="317.0" layoutY="604.0" mnemonicParsing="false" onAction="#EliminarCategoria" prefHeight="52.0" prefWidth="206.0" styleClass="boton-Eliminar" stylesheets="@../../style/vista-pedido.css" text="Eliminar" textFill="WHITE" />
    </children>
 </AnchorPane>
