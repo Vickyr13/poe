@@ -21,17 +21,25 @@
 
 }
 
-.boton{
-    -fx-background-color: #47C863;
+.boton-editar{
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-background-color: #E26913;
     -fx-background-radius: 80px;
     -fx-font-size: 25px;
 }
 
+.boton-Eliminar{
+    -fx-font-family: "JetBrains Mono", monospace;
+    -fx-font-size: 25px;
+    -fx-background-color:  #b82727;
+    -fx-border-radius: 50px;
+    -fx-background-radius: 50px;
+}
+
 .boton-agregar{
     -fx-font-size: 25px;
-    -fx-background-color:  #006197;
+    -fx-background-color:  #49c23b;
     -fx-border-radius: 50px;
-    -fx-border-color: white;
     -fx-background-radius: 50px;
 }
 
