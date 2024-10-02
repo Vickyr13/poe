@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class AdminFormCategoria {
@@ -51,5 +52,20 @@ public class AdminFormCategoria {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void Btn_Agregar_Plato(ActionEvent actionEvent) {
+
+        if(Txt_NombreP.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese nombe de la categoria");
+            return;
+        }
+
+        if(rdoActivo.isSelected()== false && rdoActivo.isSelected() == false){
+            JOptionPane.showMessageDialog(null, "Seleccione estado de la categoria");
+            return;
+        }
+
+
     }
 }

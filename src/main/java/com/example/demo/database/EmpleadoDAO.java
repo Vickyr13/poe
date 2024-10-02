@@ -21,7 +21,7 @@ public class EmpleadoDAO {
             try{
                 //query de insertar empleado
                 //se hace de esta forma para evitar ataques de inyeccion SQL
-                String query = "INSERT INTO empleados (nombre_Empleado, apellido_empleado, dui, email, telefono, fecha_cotratacion, rol, estado_empleado) VALUES (?,?,?,?,?,?,?,?)";
+                String query = "INSERT INTO empleados (nombre_Empleado, apellido_empleado, dui, telefono, email, fecha_contratacion, rol, estado_empleado) VALUES (?,?,?,?,?,?,?,?)";
 
                 //preparar la sentencia
                 java.sql.PreparedStatement pstmt = con.prepareStatement(query);
@@ -36,7 +36,7 @@ public class EmpleadoDAO {
                 //ejecutar la sentencia
                 pstmt.execute();
                 System.out.println("Empleado insertado correctamente");
-                con.close(); //cerrar la conexion
+             //   con.close(); //cerrar la conexion
             } catch (SQLException e) {
                 System.out.println("Error mi tiyo Javier hizo mal el codigo: " + e.getMessage());
                 throw e;

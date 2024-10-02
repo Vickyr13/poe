@@ -32,7 +32,6 @@ public class HelloApplication extends Application {
             System.out.println("Conexión fallida");
         }
 
-
     }
 
     public static void main(String[] args) {
