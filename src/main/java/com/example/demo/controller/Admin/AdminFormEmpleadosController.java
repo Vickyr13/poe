@@ -15,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -108,12 +109,14 @@ public class AdminFormEmpleadosController {
         Telefono telefono1 = new Telefono("123456789", telefono);
         Direccion direccion1 = new Direccion(direccion_ingresada);
 
-        Empleado empleado = new Empleado(nombre, apellido, dui, email, 1, 1, contratacionDate, rol, estado, generateKey() );
+        String pin = generateKey();
+        Empleado empleado = new Empleado(nombre, apellido, dui, email, 2, 2, contratacionDate, rol, estado, pin);
 
         try {
             queryDire.insertDireccion(direccion1);
             queryTel.insertTelefono(telefono1);
             querys.insertarEmpleado(empleado);
+            JOptionPane.showMessageDialog(null,"La contraseña de empleados es: " + pin);
         }catch(Exception e){
             System.out.println(direccion1.getId_direccion());
             System.out.println(telefono1.getId_telefono());
