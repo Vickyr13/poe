@@ -94,7 +94,7 @@ public class AdminFormEmpleadosController {
         }
         //Agregar el empleado a la base de datos o mostrar un mensaje de error
 
-        Empleado empleado = new Empleado(nombre, apellido, dui, telefono, email, contratacionDate, cargo, estado );
+        Empleado empleado = new Empleado(nombre, apellido, dui, telefono, email, contratacionDate, cargo, estado, generateKey() );
 
         try {
             querys.insertarEmpleado(empleado);
@@ -108,6 +108,7 @@ public class AdminFormEmpleadosController {
     public void REGRESAR (ActionEvent actionEvent) {
         CambiarVista("AdminUsuarios");
     }
+
     public void CambiarVista(String Direccion){
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Direccion + ".fxml"));
@@ -122,6 +123,19 @@ public class AdminFormEmpleadosController {
                 e.printStackTrace();
             }
 
+    }
+
+    public static String generateKey() {
+        int[] contraseña = new int[4];
+        StringBuilder pin = new StringBuilder();
+
+        for (int i = 0; i < 4; i++) {
+            int random = (int) (Math.random() * 10);
+            contraseña[i] = random;
+            pin.append(random);
+        }
+
+        return pin.toString();
     }
 
     public void IngresarEmpleado(ActionEvent actionEvent) {

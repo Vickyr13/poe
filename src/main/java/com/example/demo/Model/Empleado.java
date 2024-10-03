@@ -13,13 +13,14 @@ public class Empleado {
     private Date date_Empleado;
     private String rol_Empleado;
     private int estado_Empledo;
+    private String pin;
 
 
     public Empleado() {
 
     }
 
-    public Empleado(String nombre_Empleado, String apellido_Empleado, String DUI, String correo_Empleado, String telefono_Empleado, Date date_Empleado, String rol_Empleado, int estado_Empledo) {
+    public Empleado(String nombre_Empleado, String apellido_Empleado, String DUI, String correo_Empleado, String telefono_Empleado, Date date_Empleado, String rol_Empleado, int estado_Empledo, String pin) {
         this.nombre_Empleado = nombre_Empleado;
         this.apellido_Empleado = apellido_Empleado;
         this.DUI = DUI;
@@ -28,6 +29,7 @@ public class Empleado {
         this.date_Empleado = date_Empleado;
         this.rol_Empleado = rol_Empleado;
         this.estado_Empledo = estado_Empledo;
+        this.pin = pin;
     }
 
 
@@ -102,4 +104,9 @@ public class Empleado {
     public void setEstado_Empledo(int estado_Empledo) {
         this.estado_Empledo = estado_Empledo;
     }
+
+    public String getPin() {return pin;}
+
+    public void setPin(String pin) {this.pin = pin;}
+
 }
