@@ -51,7 +51,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="txtEmail" layoutX="363.0" layoutY="147.0" prefHeight="25.0" prefWidth="266.0" />
-                  <Label layoutX="359.0" layoutY="199.0" text="Rol:" textFill="WHITE">
+                  <Label layoutX="359.0" layoutY="185.0" text="Direccion:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -88,6 +88,7 @@
                      </toggleGroup>
                   </RadioButton>
                   <RadioButton fx:id="RbtnInactivo" layoutX="566.0" layoutY="298.0" mnemonicParsing="false" text="Inactivo" toggleGroup="$Estado" />
+                  <TextField fx:id="txtDireccion" layoutX="450.0" layoutY="183.0" prefHeight="25.0" prefWidth="266.0" />
                </children>
             </Pane>
             <Button fx:id="btnregresar" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#REGRESAR" style="-fx-background-color: #049C93;" text="&lt;">
