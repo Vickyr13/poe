@@ -80,6 +80,7 @@ public class AdminCategoriasController {
     public void btnAgregar(javafx.event.ActionEvent actionEvent) {CambiarVista("AdminFormcategoria");}
 
     public void AgregarCategoria(ActionEvent actionEvent) {
+        CambiarVista("AdminFormCategoria");
     }
 
     public void EditarCategoria(ActionEvent actionEvent) {

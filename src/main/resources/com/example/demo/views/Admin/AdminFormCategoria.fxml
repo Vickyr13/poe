@@ -39,7 +39,7 @@
             <Font size="14.0" />
          </font>
       </RadioButton>
-      <Button fx:id="Btn_Agregar_Plato" layoutX="69.0" layoutY="256.0" mnemonicParsing="false" onAction="#Btn_Agregar_Plato" prefHeight="38.0" prefWidth="257.0" style="-fx-background-radius: 25px;" text="Agregar platillo">
+      <Button fx:id="Btn_Agregar_Plato" layoutX="69.0" layoutY="256.0" mnemonicParsing="false" onAction="#Btn_Agregar_Plato" prefHeight="38.0" prefWidth="257.0" style="-fx-background-radius: 25px;" text="Agregar categoria">
          <font>
             <Font size="14.0" />
          </font>

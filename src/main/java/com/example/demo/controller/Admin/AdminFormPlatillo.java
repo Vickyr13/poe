@@ -32,10 +32,6 @@ public class AdminFormPlatillo {
     private ComboBox<String> cboCategoria;
 
 
-
-
-
-
     public void REGRESAR(ActionEvent actionEvent) {
         CambiarVista("AdminProductos");
     }
@@ -57,42 +53,53 @@ public class AdminFormPlatillo {
 
     public void Btn_Agregar_Plato(ActionEvent actionEvent) {
 
+        if(validar()){
+            JOptionPane.showMessageDialog(null, "Si se pueded");
+        }
+    }
+
+
+    private boolean validar() {
+
         //Validar campos
         if (Txt_NombreP.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingres el nombre del producto");
-            return;
+            return false;
         }
+
+
 //        if (cboCategoria.getValue() == null) {
 //            JOptionPane.showMessageDialog(null, "Seleccione la categoria del producto");
-//            return;
+//            return false;
 //        }
-
 
 
         String precioTexto = txtPrecio_producto.getText().trim();
 
         if (precioTexto.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingrese el precio del producto");
-            return;
+            return false;
         }
 
         try {
             double precio_product = Double.parseDouble(precioTexto);
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "El precio debe ser un número válido");
-            return;
+            return false;
         }
 
 
-        if (rdoActivo.isSelected() == false && rdoInactivo.isSelected() == false) {
+        if (!rdoActivo.isSelected() && !rdoInactivo.isSelected()) {
             JOptionPane.showMessageDialog(null, "Seleccione el estado del producto");
-            return;
+            return false;
         }
 
         if (txaDescripcion.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Ingres la descripcion del producto");
-            return;
+            return false;
         }
-
+        return true;
     }
+
+
 }

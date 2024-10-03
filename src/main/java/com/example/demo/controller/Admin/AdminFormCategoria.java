@@ -56,16 +56,24 @@ public class AdminFormCategoria {
 
     public void Btn_Agregar_Plato(ActionEvent actionEvent) {
 
-        if(Txt_NombreP.getText().trim().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Ingrese nombe de la categoria");
-            return;
+        if(validate()){
+            JOptionPane.showMessageDialog(null, "si se pudo");
         }
-
-        if(rdoActivo.isSelected()== false && rdoActivo.isSelected() == false){
-            JOptionPane.showMessageDialog(null, "Seleccione estado de la categoria");
-            return;
-        }
-
 
     }
+
+
+    private boolean validate(){
+        if(Txt_NombreP.getText().trim().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Ingrese nombe de la categoria");
+            return false;
+        }
+
+        if(!rdoActivo.isSelected() && !rdoActivo.isSelected()){
+            JOptionPane.showMessageDialog(null, "Seleccione estado de la categoria");
+            return false;
+        }
+        return true;
+    }
+
 }
