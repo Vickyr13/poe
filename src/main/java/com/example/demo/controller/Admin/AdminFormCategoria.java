@@ -7,11 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import javafx.util.converter.DefaultStringConverter;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -40,6 +38,23 @@ public class AdminFormCategoria {
     void REGRESAR(ActionEvent event) {
         CambiarVista("AdminCategorias");
     }
+
+    @FXML
+    private void initialize(){
+        Txt_NombreP.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("[a-z,A-Z]*")) ? change : null));
+
+        Txt_NombreP.setTextFormatter(new TextFormatter<>(new DefaultStringConverter(), null, change -> {
+            // Expresión regular que solo permite letras (sin números, caracteres especiales ni espacios)
+            if (change.getText().matches("[a-zA-Z]*")) {
+                return change; // Permitir el cambio si cumple con la condición
+            }
+            return null; // Si no cumple, rechazar el cambio
+        }));
+    }
+
+
+
 
     CategoriaDAO querys = new CategoriaDAO();
     public void CambiarVista(String Direccion){
@@ -92,7 +107,12 @@ public class AdminFormCategoria {
             JOptionPane.showMessageDialog(null, "Seleccione estado de la categoria");
             return false;
         }
+
+
         return true;
     }
+
+
+
 
 }
