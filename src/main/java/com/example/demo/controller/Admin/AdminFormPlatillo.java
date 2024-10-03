@@ -1,5 +1,8 @@
 package com.example.demo.controller.Admin;
 
+import com.example.demo.Model.productos;
+import com.example.demo.database.CategoriaDAO;
+import com.example.demo.database.productosDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -52,9 +55,26 @@ public class AdminFormPlatillo {
     }
 
     public void Btn_Agregar_Plato(ActionEvent actionEvent) {
-
+        productosDAO querys = new productosDAO();
         if(validar()){
-            JOptionPane.showMessageDialog(null, "Si se pueded");
+            String nombre_Producto = Txt_NombreP.getText();
+            double precio_unitario = Double.parseDouble(txtPrecio_producto.getText().trim());
+            String descripcion_Producto = txaDescripcion.getText().trim();
+
+            int estado = 0;
+            if(rdoActivo.isSelected()){
+                estado = 1;
+            }if(rdoInactivo.isSelected()){
+                estado = 0;
+            }
+          productos productos = new productos(2, nombre_Producto, precio_unitario,descripcion_Producto,estado);
+
+
+            try {
+                querys.insertarProducto(productos);
+            }catch(Exception e){
+                System.out.println("Error al insertar productos "+e.getMessage());
+            };
         }
     }
 
@@ -87,7 +107,6 @@ public class AdminFormPlatillo {
             JOptionPane.showMessageDialog(null, "El precio debe ser un número válido");
             return false;
         }
-
 
         if (!rdoActivo.isSelected() && !rdoInactivo.isSelected()) {
             JOptionPane.showMessageDialog(null, "Seleccione el estado del producto");

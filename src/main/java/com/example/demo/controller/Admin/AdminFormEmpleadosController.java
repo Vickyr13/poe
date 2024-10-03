@@ -127,18 +127,18 @@ public class AdminFormEmpleadosController {
         CambiarVista("AdminUsuarios");
     }
     public void CambiarVista(String Direccion){
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Direccion + ".fxml"));
-                Parent root = loader.load();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Direccion + ".fxml"));
+            Parent root = loader.load();
 
-                Stage stage = (Stage) btnregresar.getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
+            Stage stage = (Stage) btnregresar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
 
-                stage.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

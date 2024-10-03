@@ -38,7 +38,7 @@ public class AdminFormCategoria {
 
     @FXML
     void REGRESAR(ActionEvent event) {
-    CambiarVista("AdminCategorias");
+        CambiarVista("AdminCategorias");
     }
 
     CategoriaDAO querys = new CategoriaDAO();
