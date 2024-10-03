@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class AdminFormPlatillo {
@@ -22,25 +23,22 @@ public class AdminFormPlatillo {
     @FXML
     public TextArea txaDescripcion;
     @FXML
-    public TextField txtPrecio_plato;
+    public TextField txtPrecio_producto;
     @FXML
-    private Button Btn_Agregar_Plato;
-
-    @FXML
-    private TextField Precio_plato;
-
+    public Button Btn_Agregar_Plato;
     @FXML
     private TextField Txt_NombreP;
-
     @FXML
     private ComboBox<String> cboCategoria;
+
 
     public void REGRESAR(ActionEvent actionEvent) {
         CambiarVista("AdminProductos");
     }
-    public void CambiarVista(String Direccion){
+
+    public void CambiarVista(String Direccion) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Direccion + ".fxml"));
             Parent root = loader.load();
 
             Stage stage = (Stage) btnVolver.getScene().getWindow();
@@ -52,4 +50,56 @@ public class AdminFormPlatillo {
             e.printStackTrace();
         }
     }
+
+    public void Btn_Agregar_Plato(ActionEvent actionEvent) {
+
+        if(validar()){
+            JOptionPane.showMessageDialog(null, "Si se pueded");
+        }
+    }
+
+
+    private boolean validar() {
+
+        //Validar campos
+        if (Txt_NombreP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingres el nombre del producto");
+            return false;
+        }
+
+
+//        if (cboCategoria.getValue() == null) {
+//            JOptionPane.showMessageDialog(null, "Seleccione la categoria del producto");
+//            return false;
+//        }
+
+
+        String precioTexto = txtPrecio_producto.getText().trim();
+
+        if (precioTexto.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingrese el precio del producto");
+            return false;
+        }
+
+        try {
+            double precio_product = Double.parseDouble(precioTexto);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "El precio debe ser un número válido");
+            return false;
+        }
+
+
+        if (!rdoActivo.isSelected() && !rdoInactivo.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Seleccione el estado del producto");
+            return false;
+        }
+
+        if (txaDescripcion.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Ingres la descripcion del producto");
+            return false;
+        }
+        return true;
+    }
+
+
 }

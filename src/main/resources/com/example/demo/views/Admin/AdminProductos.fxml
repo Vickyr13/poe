@@ -99,17 +99,17 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableProductos" layoutX="238.0" layoutY="141.0" prefHeight="482.0" prefWidth="1018.0" style="-fx-background-radius: 25px;">
+      <TableView fx:id="tableProductos" layoutX="301.0" layoutY="137.0" prefHeight="482.0" prefWidth="902.0" style="-fx-background-radius: 25px;">
         <columns>
-          <TableColumn minWidth="78.75" prefWidth="215.0" text="Producto" />
-          <TableColumn minWidth="0.0" prefWidth="183.99996948242188" text="Estado" />
-            <TableColumn prefWidth="150.39996337890625" text="categoria" />
-            <TableColumn prefWidth="220.53326416015625" text="Descripción" />
-            <TableColumn prefWidth="126.39990234375" text="Precio total" />
-            <TableColumn prefWidth="132.0000244140624" text="Foto" />
+            <TableColumn prefWidth="168.79998779296875" text="Nombre" />
+            <TableColumn prefWidth="175.19998168945312" text="categoria" />
+            <TableColumn prefWidth="210.4000244140625" text="Descripción" />
+            <TableColumn prefWidth="176.800048828125" text="Precio total" />
+          <TableColumn minWidth="0.0" prefWidth="166.400146484375" text="Estado" />
         </columns>
       </TableView>
-      <Button fx:id="btnAgregar" layoutX="790.0" layoutY="670.0" mnemonicParsing="false" onAction="#AbrirForm" prefHeight="52.0" prefWidth="400.0" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Agregar Producto" />
-      <Button fx:id="btnEditar" layoutX="330.0" layoutY="670.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="52.0" prefWidth="400.0" style="-fx-background-color: E26913;" styleClass="boton" stylesheets="@../../style/vista-pedido.css" text="Editar" />
+      <Button fx:id="btnAgregar" layoutX="930.0" layoutY="670.0" mnemonicParsing="false" onAction="#AbrirForm" prefHeight="52.0" prefWidth="260.0" style="-fx-background-color: #2ca41e;" styleClass="boton-agregar" stylesheets="@../../style/vista-pedido.css" text="Agregar Producto" textFill="WHITE" />
+      <Button fx:id="btnEditar" layoutX="614.0" layoutY="670.0" mnemonicParsing="false" onAction="#EditarRegistro" prefHeight="52.0" prefWidth="250.0" styleClass="boton-editar" stylesheets="@../../style/vista-pedido.css" text="Editar" textFill="WHITE" />
+      <Button fx:id="btnEliminar" layoutX="342.0" layoutY="670.0" mnemonicParsing="false" onAction="#EliminarRegistro" prefHeight="52.0" prefWidth="199.0" styleClass="boton-Eliminar" stylesheets="@../../style/vista-pedido.css" text="Eliminar" textFill="WHITE" />
    </children>
 </AnchorPane>

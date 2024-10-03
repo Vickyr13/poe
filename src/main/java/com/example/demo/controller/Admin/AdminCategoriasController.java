@@ -1,5 +1,6 @@
 package com.example.demo.controller.Admin;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,10 +10,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class AdminCategoriasController {
+    @FXML
+    public Button btnEditar;
+    @FXML
+    public Button btnEliminar;
 
     @FXML
     private AnchorPane CategoriasPAnel;
@@ -74,4 +78,14 @@ public class AdminCategoriasController {
     }
 
     public void btnAgregar(javafx.event.ActionEvent actionEvent) {CambiarVista("AdminFormcategoria");}
+
+    public void AgregarCategoria(ActionEvent actionEvent) {
+        CambiarVista("AdminFormCategoria");
+    }
+
+    public void EditarCategoria(ActionEvent actionEvent) {
+    }
+
+    public void EliminarCategoria(ActionEvent actionEvent) {
+    }
 }

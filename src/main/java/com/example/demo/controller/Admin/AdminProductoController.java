@@ -14,6 +14,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AdminProductoController {
+    @FXML
+    public Button btnEditar;
+
+    @FXML
+    public Button btnEliminar;
 
     @FXML
     private AnchorPane CategoriasPanel;
@@ -82,6 +87,12 @@ public class AdminProductoController {
     }
 
     public void btnEditar(ActionEvent actionEvent) {
+    }
+
+    public void EditarRegistro(ActionEvent actionEvent) {
+    }
+
+    public void EliminarRegistro(ActionEvent actionEvent) {
     }
 }
 
