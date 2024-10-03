@@ -43,7 +43,7 @@ public class HelloController {
 
 
 
-        if (validar(usuarioIngresado, contraseñaIngresada)) {
+        if (usuarioIngresado.equals("root") && contraseñaIngresada.equals("1234")) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/AdminDashboard.fxml"));
                 Parent root = loader.load();
@@ -63,7 +63,7 @@ public class HelloController {
         }
     }
 
-
+/*
     private boolean validar(String user, String password){
         //Aquí se haría la validación de contraseña
         Connection conn = conneection.getConnection();
@@ -79,7 +79,7 @@ public class HelloController {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-    }
+    }*/
 
 
 

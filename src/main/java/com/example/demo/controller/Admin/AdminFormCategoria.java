@@ -1,5 +1,7 @@
 package com.example.demo.controller.Admin;
 
+import com.example.demo.Model.Categorias;
+import com.example.demo.database.CategoriaDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -39,6 +41,7 @@ public class AdminFormCategoria {
     CambiarVista("AdminCategorias");
     }
 
+    CategoriaDAO querys = new CategoriaDAO();
     public void CambiarVista(String Direccion){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
@@ -58,6 +61,22 @@ public class AdminFormCategoria {
 
         if(validate()){
             JOptionPane.showMessageDialog(null, "si se pudo");
+
+            String nombre_categoria = Txt_NombreP.getText();
+            int estado_categoria = 1;
+            if (rdoInactivo.isSelected()) {
+                estado_categoria = 0;
+            } else if (rdoActivo.isSelected()) {
+                estado_categoria = 1;
+            }
+
+            Categorias categorias1 = new Categorias(nombre_categoria, estado_categoria);
+            try {
+                querys.insertarCategoria(categorias1);
+            }catch(Exception e){
+                System.out.println("Error en el Formulario Categoria"+e.getMessage());
+            };
+
         }
 
     }
@@ -69,7 +88,7 @@ public class AdminFormCategoria {
             return false;
         }
 
-        if(!rdoActivo.isSelected() && !rdoActivo.isSelected()){
+        if(!rdoActivo.isSelected() && !rdoInactivo.isSelected()){
             JOptionPane.showMessageDialog(null, "Seleccione estado de la categoria");
             return false;
         }
