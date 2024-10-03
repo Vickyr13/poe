@@ -1,7 +1,11 @@
 package com.example.demo.controller.Admin;
 
+import com.example.demo.Model.Direccion;
 import com.example.demo.Model.Empleado;
+import com.example.demo.Model.Telefono;
+import com.example.demo.database.DireccionDAO;
 import com.example.demo.database.EmpleadoDAO;
+import com.example.demo.database.TelefonoDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -41,6 +45,7 @@ public class AdminFormEmpleadosController {
     public RadioButton RbtnActivo;
     @FXML
     public ToggleGroup Estado;
+    public TextField txtDireccion;
     @FXML
     private RadioButton RdB_Mesero;
     @FXML
@@ -62,8 +67,12 @@ public class AdminFormEmpleadosController {
 
 
     public void GuardarEmpleado() {
+
+
         //Crear el objeto empleadoDAO
         EmpleadoDAO querys = new EmpleadoDAO();
+        TelefonoDAO queryTel = new TelefonoDAO();
+        DireccionDAO queryDire = new DireccionDAO();
 
         //obtener los valores de los campos del formulario y otros controladores
         String nombre = txtNombre.getText();
@@ -71,18 +80,19 @@ public class AdminFormEmpleadosController {
         String dui = txtDUI.getText();
         String telefono = txtTelefono.getText();
         String email = txtEmail.getText();
+        String direccion_ingresada = txtDireccion.getText();
         LocalDate contratacion = PICKERContratacion.getValue();
-        String cargo = "";
+        int rol = 1;
         int estado = 0;
         Date contratacionDate = Date.valueOf(contratacion);
 
 
         if (RdB_Mesero.isSelected()) {
-            cargo = "Mesero";
+            rol = 1;
         } else if (RdB_Cocinero.isSelected()) {
-            cargo = "Cocinero";
+            rol = 2;
         } else if (RdB_Repartidor.isSelected()) {
-            cargo = "Repartidor";
+            rol = 4;
         }
 
         if (RbtnActivo.isSelected()) {
@@ -92,14 +102,22 @@ public class AdminFormEmpleadosController {
         } else if (RbtnInactivo.isSelected()) {
             estado = 0;
         }
-        //Agregar el empleado a la base de datos o mostrar un mensaje de error
 
-        Empleado empleado = new Empleado(nombre, apellido, dui, telefono, email, contratacionDate, cargo, estado );
+
+        //Agregar el empleado a la base de datos o mostrar un mensaje de error
+        Telefono telefono1 = new Telefono("123456789", telefono);
+        Direccion direccion1 = new Direccion(direccion_ingresada);
+
+        Empleado empleado = new Empleado(nombre, apellido, dui, email, 1, 1, contratacionDate, rol, estado, generateKey() );
 
         try {
+            queryDire.insertDireccion(direccion1);
+            queryTel.insertTelefono(telefono1);
             querys.insertarEmpleado(empleado);
         }catch(Exception e){
-            System.out.println("Error no sea como Javier..."+e.getMessage());
+            System.out.println(direccion1.getId_direccion());
+            System.out.println(telefono1.getId_telefono());
+            System.out.println("Error al insertar empleados "+e.getMessage());
         };
 
     }
@@ -128,5 +146,18 @@ public class AdminFormEmpleadosController {
         GuardarEmpleado();
         System.out.println("Ingresar");
 
+    }
+
+    public static String generateKey() {
+        int[] contraseña = new int[4];
+        StringBuilder pin = new StringBuilder();
+
+        for (int i = 0; i < 4; i++) {
+            int random = (int) (Math.random() * 10);
+            contraseña[i] = random;
+            pin.append(random);
+        }
+
+        return pin.toString();
     }
 }

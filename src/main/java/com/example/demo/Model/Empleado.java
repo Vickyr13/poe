@@ -9,9 +9,10 @@ public class Empleado {
     private String apellido_Empleado;
     private String DUI;
     private String correo_Empleado;
-    private String telefono_Empleado;
+    private int id_direccion;
+    private int id_telefono;
     private Date date_Empleado;
-    private String rol_Empleado;
+    private int id_rol;
     private int estado_Empledo;
     private String pin;
 
@@ -20,18 +21,43 @@ public class Empleado {
 
     }
 
-    public Empleado(String nombre_Empleado, String apellido_Empleado, String DUI, String correo_Empleado, String telefono_Empleado, Date date_Empleado, String rol_Empleado, int estado_Empledo, String pin) {
+    public Empleado(String nombre_Empleado, String apellido_Empleado, String DUI, String correo_Empleado, int id_direccion, int id_telefono, Date date_Empleado, int id_rol, int estado_Empledo, String pin) {
+
         this.nombre_Empleado = nombre_Empleado;
         this.apellido_Empleado = apellido_Empleado;
         this.DUI = DUI;
         this.correo_Empleado = correo_Empleado;
-        this.telefono_Empleado = telefono_Empleado;
+        this.id_direccion = id_direccion;
+        this.id_telefono = id_telefono;
         this.date_Empleado = date_Empleado;
-        this.rol_Empleado = rol_Empleado;
+        this.id_rol = id_rol;
         this.estado_Empledo = estado_Empledo;
         this.pin = pin;
     }
 
+    public int getId_direccion() {
+        return id_direccion;
+    }
+
+    public void setId_direccion(int id_direccion) {
+        this.id_direccion = id_direccion;
+    }
+
+    public int getId_telefono() {
+        return id_telefono;
+    }
+
+    public void setId_telefono(int id_telefono) {
+        this.id_telefono = id_telefono;
+    }
+
+    public int getId_rol() {
+        return id_rol;
+    }
+
+    public void setId_rol(int id_rol) {
+        this.id_rol = id_rol;
+    }
 
     public int getId_Empleado() {
         return id_Empleado;
@@ -73,13 +99,6 @@ public class Empleado {
         this.correo_Empleado = correo_Empleado;
     }
 
-    public String getTelefono_Empleado() {
-        return telefono_Empleado;
-    }
-
-    public void setTelefono_Empleado(String telefono_Empleado) {
-        this.telefono_Empleado = telefono_Empleado;
-    }
 
     public Date getDate_Empleado() {
         return date_Empleado;
@@ -89,13 +108,7 @@ public class Empleado {
         this.date_Empleado = date_Empleado;
     }
 
-    public String getRol_Empleado() {
-        return rol_Empleado;
-    }
 
-    public void setRol_Empleado(String rol_Empleado) {
-        this.rol_Empleado = rol_Empleado;
-    }
 
     public int getEstado_Empledo() {
         return estado_Empledo;
