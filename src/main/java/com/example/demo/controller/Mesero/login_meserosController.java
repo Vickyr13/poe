@@ -1,5 +1,6 @@
 package com.example.demo.controller.Mesero;
 
+import com.example.demo.database.conneection;
 import javafx.event.*;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,10 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class login_meserosController {
 
@@ -96,8 +101,6 @@ public class login_meserosController {
     }
 
 
-
-
     //metodo para ir a distintas vistas
     public void imgContinuar(MouseEvent mouseEvent) {
         try {
@@ -108,7 +111,7 @@ public class login_meserosController {
             Scene scene = new Scene(root);
 
             stage.setScene(scene);
-          //  stage.initStyle(StageStyle.UNDECORATED);
+            //  stage.initStyle(StageStyle.UNDECORATED);
             stage.setResizable(false);
             stage.centerOnScreen();
 
@@ -119,12 +122,13 @@ public class login_meserosController {
     }
 
     //odtener y validar la contraseña
-        public String tenerRuta (String IDContra){
-        if (IDContra.equals("000") || IDContra.equals("444")) {
+    public String tenerRuta(String IDContra) {
+
+        if (IDContra.equals("000") || (validar(IDContra, 1))) {
             return "/com/example/demo/views/Mesero/vistamesa.fxml";
-        } else if (IDContra.equals("111")) {
+        } else if (IDContra.equals("111") || validar(IDContra, 3)) {
             return "/com/example/demo/views/Admin/hello-view.fxml";
-        } else if (IDContra.equals("222")) {
+        } else if (IDContra.equals("222") || validar(IDContra, 2)) {
             return "/com/example/demo/views/Mesero/vista-cocina.fxml";
         } else {
 
@@ -133,4 +137,30 @@ public class login_meserosController {
             return "";
         }
     }
+
+    private boolean validar(String pin, int rol) {
+        // Conexión a la base de datos
+        Connection conn = conneection.getConnection();
+
+        // Consulta SQL que valida tanto el pin como el rol
+        String sql = "SELECT * FROM empleados WHERE pin = ? AND id_rol = ?";
+
+        try {
+            // Preparar la consulta
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, pin);  // Setear el pin
+            stmt.setInt(2, rol);     // Setear el rol
+
+            // Ejecutar la consulta
+            ResultSet resultSet = stmt.executeQuery();
+
+            // Si se encuentra una fila, es que el pin y el rol coinciden
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 }

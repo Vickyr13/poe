@@ -43,7 +43,7 @@ public class HelloController {
 
 
 
-        if (validar(usuarioIngresado, contraseñaIngresada)) {
+        if ((usuarioIngresado.equals("root") && contraseñaIngresada.equals("123"))) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/AdminDashboard.fxml"));
                 Parent root = loader.load();
@@ -80,11 +80,6 @@ public class HelloController {
             throw new RuntimeException(e);
         }
     }
-
-
-
-
-
 
 
 }

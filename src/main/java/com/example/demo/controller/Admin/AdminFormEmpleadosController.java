@@ -85,7 +85,7 @@ public class AdminFormEmpleadosController {
 
         // Validación para el campo de email que contenga "@"
         txtEmail.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (!newValue.contains("@")) {
+            if (!newValue.contains("@gmail.com")) {
                 txtEmail.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
             } else {
                 txtEmail.setStyle("");
@@ -179,6 +179,7 @@ public class AdminFormEmpleadosController {
         }
     }
 
+    // Boton para ingresar el empleados
     public void IngresarEmpleado(ActionEvent actionEvent) {
         GuardarEmpleado();
     }
@@ -215,7 +216,7 @@ public class AdminFormEmpleadosController {
         } else if (!telefono.matches("\\d{8}")) {
             JOptionPane.showMessageDialog(null, "El teléfono debe tener 8 dígitos.");
             return false;
-        } else if (!email.contains("@")) {
+        } else if (!email.contains("@gmail.com")) {
             JOptionPane.showMessageDialog(null, "Inserte un email valido.");
             return false;
         }
