@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class AdminFormEmpleadosController {
@@ -56,80 +55,116 @@ public class AdminFormEmpleadosController {
 
     public void initialize() {
 
-        ToggleGroup group = new ToggleGroup();
+        // Validación para que los campos de nombre solo acepten letras
+        txtNombre.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("[a-zA-Z]*")) ? change : null));
 
-        RdB_Mesero.setToggleGroup(group);
-        RdB_Cocinero.setToggleGroup(group);
-        RdB_Repartidor.setToggleGroup(group);
+        // Validación para que los campos de apellido solo acepten letras
+        txtApellido.setTextFormatter(new TextFormatter<>(change ->
+                (change.getControlNewText().matches("[a-zA-Z]*")) ? change : null));
 
+        // Validación para el campo de DUI en formato #########-#
+        txtDUI.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d{0,8}-?\\d?")) {
+                return change;
+            } else {
+                return null;
+            }
+        }));
+
+        // Validación para el campo de teléfono (8 números)
+        txtTelefono.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d{0,8}")) {
+                return change;
+            } else {
+                return null;
+            }
+        }));
+
+        // Validación para el campo de email que contenga "@"
+        txtEmail.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.contains("@")) {
+                txtEmail.setStyle("-fx-border-color: red; -fx-border-width: 2px;");
+            } else {
+                txtEmail.setStyle("");
+            }
+        });
+
+        // Agrupar los botones de rol
+        ToggleGroup groupRol = new ToggleGroup();
+        RdB_Mesero.setToggleGroup(groupRol);
+        RdB_Cocinero.setToggleGroup(groupRol);
+        RdB_Repartidor.setToggleGroup(groupRol);
+
+        // Agrupar los botones de estado (Activo/Inactivo)
+        ToggleGroup groupEstado = new ToggleGroup();
+        RbtnActivo.setToggleGroup(groupEstado);
+        RbtnInactivo.setToggleGroup(groupEstado);
     }
-
-
-
 
     public void GuardarEmpleado() {
 
+        if (validarCampos()) {
+            // Crear los DAO para la inserción en la base de datos
+            EmpleadoDAO querys = new EmpleadoDAO();
+            TelefonoDAO queryTel = new TelefonoDAO();
+            DireccionDAO queryDire = new DireccionDAO();
 
-        //Crear el objeto empleadoDAO
-        EmpleadoDAO querys = new EmpleadoDAO();
-        TelefonoDAO queryTel = new TelefonoDAO();
-        DireccionDAO queryDire = new DireccionDAO();
+            // Obtener los valores de los campos
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            String dui = txtDUI.getText();
+            String telefono = txtTelefono.getText();
+            String email = txtEmail.getText();
+            String direccion_ingresada = txtDireccion.getText();
+            LocalDate contratacion = PICKERContratacion.getValue();
+            int rol = 1;
+            int estado = 0;
+            Date contratacionDate = Date.valueOf(contratacion);
 
-        //obtener los valores de los campos del formulario y otros controladores
-        String nombre = txtNombre.getText();
-        String apellido = txtApellido.getText();
-        String dui = txtDUI.getText();
-        String telefono = txtTelefono.getText();
-        String email = txtEmail.getText();
-        String direccion_ingresada = txtDireccion.getText();
-        LocalDate contratacion = PICKERContratacion.getValue();
-        int rol = 1;
-        int estado = 0;
-        Date contratacionDate = Date.valueOf(contratacion);
+            // Determinar el rol seleccionado
+            if (RdB_Mesero.isSelected()) {
+                rol = 1;
+            } else if (RdB_Cocinero.isSelected()) {
+                rol = 2;
+            } else if (RdB_Repartidor.isSelected()) {
+                rol = 4;
+            }
 
+            // Determinar el estado seleccionado
+            if (RbtnActivo.isSelected()) {
+                estado = 1;
+            } else if (RbtnInactivo.isSelected()) {
+                estado = 0;
+            }
 
-        if (RdB_Mesero.isSelected()) {
-            rol = 1;
-        } else if (RdB_Cocinero.isSelected()) {
-            rol = 2;
-        } else if (RdB_Repartidor.isSelected()) {
-            rol = 4;
+            // Crear el objeto empleado
+            Telefono telefono1 = new Telefono("123456789", telefono);
+            Direccion direccion1 = new Direccion(direccion_ingresada);
+            String pin = generateKey();
+            Empleado empleado = new Empleado(nombre, apellido, dui, email, 2, 2, contratacionDate, rol, estado, pin);
+
+            // Intentar insertar los datos en la base de datos
+            try {
+                queryDire.insertDireccion(direccion1);
+                queryTel.insertTelefono(telefono1);
+                querys.insertarEmpleado(empleado);
+                JOptionPane.showMessageDialog(null, "Empleado agregado correctamente");
+                JOptionPane.showMessageDialog(null, "La contraseña de empleados es: " + pin);
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error al insertar empleados " + e.getMessage());
+            }
         }
-
-        if (RbtnActivo.isSelected()) {
-            estado = 1;
-
-
-        } else if (RbtnInactivo.isSelected()) {
-            estado = 0;
-        }
-
-
-        //Agregar el empleado a la base de datos o mostrar un mensaje de error
-        Telefono telefono1 = new Telefono("123456789", telefono);
-        Direccion direccion1 = new Direccion(direccion_ingresada);
-
-        String pin = generateKey();
-        Empleado empleado = new Empleado(nombre, apellido, dui, email, 2, 2, contratacionDate, rol, estado, pin);
-
-        try {
-            queryDire.insertDireccion(direccion1);
-            queryTel.insertTelefono(telefono1);
-            querys.insertarEmpleado(empleado);
-            JOptionPane.showMessageDialog(null,"La contraseña de empleados es: " + pin);
-        }catch(Exception e){
-            System.out.println(direccion1.getId_direccion());
-            System.out.println(telefono1.getId_telefono());
-            System.out.println("Error al insertar empleados "+e.getMessage());
-        };
-
     }
 
     @FXML
-    public void REGRESAR (ActionEvent actionEvent) {
+    public void REGRESAR(ActionEvent actionEvent) {
         CambiarVista("AdminUsuarios");
     }
-    public void CambiarVista(String Direccion){
+
+    public void CambiarVista(String Direccion) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Direccion + ".fxml"));
             Parent root = loader.load();
@@ -142,15 +177,13 @@ public class AdminFormEmpleadosController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public void IngresarEmpleado(ActionEvent actionEvent) {
         GuardarEmpleado();
-        System.out.println("Ingresar");
-
     }
 
+    // Generación de una clave de 4 dígitos
     public static String generateKey() {
         int[] contraseña = new int[4];
         StringBuilder pin = new StringBuilder();
@@ -162,5 +195,38 @@ public class AdminFormEmpleadosController {
         }
 
         return pin.toString();
+    }
+
+    // Validar que todos los campos estén correctamente completados
+    public boolean validarCampos() {
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        String dui = txtDUI.getText();
+        String telefono = txtTelefono.getText();
+        String email = txtEmail.getText();
+        LocalDate contratacion = PICKERContratacion.getValue();
+
+        if (nombre.isEmpty() || apellido.isEmpty() || dui.isEmpty() || telefono.isEmpty() || email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Por favor, completa todos los campos antes de agregar.");
+            return false;
+        } else if (!dui.matches("\\d{8}-\\d")) {
+            JOptionPane.showMessageDialog(null, "El DUI debe tener el formato ########-#.");
+            return false;
+        } else if (!telefono.matches("\\d{8}")) {
+            JOptionPane.showMessageDialog(null, "El teléfono debe tener 8 dígitos.");
+            return false;
+        } else if (!email.contains("@")) {
+            JOptionPane.showMessageDialog(null, "Inserte un email valido.");
+            return false;
+        }
+
+
+        // Validar que la fecha de contratación sea válida
+        if (contratacion == null || contratacion.isAfter(LocalDate.now())) {
+            JOptionPane.showMessageDialog(null, "Por favor, selecciona una fecha de contratación válida.");
+            return false;
+        }
+
+        return true;
     }
 }
