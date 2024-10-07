@@ -9,7 +9,7 @@ public class conneection {
 
     private static final String URL = "jdbc:mysql://localhost:3306/postventa";
     private static final String USER = "root";
-    private static final String PASSWORD = "Javi.1234";
+    private static final String PASSWORD = "123456789";
 
     private static Connection connection; // Nombre de variable en minúscula
 

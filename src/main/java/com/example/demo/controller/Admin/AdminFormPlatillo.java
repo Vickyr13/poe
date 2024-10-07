@@ -34,6 +34,17 @@ public class AdminFormPlatillo {
     @FXML
     private ComboBox<String> cboCategoria;
 
+    CategoriaDAO querysCategoria = new CategoriaDAO();
+
+    @FXML
+    public void initialize() {
+        cargarCategorias();
+    }
+
+    public void cargarCategorias() {
+        cboCategoria.getItems().clear();
+        cboCategoria.getItems().addAll(querysCategoria .obtenerCategorias());
+    }
 
     public void REGRESAR(ActionEvent actionEvent) {
         CambiarVista("AdminProductos");

@@ -4,7 +4,11 @@ import com.example.demo.Model.Categorias;
 import com.example.demo.Model.Empleado;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDAO {
 
@@ -35,5 +39,21 @@ public class CategoriaDAO {
             }
         }
 
+    }
+
+    //seleccionar nombre de la categoria para mostrarlo en el combobox de platillo
+    public List<String> obtenerCategorias() {
+        List<String> categorias = new ArrayList<>();
+        String sql = "SELECT nombre_categoria FROM categorias"; // Ajusta al nombre correcto de la tabla/columna
+        try (Connection con = conneection.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                categorias.add(rs.getString("nombre_categoria"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return categorias;
     }
 }
