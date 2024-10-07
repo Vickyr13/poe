@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -54,6 +55,15 @@ public class login_meserosController {
 
     @FXML
     public void initialize() {
+
+        pwrdContra.setTextFormatter(new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.matches("\\d{0,4}")) {
+                return change;
+            } else {
+                return null;
+            }
+        }));
     }
 
     public void Pucharbtn1(ActionEvent actionEvent) {
@@ -104,18 +114,25 @@ public class login_meserosController {
     //metodo para ir a distintas vistas
     public void imgContinuar(MouseEvent mouseEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(tenerRuta(pwrdContra.getText())));
-            Parent root = loader.load();
+            String ruta = tenerRuta(pwrdContra.getText());
+            if ("ruta no obtenida".equals(ruta) && validarContrasena()) {
+                JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
+                pwrdContra.clear();                return;
+            } else {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(tenerRuta(pwrdContra.getText())));
+                Parent root = loader.load();
 
-            Stage stage = (Stage) imgContinuar.getScene().getWindow();
-            Scene scene = new Scene(root);
+                Stage stage = (Stage) imgContinuar.getScene().getWindow();
+                Scene scene = new Scene(root);
 
-            stage.setScene(scene);
-            //  stage.initStyle(StageStyle.UNDECORATED);
-            stage.setResizable(false);
-            stage.centerOnScreen();
+                stage.setScene(scene);
+               // stage.initStyle(StageStyle.UNDECORATED);
+                stage.setResizable(false);
+                stage.centerOnScreen();
 
-            stage.show();
+                stage.show();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -123,7 +140,6 @@ public class login_meserosController {
 
     //odtener y validar la contraseña
     public String tenerRuta(String IDContra) {
-
         if (IDContra.equals("000") || (validar(IDContra, 1))) {
             return "/com/example/demo/views/Mesero/vistamesa.fxml";
         } else if (IDContra.equals("111") || validar(IDContra, 3)) {
@@ -131,10 +147,7 @@ public class login_meserosController {
         } else if (IDContra.equals("222") || validar(IDContra, 2)) {
             return "/com/example/demo/views/Mesero/vista-cocina.fxml";
         } else {
-
-            new Alert(Alert.AlertType.ERROR, "La contraseña está mal.").showAndWait();
-
-            return "";
+            return "ruta no octenedada";
         }
     }
 
@@ -148,13 +161,10 @@ public class login_meserosController {
         try {
             // Preparar la consulta
             PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, pin);  // Setear el pin
-            stmt.setInt(2, rol);     // Setear el rol
+            stmt.setString(1, pin);
+            stmt.setInt(2, rol);
 
-            // Ejecutar la consulta
             ResultSet resultSet = stmt.executeQuery();
-
-            // Si se encuentra una fila, es que el pin y el rol coinciden
             return resultSet.next();
 
         } catch (SQLException e) {
@@ -162,5 +172,12 @@ public class login_meserosController {
         }
     }
 
+    //validar campo paswords
+    public boolean validarContrasena() {
+        if (pwrdContra.getText().length() < 4) {
+            return false;
+        } else {
+            return true;        }
 
+    }
 }

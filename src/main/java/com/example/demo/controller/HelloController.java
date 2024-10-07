@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-import com.example.demo.database.conneection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,16 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
+
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
 
+import javax.swing.*;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+
 
 public class HelloController {
 
@@ -37,11 +34,9 @@ public class HelloController {
 
         // Validación de campos vacíos
         if (usuarioIngresado.isEmpty() || contraseñaIngresada.isEmpty()) {
-            System.out.println("Por favor ingresa usuario y contraseña");
+            JOptionPane.showMessageDialog(null,"Por favor ingresa usuario y contraseña");
             return;
         }
-
-
 
         if ((usuarioIngresado.equals("root") && contraseñaIngresada.equals("123"))) {
             try {
@@ -52,34 +47,14 @@ public class HelloController {
                 Scene scene = new Scene(root);
 
                 stage.setScene(scene);
-                stage.setResizable(false);
+               // stage.setResizable(false);
                 stage.centerOnScreen();
                 stage.show();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } else {
-            System.out.println("Usuario o contraseña incorrectos.");
+            JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos.");
         }
     }
-
-
-    private boolean validar(String user, String password){
-        //Aquí se haría la validación de contraseña
-        Connection conn = conneection.getConnection();
-        String sql = "SELECT * FROM loggeo WHERE usename = ? AND pass = ?";
-        try {
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, user);
-            stmt.setString(2, password);
-
-            ResultSet resultSet = stmt.executeQuery();
-            return resultSet.next();
-
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-
 }

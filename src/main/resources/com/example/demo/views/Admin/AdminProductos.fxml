@@ -101,11 +101,11 @@
       </AnchorPane>
       <TableView fx:id="tableProductos" layoutX="301.0" layoutY="137.0" prefHeight="482.0" prefWidth="902.0" style="-fx-background-radius: 25px;">
         <columns>
-            <TableColumn prefWidth="168.79998779296875" text="Nombre" />
-            <TableColumn prefWidth="175.19998168945312" text="categoria" />
-            <TableColumn prefWidth="210.4000244140625" text="Descripción" />
-            <TableColumn prefWidth="176.800048828125" text="Precio total" />
-          <TableColumn minWidth="0.0" prefWidth="166.400146484375" text="Estado" />
+            <TableColumn fx:id="nombreProducto" prefWidth="168.79998779296875" text="Nombre" />
+            <TableColumn fx:id="nombreCegoria" prefWidth="175.19998168945312" text="categoria" />
+            <TableColumn fx:id="descripcionProducto" prefWidth="210.4000244140625" text="Descripción" />
+            <TableColumn fx:id="precioTotal" prefWidth="176.800048828125" text="Precio total" />
+          <TableColumn fx:id="estadoProducto" minWidth="0.0" prefWidth="166.400146484375" text="Estado" />
         </columns>
       </TableView>
       <Button fx:id="btnAgregar" layoutX="930.0" layoutY="670.0" mnemonicParsing="false" onAction="#AbrirForm" prefHeight="52.0" prefWidth="260.0" style="-fx-background-color: #2ca41e;" styleClass="boton-agregar" stylesheets="@../../style/vista-pedido.css" text="Agregar Producto" textFill="WHITE" />

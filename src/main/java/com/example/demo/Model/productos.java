@@ -1,8 +1,10 @@
 package com.example.demo.Model;
 
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class productos {
 
-    private int id_productos;
+    private int  id_productos;
     private int id_categoria;
     private String nombre_Producto;
     private double precio_unitario;
