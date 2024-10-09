@@ -29,6 +29,8 @@ public class HelloApplication extends Application {
 
         if(conneection.getConnection() != null) {
             System.out.println("Conexión exitosa");
+
+
         } else {
             System.out.println("Conexión fallida");
         }
