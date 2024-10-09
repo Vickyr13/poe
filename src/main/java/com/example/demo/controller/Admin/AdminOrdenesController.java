@@ -44,7 +44,7 @@ public class AdminOrdenesController {
 
     @FXML
     void ClickCategorias(MouseEvent event) {
-        CambiarVista("AdminCategorias");
+        //CambiarVista("AdminCategorias");
     }
 
     @FXML
@@ -68,7 +68,7 @@ public class AdminOrdenesController {
     }
 
     public void CambiarVista(String Direccion){
-        try {
+        /*try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
             Parent root = loader.load();
 
@@ -79,6 +79,6 @@ public class AdminOrdenesController {
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 }

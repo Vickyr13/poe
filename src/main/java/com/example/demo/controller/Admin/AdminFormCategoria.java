@@ -64,6 +64,7 @@ public class AdminFormCategoria {
 
             Stage stage = (Stage) btnVolver.getScene().getWindow();
             Scene scene = new Scene(root);
+
             stage.setScene(scene);
 
             stage.show();

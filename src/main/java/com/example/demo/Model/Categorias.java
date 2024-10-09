@@ -1,15 +1,21 @@
 package com.example.demo.Model;
 
+import com.mysql.cj.conf.IntegerProperty;
+
 public class Categorias {
     private int id_categoria;
     private String nombre_categoria;
     private int estado_categoria;
 
+
+
+    // Constructor vacío y constructor con parámetros para la clase Categorias
     public Categorias() {
     }
 
+
     public Categorias(String nombre_categoria, int estado_categoria) {
-        this.id_categoria = id_categoria;
+
         this.nombre_categoria = nombre_categoria;
         this.estado_categoria = estado_categoria;
     }

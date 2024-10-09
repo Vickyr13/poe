@@ -14,4 +14,8 @@ module com.example.demo {
     opens com.example.demo.controller.Admin to javafx.fxml;
     exports com.example.demo.controller.Mesero;
     opens com.example.demo.controller.Mesero to javafx.fxml;
+
+
+    opens com.example.demo.Model to javafx.base; // Abrir el paquete para JavaFX
+
 }

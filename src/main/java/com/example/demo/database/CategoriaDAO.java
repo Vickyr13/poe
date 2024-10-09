@@ -3,10 +3,7 @@ package com.example.demo.database;
 import com.example.demo.Model.Categorias;
 import com.example.demo.Model.Empleado;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +24,6 @@ public class CategoriaDAO {
                 //preparar la sentencia
                 java.sql.PreparedStatement pstmt = con.prepareStatement(query);
                 pstmt.setString(1, categorias.getNombre_categoria());
-                pstmt.setInt(2, categorias.getEstado_categoria());
 
                 //ejecutar la sentencia
                 pstmt.execute();
@@ -52,6 +48,34 @@ public class CategoriaDAO {
                 categorias.add(rs.getString("nombre_categoria"));
             }
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+
+    //Mostrar los registros de catogias en la tabla
+    public List<Categorias> obtenerCategoriasTable() throws SQLException {
+        List<Categorias> categorias = new ArrayList<>();
+        String query = "SELECT nombre_categoria, estado_categoria FROM categorias";
+
+        try (Statement stmt = conneection.getConnection().createStatement();
+             ResultSet rs = stmt.executeQuery(query)) {
+
+            while (rs.next()) {
+                //int id_categoria = rs.getInt("id_categoria");
+                String nombreCategoria = rs.getString("nombre_categoria");
+                int estado_categoria = rs.getInt("estado_categoria");
+
+                // Usar el constructor sin el id_categoria
+                Categorias categoria = new Categorias(nombreCategoria, estado_categoria);
+
+                // Asignar el id_categoria usando el setter
+                //categoria.setId_categoria(id_categoria);
+
+                // Agregar la categoría a la lista
+                categorias.add(categoria);
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return categorias;
