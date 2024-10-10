@@ -33,7 +33,7 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <TableView editable="true" layoutX="237.0" layoutY="141.0" prefHeight="482.0" prefWidth="1030.0" style="-fx-background-radius: 25;" tableMenuButtonVisible="true">
+            <TableView fx:id="tablaEmpleados" editable="true" layoutX="237.0" layoutY="141.0" prefHeight="482.0" prefWidth="1030.0" style="-fx-background-radius: 25;" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn prefWidth="111.20001220703125" text="Nombre" />
                 <TableColumn prefWidth="87.20001220703125" text="Apellido" />
@@ -86,7 +86,7 @@
             </Label>
             <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
-                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Emplados" textFill="WHITE">
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Empleados" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -120,7 +120,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0"  styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                      <font>

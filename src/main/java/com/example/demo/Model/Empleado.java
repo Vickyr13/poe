@@ -9,46 +9,49 @@ public class Empleado {
     private String apellido_Empleado;
     private String DUI;
     private String correo_Empleado;
-    private int id_direccion;
-    private int id_telefono;
+    private String direccion;
+    private String telefono;
     private Date date_Empleado;
     private int id_rol;
     private int estado_Empledo;
     private String pin;
 
 
+
+
     public Empleado() {
 
     }
 
-    public Empleado(String nombre_Empleado, String apellido_Empleado, String DUI, String correo_Empleado, int id_direccion, int id_telefono, Date date_Empleado, int id_rol, int estado_Empledo, String pin) {
-
+    public Empleado(String nombre_Empleado, String apellido_Empleado, String DUI, String correo_Empleado, String direccion, String telefono, Date date_Empleado, int id_rol, int estado_Empledo, String pin) {
+        //this.id_Empleado = id_Empleado;
         this.nombre_Empleado = nombre_Empleado;
         this.apellido_Empleado = apellido_Empleado;
         this.DUI = DUI;
         this.correo_Empleado = correo_Empleado;
-        this.id_direccion = id_direccion;
-        this.id_telefono = id_telefono;
+        this.direccion = direccion;
+        this.telefono = telefono;
         this.date_Empleado = date_Empleado;
         this.id_rol = id_rol;
         this.estado_Empledo = estado_Empledo;
         this.pin = pin;
     }
 
-    public int getId_direccion() {
-        return id_direccion;
+
+    public String getDireccion() {
+        return direccion;
     }
 
-    public void setId_direccion(int id_direccion) {
-        this.id_direccion = id_direccion;
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
-    public int getId_telefono() {
-        return id_telefono;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setId_telefono(int id_telefono) {
-        this.id_telefono = id_telefono;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public int getId_rol() {
