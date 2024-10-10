@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -66,6 +67,9 @@ public class AdminUsuariosController {
         CambiarVista("AdminUsuarios");
     }
 
+    @FXML
+    private TableView<String> tablaEmpleados;
+
     public void CambiarVista(String Direccion){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/"+Direccion+".fxml"));
@@ -88,4 +92,6 @@ public class AdminUsuariosController {
 
     public void EliminarEmpleado(ActionEvent actionEvent) {
     }
+
+
 }

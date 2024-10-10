@@ -14,13 +14,6 @@ import java.util.Map;
 
 public class productosDAO {
 
-    private static final String COLUMN_ID_PRODUCTOS = "id_producto";
-    private static final String COLUMN_NOMBRE_CATEGORIA = "nombre_categoria"; // Cambiar el nombre aquí
-    private static final String COLUMN_NOMBRE_PRODUCTO = "nombre_producto";
-    private static final String COLUMN_PRECIO_UNITARIO = "precio_unitario";
-    private static final String COLUMN_DESCRIPCION_PRODUCTO = "descripcion";
-    private static final String COLUMN_ESTADO_PRODUCTO = "estado_producto";
-
     public productosDAO() {
     }
 
@@ -93,9 +86,6 @@ public class productosDAO {
         return lista;
     }
 
-
-
-
     public void actualizarProducto(int idProducto, int idCategoria, String nombreProducto, double precioUnitario, String descripcion, int estadoProducto) throws SQLException {
         String query = "UPDATE productos SET id_categoria = ?, nombre_producto = ?, precio_unitario = ?, descripcion = ?, estado_producto = ? WHERE id_producto = ?";
 
@@ -114,8 +104,5 @@ public class productosDAO {
             throw new SQLException("Error al actualizar el producto: " + e.getMessage(), e);
         }
     }
-
-
-
 
 }

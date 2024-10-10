@@ -18,8 +18,9 @@ public class Telefono {
         return id_telefono;
     }
 
-    public void setId_telefono(int id_telefono) {
+    public int setId_telefono(int id_telefono) {
         this.id_telefono = id_telefono;
+        return id_telefono;
     }
 
     public String getCelular() {

@@ -22,7 +22,7 @@ public class EmpleadoDAO {
                 //query de insertar empleado
                 //se hace de esta forma para evitar ataques de inyeccion SQL
                 String query = "INSERT INTO empleados (nombre_Empleado, apellido_empleado, dui, email, " +
-                        "id_direccion, id_telefono, fecha_contratacion, id_rol, estado_empleado, pin) VALUES (?,?,?,?,?,?,?,?,?,?)";
+                        "direccion, telefono, fecha_contratacion, id_rol, estado_empleado, pin) VALUES (?,?,?,?,?,?,?,?,?,?)";
 
                 //preparar la sentencia
                 java.sql.PreparedStatement pstmt = con.prepareStatement(query);
@@ -30,8 +30,8 @@ public class EmpleadoDAO {
                 pstmt.setString(2, empleado.getApellido_Empleado());
                 pstmt.setString(3, empleado.getDUI());
                 pstmt.setString(4, empleado.getCorreo_Empleado());
-                pstmt.setInt(5, empleado.getId_direccion());
-                pstmt.setInt(6, empleado.getId_telefono());
+                pstmt.setString(5, empleado.getDireccion());
+                pstmt.setString(6, empleado.getTelefono());
                 pstmt.setString(7, String.valueOf(new java.sql.Date(empleado.getDate_Empleado().getTime())));
                 pstmt.setInt(8, empleado.getId_rol());
                 pstmt.setInt(9,empleado.getEstado_Empledo());
@@ -42,6 +42,32 @@ public class EmpleadoDAO {
                 //con.close(); //cerrar la conexion
             } catch (SQLException e) {
                 System.out.println("Error al insertar datos de empleado" + e.getMessage());
+                throw e;
+            }
+        }
+
+    }
+
+    public void buscarEmpleado() throws SQLException {
+        //establecer la conexion a la base de datos
+
+        Connection con = conneection.getConnection();
+        //Verificamos la conexion a la base de datos
+        if(con!=null){
+            //ejecutar la query para insertar empleado
+            try{
+                //query de insertar empleado
+                //se hace de esta forma para evitar ataques de inyeccion SQL
+                String query = "SELECT * from empleados where estado_empleado = 1";
+
+                //preparar la sentencia
+                java.sql.PreparedStatement pstmt = con.prepareStatement(query);
+                //ejecutar la sentencia
+                pstmt.execute();
+                System.out.println("Empleado buscados correctamente");
+                //con.close(); //cerrar la conexion
+            } catch (SQLException e) {
+                System.out.println("Error al buscar datos de empleado" + e.getMessage());
                 throw e;
             }
         }

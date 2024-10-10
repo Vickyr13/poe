@@ -16,7 +16,7 @@ public class productos {
     }
 
     public productos(int id_categoria, String nombre_Producto, double precio_unitario, String descriccios_Producto, int estado_Productos) {
-        this.id_categoria = id_categoria;
+         this.id_categoria = id_categoria;
         this.nombre_Producto = nombre_Producto;
         this.precio_unitario = precio_unitario;
         this.descriccios_Producto = descriccios_Producto;

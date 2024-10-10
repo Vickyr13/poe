@@ -140,16 +140,13 @@ public class AdminFormEmpleadosController {
                 estado = 0;
             }
 
-            // Crear el objeto empleado
-            Telefono telefono1 = new Telefono("123456789", telefono);
-            Direccion direccion1 = new Direccion(direccion_ingresada);
+
             String pin = generateKey();
-            Empleado empleado = new Empleado(nombre, apellido, dui, email, 2, 2, contratacionDate, rol, estado, pin);
+            Empleado empleado = new Empleado(nombre, apellido, dui, email, direccion_ingresada, telefono, contratacionDate, rol, estado, pin);
 
             // Intentar insertar los datos en la base de datos
             try {
-                queryDire.insertDireccion(direccion1);
-                queryTel.insertTelefono(telefono1);
+
                 querys.insertarEmpleado(empleado);
                 JOptionPane.showMessageDialog(null, "Empleado agregado correctamente");
                 JOptionPane.showMessageDialog(null, "La contraseña de empleados es: " + pin);
