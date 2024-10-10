@@ -1,17 +1,23 @@
 package com.example.demo.controller.Admin;
 
+import com.example.demo.database.EmpleadoDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Map;
 
 public class AdminUsuariosController {
 
@@ -43,6 +49,39 @@ public class AdminUsuariosController {
     private Pane backPanel;
 
     @FXML
+    private TableView<Map> tablaEmpleados;
+
+
+    @FXML
+    private TableColumn<Map, Object> apellido;
+    @FXML
+    private TableColumn<Map, Object> cargo;
+
+    @FXML
+    private TableColumn<Map, Object> contraro;
+
+    @FXML
+    private TableColumn<Map, Object> dui;
+
+    @FXML
+    private TableColumn<Map, Object> estado;
+
+    @FXML
+    private TableColumn<Map, Object> mail;
+
+    @FXML
+    private TableColumn<Map, Object> nombre;
+
+    @FXML
+    private TableColumn<Map, Object> tel;
+    @FXML
+    private TableColumn<Map, Object> pin;
+
+    @FXML
+    public void initialize() throws SQLException {
+        llenarTable();
+    }
+    @FXML
     void ClickCategorias(MouseEvent event) {
         CambiarVista("AdminCategorias");
     }
@@ -67,8 +106,6 @@ public class AdminUsuariosController {
         CambiarVista("AdminUsuarios");
     }
 
-    @FXML
-    private TableView<String> tablaEmpleados;
 
     public void CambiarVista(String Direccion){
         try {
@@ -93,5 +130,25 @@ public class AdminUsuariosController {
     public void EliminarEmpleado(ActionEvent actionEvent) {
     }
 
+    public void llenarTable() throws SQLException {
+        EmpleadoDAO empleadosDao = new EmpleadoDAO();
+        ObservableList<Map> lista = empleadosDao.getEmpleados();
+        tablaEmpleados.setItems(lista);
+
+        // Configuración de las columnas de la tabla
+        nombre.setCellValueFactory(new MapValueFactory<>("nombre_empleado"));
+        apellido.setCellValueFactory(new MapValueFactory<>("apellido_empleado"));
+        dui.setCellValueFactory(new MapValueFactory<>("dui"));
+        mail.setCellValueFactory(new MapValueFactory<>("email"));
+        tel.setCellValueFactory(new MapValueFactory<>("telefono"));
+        contraro.setCellValueFactory(new MapValueFactory<>("fecha_contratacion"));
+        cargo.setCellValueFactory(new MapValueFactory<>("r.nombre_rol"));
+        estado.setCellValueFactory(new MapValueFactory<>("estado_empleado"));
+        pin.setCellValueFactory(new MapValueFactory<>("pin"));
+
+
+
+
+    }
 
 }

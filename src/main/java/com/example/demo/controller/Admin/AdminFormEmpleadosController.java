@@ -6,19 +6,23 @@ import com.example.demo.Model.Telefono;
 import com.example.demo.database.DireccionDAO;
 import com.example.demo.database.EmpleadoDAO;
 import com.example.demo.database.TelefonoDAO;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import javax.swing.*;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Map;
 
 public class AdminFormEmpleadosController {
     @FXML
@@ -53,7 +57,8 @@ public class AdminFormEmpleadosController {
     @FXML
     private RadioButton RdB_Repartidor;
 
-    public void initialize() {
+    public void initialize() throws SQLException {
+
 
         // Validación para que los campos de nombre solo acepten letras
         txtNombre.setTextFormatter(new TextFormatter<>(change ->
@@ -102,6 +107,8 @@ public class AdminFormEmpleadosController {
         ToggleGroup groupEstado = new ToggleGroup();
         RbtnActivo.setToggleGroup(groupEstado);
         RbtnInactivo.setToggleGroup(groupEstado);
+
+
     }
 
     public void GuardarEmpleado() {
@@ -109,8 +116,6 @@ public class AdminFormEmpleadosController {
         if (validarCampos()) {
             // Crear los DAO para la inserción en la base de datos
             EmpleadoDAO querys = new EmpleadoDAO();
-            TelefonoDAO queryTel = new TelefonoDAO();
-            DireccionDAO queryDire = new DireccionDAO();
 
             // Obtener los valores de los campos
             String nombre = txtNombre.getText();
@@ -239,6 +244,7 @@ public class AdminFormEmpleadosController {
 
         return pin.toString();
     }
+
 
 
 

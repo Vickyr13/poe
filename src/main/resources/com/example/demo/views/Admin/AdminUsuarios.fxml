@@ -14,7 +14,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style/dasgboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminUsuariosController">
    <children>
-      <Pane fx:id="backPanel" layoutX="-14.0" prefHeight="757.0" prefWidth="1280.0" style="-fx-background-color: #002844;">
+      <Pane fx:id="backPanel" layoutX="-45.0" layoutY="-36.0" prefHeight="757.0" prefWidth="1280.0" style="-fx-background-color: #002844;">
          <children>
             <Pane layoutX="235.0" prefHeight="80.0" prefWidth="1045.0">
                <children>
@@ -35,14 +35,15 @@
             </Pane>
             <TableView fx:id="tablaEmpleados" editable="true" layoutX="237.0" layoutY="141.0" prefHeight="482.0" prefWidth="1030.0" style="-fx-background-radius: 25;" tableMenuButtonVisible="true">
               <columns>
-                <TableColumn prefWidth="111.20001220703125" text="Nombre" />
-                <TableColumn prefWidth="87.20001220703125" text="Apellido" />
-                  <TableColumn prefWidth="98.39999389648438" text="DUI" />
-                  <TableColumn prefWidth="110.39990234375" text="Telefono" />
-                  <TableColumn prefWidth="132.00006103515625" text="Correo" />
-                  <TableColumn minWidth="0.0" prefWidth="177.5999755859375" text="Fecha Contratacion" />
-                  <TableColumn prefWidth="132.0" text="Cargo" />
-                  <TableColumn prefWidth="169.599853515625" text="Rol" />
+                <TableColumn fx:id="nombre" prefWidth="111.20001220703125" text="Nombre" />
+                <TableColumn fx:id="apellido" prefWidth="87.20001220703125" text="Apellido" />
+                  <TableColumn fx:id="dui" prefWidth="98.39999389648438" text="DUI" />
+                  <TableColumn fx:id="tel" prefWidth="110.39990234375" text="Telefono" />
+                  <TableColumn fx:id="mail" prefWidth="132.00006103515625" text="Correo" />
+                  <TableColumn fx:id="contraro" minWidth="0.0" prefWidth="154.66668701171875" text="Fecha Contratacion" />
+                  <TableColumn fx:id="cargo" prefWidth="111.333251953125" text="Cargo" />
+                  <TableColumn fx:id="estado" prefWidth="109.3331298828125" text="Estado" />
+                  <TableColumn fx:id="pin" prefWidth="90.0001220703125" text="Pin" />
               </columns>
                <opaqueInsets>
                   <Insets />
