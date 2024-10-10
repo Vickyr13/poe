@@ -75,24 +75,30 @@ public class AdminFormCategoria {
 
     public void Btn_Agregar_Plato(ActionEvent actionEvent) {
 
-        if(validate()){
+        if (AdminProductoController.getId_button() == 1) {
+            guardarCambios();
+            return;
+        }
 
-            String nombre_categoria = Txt_NombreP.getText();
-            int estado_categoria = 1;
-            if (rdoInactivo.isSelected()) {
-                estado_categoria = 0;
-            } else if (rdoActivo.isSelected()) {
-                estado_categoria = 1;
+        if (AdminProductoController.getId_button() == 2) {
+            if(validate()){
+
+                String nombre_categoria = Txt_NombreP.getText();
+                int estado_categoria = 1;
+                if (rdoInactivo.isSelected()) {
+                    estado_categoria = 0;
+                } else if (rdoActivo.isSelected()) {
+                    estado_categoria = 1;
+                }
+
+                Categorias categorias1 = new Categorias(nombre_categoria, estado_categoria);
+                try {
+                    querys.insertarCategoria(categorias1);
+                    JOptionPane.showMessageDialog(null, "Categoria agregada correctamente.");
+                }catch(Exception e){
+                    System.out.println("Error en el Formulario Categoria"+e.getMessage());
+                }
             }
-
-            Categorias categorias1 = new Categorias(nombre_categoria, estado_categoria);
-            try {
-                querys.insertarCategoria(categorias1);
-                JOptionPane.showMessageDialog(null, "Categoria agregada correctamente.");
-            }catch(Exception e){
-                System.out.println("Error en el Formulario Categoria"+e.getMessage());
-            };
-
         }
 
     }

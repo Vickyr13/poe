@@ -131,6 +131,7 @@ public class AdminCategoriasController {
     public void btnAgregar(javafx.event.ActionEvent actionEvent) {CambiarVista("AdminFormcategoria");}
 
     public void AgregarCategoria(ActionEvent actionEvent) {
+        id_button = 2;
         CambiarVista("AdminFormCategoria");
     }
 
