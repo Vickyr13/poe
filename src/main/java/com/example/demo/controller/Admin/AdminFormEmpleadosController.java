@@ -17,11 +17,23 @@ import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 import javax.swing.*;
 import java.io.IOException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.Base64;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
+
 import java.util.Map;
 
 public class AdminFormEmpleadosController {
@@ -111,7 +123,7 @@ public class AdminFormEmpleadosController {
 
     }
 
-    public void GuardarEmpleado() {
+    public void GuardarEmpleado() throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
 
         if (validarCampos()) {
             // Crear los DAO para la inserción en la base de datos
@@ -147,7 +159,8 @@ public class AdminFormEmpleadosController {
 
 
             String pin = generateKey();
-            Empleado empleado = new Empleado(nombre, apellido, dui, email, direccion_ingresada, telefono, contratacionDate, rol, estado, pin);
+            String pinEncriptado =Encriptar(pin);
+            Empleado empleado = new Empleado(nombre, apellido, dui, email, direccion_ingresada, telefono, contratacionDate, rol, estado, pinEncriptado);
 
             // Intentar insertar los datos en la base de datos
             try {
@@ -182,7 +195,7 @@ public class AdminFormEmpleadosController {
     }
 
     // Boton para ingresar el empleados
-    public void IngresarEmpleado(ActionEvent actionEvent) {
+    public void IngresarEmpleado(ActionEvent actionEvent) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
         GuardarEmpleado();
     }
 
@@ -246,7 +259,32 @@ public class AdminFormEmpleadosController {
     }
 
 
+    public static String Encriptar(String pin) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
 
+        String encryptedString = null;
+
+        try {
+            // 1. Generar una clave secreta AES
+            KeyGenerator keyGen = KeyGenerator.getInstance("AES");
+            keyGen.init(128); // Puedes usar 128, 192 o 256 bits, aquí usamos 128 para simplicidad
+            SecretKey secretKey = keyGen.generateKey(); // Aquí obtenemos la clave secreta
+
+            // 2. Crear un objeto Cipher para manejar el cifrado
+            Cipher cipher = Cipher.getInstance("AES");
+            cipher.init(Cipher.ENCRYPT_MODE, secretKey); // Configuramos el modo cifrado
+
+            // 3. Cifrar el string
+            byte[] encryptedData = cipher.doFinal(pin.getBytes()); // Convierte el string a bytes y lo cifra
+
+            // 4. Convertir los datos cifrados a Base64 para poder imprimirlos
+            encryptedString = Base64.getEncoder().encodeToString(encryptedData);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return encryptedString;
+    }
 
 
 
