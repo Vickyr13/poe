@@ -72,9 +72,6 @@ public class AdminProductoController {
     }
 
 
-
-
-
     public void CambiarVista(String Dirección) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Dirección + ".fxml"));
@@ -94,7 +91,7 @@ public class AdminProductoController {
     public void EditarRegistro(ActionEvent actionEvent) {
         Map<String, Object> productoSeleccionado = tableProductos.getSelectionModel().getSelectedItem();
 
-        id_button = 1;
+        id_button = 1;  // Aseguramos que estamos en modo edición
         if (productoSeleccionado != null) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/AdminFormPlatillo.fxml"));
@@ -109,12 +106,13 @@ public class AdminProductoController {
                 // Pasar los datos del producto seleccionado al controlador del formulario
                 controller.cargarDatosParaEditar(productoSeleccionado, idProductoSeleccionado);
 
+                // Crear un nuevo Stage (ventana) para la nueva vista
+                Stage newStage = new Stage();
+                newStage.setTitle("Editar Producto");
+                newStage.setScene(new Scene(root));
 
-                // Abrir la nueva vista
-                Stage stage = (Stage) DashboardPanel.getScene().getWindow();
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.show();
+                // Mostrar la nueva ventana sin cerrar la actual
+                newStage.show();
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -123,8 +121,6 @@ public class AdminProductoController {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
         }
     }
-
-
 
 
 

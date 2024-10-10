@@ -119,7 +119,6 @@ public class AdminFormPlatillo {
 
         if (AdminProductoController.getId_button() == 1) {
             guardarCambios();
-            JOptionPane.showMessageDialog(null, "Es que solo actualizar ");
             return;
         }
 
@@ -149,7 +148,6 @@ public class AdminFormPlatillo {
                 }
 
             }
-        JOptionPane.showMessageDialog(null, "Es solo crear product ");
             return;
         }
     }
