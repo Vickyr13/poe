@@ -97,18 +97,23 @@ public class CategoriaDAO {
     }
 
     public void actualizarCategoria(int id_categoria, String nombre_categoria, int estado_categoria) throws SQLException {
-        String query = "UPDATE categorias SET id_categoria = ?, nombre_categoria = ?, estado_categoria = ? WHERE id_producto = ?";
+        String query = "UPDATE categorias SET  nombre_categoria = ?, estado_categoria = ?\n" +
+                        "WHERE id_categoria = ?";
 
         try (Connection con = conneection.getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
-            ps.setInt(1, id_categoria);
-            ps.setString(2, nombre_categoria);
-            ps.setInt(3, estado_categoria);
+
+            ps.setString(1, nombre_categoria);
+            ps.setInt(2, estado_categoria);
+            ps.setInt(3, id_categoria);
 
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new SQLException("Error al actualizar el producto: " + e.getMessage(), e);
         }
     }
+
+
+
 }
