@@ -110,14 +110,14 @@
             </Label>
             <ComboBox fx:id="Cobo1" layoutX="539.0" layoutY="130.0" promptText="Mes" />
             <ComboBox fx:id="Combo2" layoutX="416.0" layoutY="130.0" promptText="Semana 1" />
-            <TableView layoutX="241.0" layoutY="201.0" prefHeight="470.0" prefWidth="1021.0" style="-fx-background-radius: 25;">
+            <TableView fx:id="tablaOrdener" layoutX="241.0" layoutY="201.0" prefHeight="470.0" prefWidth="1021.0" style="-fx-background-radius: 25;">
               <columns>
-                <TableColumn prefWidth="204.26669311523438" text="Nombre" />
-                <TableColumn prefWidth="82.4000244140625" text="ID Orden " />
-                  <TableColumn prefWidth="169.33331298828125" text="Hora" />
-                  <TableColumn prefWidth="204.2667236328125" text="Fecha" />
-                  <TableColumn prefWidth="149.59991455078125" text="Mesa" />
-                  <TableColumn prefWidth="213.8665771484375" text="Dinero" />
+                <TableColumn fx:id="nombreOrdenes" prefWidth="204.26669311523438" text="Nombre" />
+                <TableColumn fx:id="id_ordenes" prefWidth="82.4000244140625" text="ID Orden " />
+                  <TableColumn fx:id="hora_ordenes" prefWidth="169.33331298828125" text="Hora" />
+                  <TableColumn fx:id="fecha_ordenes" prefWidth="204.2667236328125" text="Fecha" />
+                  <TableColumn fx:id="mesaid" prefWidth="149.59991455078125" text="Mesa" />
+                  <TableColumn fx:id="dinero_ordenes" prefWidth="213.8665771484375" text="Dinero" />
               </columns>
             </TableView>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
