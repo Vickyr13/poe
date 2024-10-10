@@ -53,9 +53,6 @@ public class AdminFormCategoria {
         }));
     }
 
-
-
-
     CategoriaDAO querys = new CategoriaDAO();
     public void CambiarVista(String Direccion){
         try {
@@ -112,8 +109,4 @@ public class AdminFormCategoria {
 
         return true;
     }
-
-
-
-
 }

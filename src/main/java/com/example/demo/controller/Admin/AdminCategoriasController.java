@@ -58,7 +58,7 @@ public class AdminCategoriasController {
     // Método que se llamará para cargar los datos en el TableView
     public void initialize() {
        configurarColumnas();
-        cargarCategorias();
+      //  cargarCategorias();
     }
 
     // Metodo Asigna el valor a las columnas
@@ -68,19 +68,22 @@ public class AdminCategoriasController {
         columnEstado.setCellValueFactory(new PropertyValueFactory<>("estado_categoria"));
     }
     // Método que se llamará para llenar el TableView con los datos de la base de datos
-    public void cargarCategorias() {
-        //CategoriaDAO categoriaDAO = new CategoriaDAO();
-        try {
-            CategoriaDAO categoriaDAO = new CategoriaDAO();
-            List<Categorias> listaCategorias = categoriaDAO.obtenerCategoriasTable();
+//    public void cargarCategorias() {
+//        //CategoriaDAO categoriaDAO = new CategoriaDAO();
+//        try {
+//            CategoriaDAO categoriaDAO = new CategoriaDAO();
+//            List<Categorias> listaCategorias = categoriaDAO.obtenerCategoriasTable();
+//
+//            ObservableList<Categorias> data = FXCollections.observableArrayList(listaCategorias);
+//            tableCategorias.setItems(data);
+//        } catch (SQLException e) {
+//            System.err.println("Error al cargar las categorías: " + e.getMessage());
+//            e.printStackTrace();
+//        }
+//    }
 
-            ObservableList<Categorias> data = FXCollections.observableArrayList(listaCategorias);
-            tableCategorias.setItems(data);
-        } catch (SQLException e) {
-            System.err.println("Error al cargar las categorías: " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
+
+
     @FXML
     void ClickCategorias(MouseEvent event) {
         CambiarVista("AdminCategorias");

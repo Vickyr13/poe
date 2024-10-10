@@ -1,7 +1,7 @@
 package com.example.demo.controller.Admin;
 
 import com.example.demo.database.conneection;
-import javafx.collections.FXCollections;
+import com.example.demo.database.productosDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,12 +16,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.Map;
 
 public class AdminProductoController {
@@ -49,52 +49,31 @@ public class AdminProductoController {
     @FXML
     private TableView<Map> tableProductos;
 
-    private static final String COLUMN_ID_PRODUCTOS = "Id_productos";
-    private static final String COLUMN_ID_CATEGORIA = "id_categoria";
-    private static final String COLUMN_NOMBRE_PRODUCTO = "nombre_producto"; // Cambiado a minúscula
-    private static final String COLUMN_PRECIO_UNITARIO = "precio_unitario";
-    private static final String COLUMN_DESCRIPCION_PRODUCTO = "descripcion"; // Cambiado a "descripcion"
-    private static final String COLUMN_ESTADO_PRODUCTO = "estado_producto";
+   private final productosDAO  productosDAO = new productosDAO();
+    private static int id_button;
 
     @FXML
     public void initialize() throws SQLException {
         llenarTable();
     }
 
-    public static ObservableList<Map> getProduct() {
-        var sql = "SELECT * FROM productos";
-        ObservableList<Map> list = FXCollections.observableArrayList();
-        try {
-            Connection con = conneection.getConnection();
-            PreparedStatement ps = con.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
+    private String idProducto = null;
 
-            while (rs.next()) {
-                Map<String, Object> m = new HashMap<>();
-                m.put(COLUMN_ID_PRODUCTOS, rs.getInt("id_producto")); // Cambiado a "id_producto"
-                m.put(COLUMN_ID_CATEGORIA, rs.getInt("id_categoria"));
-                m.put(COLUMN_NOMBRE_PRODUCTO, rs.getString("nombre_producto")); // Cambiado a "nombre_producto"
-                m.put(COLUMN_PRECIO_UNITARIO, rs.getDouble("precio_unitario"));
-                m.put(COLUMN_DESCRIPCION_PRODUCTO, rs.getString("descripcion")); // Cambiado a "descripcion"
-                m.put(COLUMN_ESTADO_PRODUCTO, rs.getString("estado_producto")); // Se mantiene, aunque se debería ajustar el tipo a int
-                list.add(m);
-            }
-          //  con.close();
-        } catch (SQLException e) {
-            System.out.println(e);
-        }
-        return list;
-    }
-
-    public void llenarTable() {
-        ObservableList<Map> lista = getProduct();
+    public void llenarTable() throws SQLException {
+        ObservableList<Map> lista = productosDAO.getProductos();
         tableProductos.setItems(lista);
-        nombreProducto.setCellValueFactory(new MapValueFactory(COLUMN_NOMBRE_PRODUCTO));
-        nombreCegoria.setCellValueFactory(new MapValueFactory(COLUMN_ID_CATEGORIA));
-        descripcionProducto.setCellValueFactory(new MapValueFactory(COLUMN_DESCRIPCION_PRODUCTO));
-        precioTotal.setCellValueFactory(new MapValueFactory(COLUMN_PRECIO_UNITARIO));
-        estadoProducto.setCellValueFactory(new MapValueFactory(COLUMN_ESTADO_PRODUCTO));
+
+        // Configuración de las columnas de la tabla
+        nombreProducto.setCellValueFactory(new MapValueFactory<>("nombre_producto"));
+        nombreCegoria.setCellValueFactory(new MapValueFactory<>("nombre_categoria"));
+        descripcionProducto.setCellValueFactory(new MapValueFactory<>("descripcion"));
+        precioTotal.setCellValueFactory(new MapValueFactory<>("precio_unitario"));
+        estadoProducto.setCellValueFactory(new MapValueFactory<>("estado_producto"));
     }
+
+
+
+
 
     public void CambiarVista(String Dirección) {
         try {
@@ -113,7 +92,41 @@ public class AdminProductoController {
     }
 
     public void EditarRegistro(ActionEvent actionEvent) {
+        Map<String, Object> productoSeleccionado = tableProductos.getSelectionModel().getSelectedItem();
+
+        id_button = 1;
+        if (productoSeleccionado != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/AdminFormPlatillo.fxml"));
+                Parent root = loader.load();
+
+                // Obtener el controlador del formulario
+                AdminFormPlatillo controller = loader.getController();
+
+                // Obtener el ID del producto seleccionado
+                String idProductoSeleccionado = String.valueOf(productoSeleccionado.get("id_producto"));
+
+                // Pasar los datos del producto seleccionado al controlador del formulario
+                controller.cargarDatosParaEditar(productoSeleccionado, idProductoSeleccionado);
+
+
+                // Abrir la nueva vista
+                Stage stage = (Stage) DashboardPanel.getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+        }
     }
+
+
+
+
 
     public void EliminarRegistro(ActionEvent actionEvent) {
     }
@@ -145,6 +158,12 @@ public class AdminProductoController {
 
     @FXML
     void AbrirForm(ActionEvent event) {
+        id_button = 2;
         CambiarVista("AdminFormPlatillo");
     }
+
+    public static int getId_button() {
+        return id_button;
+    }
+
 }
