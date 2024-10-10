@@ -244,21 +244,6 @@ public class AdminFormEmpleadosController {
         return true;
     }
 
-
-    public static String generateKey2() {
-        int[] contraseña = new int[4];
-        StringBuilder pin = new StringBuilder();
-
-        for (int i = 0; i < 4; i++) {
-            int random = (int) (Math.random() * 10);
-            contraseña[i] = random;
-            pin.append(random);
-        }
-
-        return pin.toString();
-    }
-
-
     public static String Encriptar(String pin) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException {
 
         String encryptedString = null;
@@ -285,7 +270,5 @@ public class AdminFormEmpleadosController {
 
         return encryptedString;
     }
-
-
 
 }

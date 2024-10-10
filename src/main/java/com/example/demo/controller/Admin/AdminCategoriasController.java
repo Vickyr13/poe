@@ -12,14 +12,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 public class AdminCategoriasController {
     @FXML
@@ -45,42 +48,41 @@ public class AdminCategoriasController {
     @FXML
     private Button btnAgregar;
     @FXML
-    private TableView<Categorias> tableCategorias; // El TableView donde se mostrarán las categorías
+    private TableView<Map> tableCategorias; // El TableView donde se mostrarán las categorías
     @FXML
-    private TableColumn<Categorias, Integer> columIdCategoria; // Columna para el ID
+    private TableColumn<Map, Object> columIdCategoria; // Columna para el ID
 
     @FXML
-    private TableColumn<Categorias, String> columnCategoria;  // Columna para el nombre de la categoría
+    private TableColumn<Map, Object> columnCategoria;  // Columna para el nombre de la categoría
 
     @FXML
-    private TableColumn<Categorias, Integer> columnEstado;    // Columna para el estado
+    private TableColumn<Map, Object> columnEstado;    // Columna para el estado
+
+
+    private static int id_button;
 
     // Método que se llamará para cargar los datos en el TableView
-    public void initialize() {
+    public void initialize() throws SQLException {
        configurarColumnas();
-      //  cargarCategorias();
+       llenarTable();
     }
 
     // Metodo Asigna el valor a las columnas
     private void configurarColumnas() {
-        //columIdCategoria.setCellValueFactory(new PropertyValueFactory<>("id_cstegoria") );
+        columIdCategoria.setCellValueFactory(new PropertyValueFactory<>("id_cstegoria") );
         columnCategoria.setCellValueFactory(new PropertyValueFactory<>("nombre_categoria"));
         columnEstado.setCellValueFactory(new PropertyValueFactory<>("estado_categoria"));
     }
-    // Método que se llamará para llenar el TableView con los datos de la base de datos
-//    public void cargarCategorias() {
-//        //CategoriaDAO categoriaDAO = new CategoriaDAO();
-//        try {
-//            CategoriaDAO categoriaDAO = new CategoriaDAO();
-//            List<Categorias> listaCategorias = categoriaDAO.obtenerCategoriasTable();
-//
-//            ObservableList<Categorias> data = FXCollections.observableArrayList(listaCategorias);
-//            tableCategorias.setItems(data);
-//        } catch (SQLException e) {
-//            System.err.println("Error al cargar las categorías: " + e.getMessage());
-//            e.printStackTrace();
-//        }
-//    }
+//     Método que se llamará para llenar el TableView con los datos de la base de datos
+    public void llenarTable() throws SQLException {
+    ObservableList<Map> lista = CategoriaDAO.getCategoria();
+    tableCategorias.setItems(lista);
+
+    // Configuración de las columnas de la tabla
+        columIdCategoria.setCellValueFactory(new MapValueFactory<>("id_categoria"));
+        columnCategoria.setCellValueFactory(new MapValueFactory<>("nombre_categoria"));
+        columnEstado.setCellValueFactory(new MapValueFactory<>("estado_categoria"));
+}
 
 
 
@@ -132,7 +134,39 @@ public class AdminCategoriasController {
         CambiarVista("AdminFormCategoria");
     }
 
+
     public void EditarCategoria(ActionEvent actionEvent) {
+        Map<String, Object> CategoriaSeleccionada = tableCategorias.getSelectionModel().getSelectedItem();
+
+        id_button = 1;  // Aseguramos que estamos en modo edición
+        if (CategoriaSeleccionada != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/AdminFormCategoria.fxml"));
+                Parent root = loader.load();
+
+                // Obtener el controlador del formulario
+                AdminFormCategoria controller = loader.getController();
+
+                // Obtener el ID del producto seleccionado
+                String idProductoCategoria = String.valueOf(CategoriaSeleccionada.get("id_categoria"));
+
+                // Pasar los datos del producto seleccionado al controlador del formulario
+                controller.cargarDatosParaEditarCatego(CategoriaSeleccionada, idProductoCategoria);
+
+                // Crear un nuevo Stage (ventana) para la nueva vista
+                Stage newStage = new Stage();
+                newStage.setTitle("Editar Categoria");
+                newStage.setScene(new Scene(root));
+
+                // Mostrar la nueva ventana sin cerrar la actual
+                newStage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+        }
     }
 
     public void EliminarCategoria(ActionEvent actionEvent) {

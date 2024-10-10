@@ -71,7 +71,6 @@ public class AdminProductoController {
         estadoProducto.setCellValueFactory(new MapValueFactory<>("estado_producto"));
     }
 
-
     public void CambiarVista(String Dirección) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/" + Dirección + ".fxml"));
@@ -121,8 +120,6 @@ public class AdminProductoController {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
         }
     }
-
-
 
     public void EliminarRegistro(ActionEvent actionEvent) {
     }

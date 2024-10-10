@@ -2,13 +2,18 @@ package com.example.demo.database;
 
 import com.example.demo.Model.Categorias;
 import com.example.demo.Model.Empleado;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CategoriaDAO {
 
@@ -42,19 +47,68 @@ public class CategoriaDAO {
 
 
     //seleccionar nombre de la categoria para mostrarlo en el combobox de platillo
+
+    public static ObservableList<Map> getCategoria() throws SQLException {
+        ObservableList<Map> lista = FXCollections.observableArrayList();
+
+        String sql = "SELECT id_categoria, nombre_categoria, estado_categoria\n" +
+                     "FROM categorias";
+
+        try (Connection con = conneection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Map<String, Object> categoria = new HashMap<>();
+                categoria.put("id_categoria", rs.getString("id_categoria"));
+                categoria.put("nombre_categoria", rs.getString("nombre_categoria"));
+                categoria.put("estado_categoria", rs.getString("estado_categoria"));
+
+                // Cambiar la lógica del estado del producto
+                String estadoTexto = (rs.getInt("estado_categoria") == 1) ? "Activo" : "Inactivo";
+                categoria.put("estado_categoria", estadoTexto);
+
+                lista.add(categoria);
+            }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null,"Error al obtener la categoria: " + e.getMessage());
+            throw e;
+        }
+
+        return lista;
+    }
+
     public List<String> obtenerCategorias() {
         List<String> categorias = new ArrayList<>();
-        String sql = "SELECT id_categoria, nombre_categoria FROM categorias";
+        String sql = "SELECT nombre_categoria\n" +
+                     "FROM categorias";
         try (Connection con = conneection.getConnection();
              PreparedStatement pst = con.prepareStatement(sql);
              ResultSet rs = pst.executeQuery()) {
             while (rs.next()) {
                 categorias.add(rs.getString("nombre_categoria"));
-             //   categorias.add(rs.getString("id_categoria"));
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
         return categorias;
+    }
+
+    public void actualizarCategoria(int id_categoria, String nombre_categoria, int estado_categoria) throws SQLException {
+        String query = "UPDATE categorias SET id_categoria = ?, nombre_categoria = ?, estado_categoria = ? WHERE id_producto = ?";
+
+        try (Connection con = conneection.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setInt(1, id_categoria);
+            ps.setString(2, nombre_categoria);
+            ps.setInt(3, estado_categoria);
+
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new SQLException("Error al actualizar el producto: " + e.getMessage(), e);
+        }
     }
 }
