@@ -31,7 +31,7 @@
 .boton-Eliminar{
     -fx-font-family: "JetBrains Mono", monospace;
     -fx-font-size: 25px;
-    -fx-background-color:  #b82727;
+    -fx-background-color:  #b82727; //rolo encendido
     -fx-border-radius: 50px;
     -fx-background-radius: 50px;
 }
@@ -44,7 +44,7 @@
 }
 
 .boton:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #45a049; // verde claro
     -fx-scale-x: 1.1; /* Aumenta el tamaño en el eje X */
     -fx-scale-y: 1.1; /* Aumenta el tamaño en el eje Y */
 }
@@ -78,7 +78,7 @@
 }
 
 .logo {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #4CAF50; // color verde
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-padding: 10px 20px;
@@ -91,7 +91,7 @@
 }
 
 .logo:hover {
-    -fx-background-color: #45a049;
+    -fx-background-color: #45a049; // verde mas oscuro
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
 }
