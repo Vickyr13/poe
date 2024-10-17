@@ -97,4 +97,12 @@ public class EmpleadoDAO {
         return lista;
     }
 
+
+    public static void pruebaconection(){
+        System.out.println(
+                "funciona"
+        );
+    }
+
+
 }
