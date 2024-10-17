@@ -17,8 +17,6 @@ public class Empleado {
     private String pin;
 
 
-
-
     public Empleado() {
 
     }

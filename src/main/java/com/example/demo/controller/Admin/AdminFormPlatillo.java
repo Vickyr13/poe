@@ -195,7 +195,7 @@ public class AdminFormPlatillo {
 
     private int idProducto;  // Variable para almacenar el ID del producto que estamos editando
 
-    public void cargarDatosParaEditar(Map<String, Object> producto, String idProducto) {
+    public void cargarDatosParaEditar(Map<String, Object> producto, String idProducto2) {
         Txt_NombreP.setText((String) producto.get("nombre_producto"));
         txtPrecio_producto.setText(String.valueOf(producto.get("precio_unitario")));
         txaDescripcion.setText((String) producto.get("descripcion"));
@@ -213,7 +213,7 @@ public class AdminFormPlatillo {
 
         // Guardar el id_producto
         try {
-            this.idProducto = Integer.parseInt(idProducto);  // Convertir el ID a entero
+            idProducto = Integer.parseInt(idProducto2);  // Convertir el ID a entero
         } catch (NumberFormatException e) {
             System.err.println("Error al convertir el idProducto a entero: " + e.getMessage());
             this.idProducto = -1;

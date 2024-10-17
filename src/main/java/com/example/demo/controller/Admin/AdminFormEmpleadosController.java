@@ -3,8 +3,9 @@ package com.example.demo.controller.Admin;
 import com.example.demo.Model.Direccion;
 import com.example.demo.Model.Empleado;
 import com.example.demo.Model.Telefono;
-import com.example.demo.Model.productos;
-import com.example.demo.database.*;
+import com.example.demo.database.DireccionDAO;
+import com.example.demo.database.EmpleadoDAO;
+import com.example.demo.database.TelefonoDAO;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,16 +25,15 @@ import javax.swing.*;
 import java.io.IOException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.sql.*;
+import java.sql.Date;
+import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Base64;
 import javax.crypto.Cipher;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-import java.util.List;
 import java.util.Map;
 
 public class AdminFormEmpleadosController {
@@ -195,65 +195,8 @@ public class AdminFormEmpleadosController {
     }
 
     // Boton para ingresar el empleados
-    public void IngresarEmpleado(ActionEvent actionEvent) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, SQLException {
-
-       // GuardarEmpleado();
-
-
-        EmpleadoDAO querys = new EmpleadoDAO();
-        AdminUsuariosController ProductoController = new AdminUsuariosController();
-
-        if (AdminUsuariosController.getId_button() == 1) {
-            guardarCambios();
-            return;
-        }
-
-        if (AdminUsuariosController.getId_button() == 2){
-            if (validarCampos()) {
-                // Obtener los valores de los campos
-                String nombre = txtNombre.getText();
-                String apellido = txtApellido.getText();
-                String dui = txtDUI.getText();
-                String telefono = txtTelefono.getText();
-                String email = txtEmail.getText();
-                String direccion_ingresada = txtDireccion.getText();
-                LocalDate contratacion = PICKERContratacion.getValue();
-                int rol = 1;
-                int estado = 0;
-                Date contratacionDate = Date.valueOf(contratacion);
-
-                // Determinar el rol seleccionado
-                if (RdB_Mesero.isSelected()) {
-                    rol = 1;
-                } else if (RdB_Cocinero.isSelected()) {
-                    rol = 2;
-                } else if (RdB_Repartidor.isSelected()) {
-                    rol = 4;
-                }
-
-                // Determinar el estado seleccionado
-                if (RbtnActivo.isSelected()) {
-                    estado = 1;
-                } else if (RbtnInactivo.isSelected()) {
-                    estado = 0;
-                }
-
-                //Obtener el id de la categoría seleccionada
-                String pin = generateKey();
-                String pinEncriptado =Encriptar(pin);
-                Empleado productos = new Empleado
-                        (nombre, apellido, dui, email, direccion_ingresada, telefono, contratacionDate, rol, estado, pinEncriptado);
-
-                try {
-
-                    querys.insertarEmpleado(productos);
-                } catch (Exception e) {
-                    System.out.println("Error al insertar empleado " + e.getMessage());
-                }
-
-            }
-            return;
-        }
+    public void IngresarEmpleado(ActionEvent actionEvent) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException {
+        GuardarEmpleado();
     }
 
     // Generación de una clave de 4 dígitos
@@ -345,136 +288,4 @@ public class AdminFormEmpleadosController {
 
 
 
-
-    public List<String> obtenerRol() {
-        List<String> categorias = new ArrayList<>();
-        String sql = "SELECT id_rol, nombre_rol FROM rol";
-        try (Connection con = conneection.getConnection();
-             PreparedStatement pst = con.prepareStatement(sql);
-             ResultSet rs = pst.executeQuery()) {
-            while (rs.next()) {
-                categorias.add(rs.getString("nombre_rol"));
-                //   categorias.add(rs.getString("id_categoria"));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return categorias;
-    }
-
-
-    private int obtenerIdRol(String rol) {
-        // Conexión a la base de datos
-        Connection conn = conneection.getConnection();
-        // Consulta SQL que valida la categoría
-        String sql = "SELECT id_rol FROM rol WHERE nombre_rol = ?";
-        int id_rol = -1;
-        try {
-            // Preparar la consulta
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, rol);
-
-            // Ejecutar la consulta
-            ResultSet resultSet = stmt.executeQuery();
-
-            // Verificar si se encontraron resultados
-            if (resultSet.next()) {
-                // Extraer el valor de id_categoria
-                id_rol = resultSet.getInt("id_rol");
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException("Error al encontrar el rol: " + e.getMessage(), e);
-        }
-        finally {
-            // Cerrar la conexión, el PreparedStatement y el ResultSet
-            try {
-                if (conn != null && !conn.isClosed()) {
-                    conn.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-
-        // Devolver el id de la categoría o -1 si no se encontró
-        return id_rol;
-    }
-    private int id_Empleado;
-    private int idrol;  // Variable para almacenar el ID del producto que estamos editando
-    int idRol= 0;
-    public void cargarDatosParaEditar(Map<String, Object> rol, String idrol) {
-        txtNombre.setText((String) rol.get("nombre_empleado"));
-        txtApellido.setText(String.valueOf(rol.get("apellido_empleado")));
-        txtDUI.setText((String) rol.get("dui"));
-        txtTelefono.setText((String) rol.get("telefono"));
-        txtEmail.setText(String.valueOf(rol.get("email")));
-        txtDireccion.setText((String) rol.get("direccion"));
-        PICKERContratacion.setValue(((Date) rol.get("fecha_contratacion")).toLocalDate());
-
-
-        // Establecer el estado activo/inactivo
-        String estado = (String) rol.get("estado_empleado");
-        if ("Activo".equals(estado)) {
-            RbtnActivo.setSelected(true);
-        } else {
-            RbtnInactivo.setSelected(true);
-        }
-
-        // Establecer el rol activo/inactivo
-        String rol1 = (String) rol.get("id_rol");
-        if ("1".equals(rol1)) {
-            RdB_Mesero.setSelected(true);
-        } else if ("2".equals(rol1)){
-            RdB_Cocinero.setSelected(true);
-        }else{
-            RdB_Repartidor.setSelected(true);
-        }
-
-        // Asignar el valor del idRol en función del valor de idrol
-        if(idrol.equals("Mesero")) {
-            idRol = 1;
-        } else if(idrol.equals("Cocinero")) {
-            idRol = 3;
-        } else {
-            idRol = 4; // Valor por defecto si no es Mesero o Cocinero
-        }
-
-// Ya no necesitas convertir porque idRol ya es un entero
-        try {
-            this.id_Empleado = id_Empleado; // Asignar directamente ya que idRol es un entero
-        } catch (NumberFormatException e) {
-            System.err.println("Error al convertir el idrol a entero: " + e.getMessage());
-            this.id_Empleado = -1; // Valor por defecto en caso de error (aunque no debería ocurrir)
-        }
-    }
-
-
-    public void guardarCambios() throws SQLException {
-        EmpleadoDAO querys = new EmpleadoDAO();
-        if (validarCampos()) {
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            String dui = txtDUI.getText();
-            String telefono = txtTelefono.getText();
-            String email = txtEmail.getText();
-            String direccion_ingresada = txtDireccion.getText();
-            LocalDate contratacion = PICKERContratacion.getValue();
-            int rol = 1;
-            int estado = 0;
-            Date contratacionDate = Date.valueOf(contratacion);
-
-
-            estado = RbtnActivo.isSelected() ? 1 : 0;
-
-            Empleado empleado = new Empleado();
-            int id = empleado.getId_Empleado();
-            // Actualizar los datos en la base de datos usando idProducto
-            try {
-                querys.actualizarEmpleado(nombre, apellido, dui, email, direccion_ingresada, telefono, contratacionDate, rol, estado);
-                JOptionPane.showMessageDialog(null, "Empleado actualizado correctamente.");
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 }
