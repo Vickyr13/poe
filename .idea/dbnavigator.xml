@@ -48,7 +48,7 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="sakila" />
+          <database value="postventa" />
           <tns-folder value="" />
           <tns-profile value="" />
           <type value="USER_PASSWORD" />

@@ -44,4 +44,19 @@ public class OrdenesDAO {
 
         return lista;
     }
+
+    // Método para finalizar una ordenes
+    public void finalizarOrden(int idOrden) throws SQLException {
+        String sql = "UPDATE ordenes SET estado = 'inactiva' WHERE id_orden = ?";
+
+        try (Connection con = conneection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idOrden);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al finalizar la orden: " + e.getMessage());
+            throw e;
+        }
+    }
+
 }
