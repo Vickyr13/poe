@@ -15,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
@@ -122,9 +123,50 @@ public class AdminUsuariosController {
         }
     }
 
-    public void btnAgregar(ActionEvent actionEvent) {CambiarVista("AdminFormEmpleados");}
-
+    public void btnAgregar(ActionEvent actionEvent) {id_button =2; CambiarVista("AdminFormEmpleados");}
+    private static int id_button;
     public void btnEditar(ActionEvent actionEvent) {
+        Map<String, Object> productoSeleccionado = tablaEmpleados.getSelectionModel().getSelectedItem();
+
+        id_button = 1;  // Aseguramos que estamos en modo edición
+        if (productoSeleccionado != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Admin/AdminFormEmpleados.fxml"));
+                Parent root = loader.load();
+
+                // Obtener el controlador del formulario
+                AdminFormEmpleadosController controller = loader.getController();
+
+                // Obtener el ID del producto seleccionado
+                String idProductoSeleccionado = String.valueOf(productoSeleccionado.get("id_empleado"));
+
+                // Pasar los datos del producto seleccionado al controlador del formulario
+                controller.cargarDatosParaEditar(productoSeleccionado, idProductoSeleccionado);
+
+                // Crear un nuevo Stage (ventana) para la nueva vista
+                Stage newStage = new Stage();
+                newStage.setTitle("Editar Empleado");
+                newStage.setScene(new Scene(root));
+
+                // Mostrar la nueva ventana sin cerrar la actual
+                newStage.show();
+
+                // Listener para detectar cuando se cierra la ventana y recargar la tabla
+                newStage.setOnHiding(event -> {
+                    try {
+                        // Recargar los datos de la tabla al cerrar la ventana de edición
+                        llenarTable();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
+        }
     }
 
     public void EliminarEmpleado(ActionEvent actionEvent) {
@@ -151,4 +193,8 @@ public class AdminUsuariosController {
 
     }
 
+
+    public static int getId_button() {
+        return id_button;
+    }
 }

@@ -5,10 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,7 +58,7 @@ public class EmpleadoDAO {
 
         String sql = "select id_empleado, nombre_empleado, apellido_empleado, dui, email, direccion, telefono," +
                 " fecha_contratacion, r.nombre_rol, estado_empleado, pin \n" +
-                "from empleados\n" +
+                "from empleados " +
                 "join rol as r on empleados.id_rol = r.id_rol;";
 
         try (Connection con = conneection.getConnection();
@@ -70,6 +67,8 @@ public class EmpleadoDAO {
 
             while (rs.next()) {
                 Map<String, Object> producto = new HashMap<>();
+               // producto.put("id_rol"), rs.get
+                producto.put("id_rol", rs.getString("nombre_rol"));
                 producto.put("nombre_empleado", rs.getString("nombre_empleado"));
                 producto.put("apellido_empleado", rs.getString("apellido_empleado"));
                 producto.put("dui", rs.getString("dui"));
@@ -77,7 +76,7 @@ public class EmpleadoDAO {
                 producto.put("direccion", rs.getString("direccion"));
                 producto.put("telefono", rs.getString("telefono"));
                 producto.put("fecha_contratacion", rs.getDate("fecha_contratacion"));
-                producto.put("r.nombre_rol", rs.getString("r.nombre_rol"));
+
                 producto.put("estado_empleado", rs.getInt("estado_empleado"));
                 producto.put("pin", rs.getString("pin"));
 
@@ -102,6 +101,39 @@ public class EmpleadoDAO {
         System.out.println(
                 "funciona"
         );
+    }
+
+
+
+    public void actualizarEmpleado
+            (String nombre_empleado, String apellido_empleado, String dui, String mail,
+             String direccion, String telefono, Date fecha_contratacion, int id_rol, int estado_empleado) throws SQLException {
+
+        String query = "UPDATE empleados SET nombre_empleado = ?, apellido_empleado = ?, dui = ?, email = ?, " +
+                "direccion = ?, telefono = ?, fecha_contratacion = ?, id_rol = ?, estado_empleado = ? WHERE dui = ?";
+
+        try (Connection con = conneection.getConnection();
+             PreparedStatement ps = con.prepareStatement(query)) {
+
+            ps.setString(1, nombre_empleado);           // nombre_empleado
+            ps.setString(2, apellido_empleado);         // apellido_empleado
+            ps.setString(3, dui);                       // dui
+            ps.setString(4, mail);                      // mail
+            ps.setString(5, direccion);                 // direccion
+            ps.setString(6, telefono);                  // telefono
+            ps.setDate(7, fecha_contratacion);          // fecha_contratacion (tipo java.sql.Date)
+            ps.setInt(8, id_rol);                       // id_rol
+            ps.setInt(9, estado_empleado);              // estado_empleado
+            ps.setString(10, dui);
+
+            ps.executeUpdate();
+
+            System.out.println("String query = \"UPDATE empleados SET nombre_empleado = "+nombre_empleado+", apellido_empleado = "+apellido_empleado+", dui = "+dui+", " +
+                    "email = "+mail+", \" +\n" +
+                    " direccion = "+direccion+", telefono = "+telefono+", fecha_contratacion = "+fecha_contratacion+", id_rol = "+id_rol+", estado_empleado = "+estado_empleado+" WHERE dui = "+dui+"\";");
+        } catch (SQLException e) {
+            throw new SQLException("Error al actualizar empleado: " + e.getMessage(), e);
+        }
     }
 
 
