@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="756.0" prefWidth="1280.0" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminOrdenesController">
+<AnchorPane prefHeight="756.0" prefWidth="1280.0" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminOrdenesController">
    <children>
       <Pane prefHeight="756.0" prefWidth="1282.0" style="-fx-background-color: #002844;">
          <children>
@@ -53,7 +53,7 @@
                   </Label>
                   <Pane fx:id="UsuariosPanel" layoutY="235.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
                      <children>
-                        <Label layoutX="67.0" layoutY="15.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="67.0" layoutY="15.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Emplados" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>

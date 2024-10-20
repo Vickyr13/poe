@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="476.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminFormEmpleadosController">
+<AnchorPane prefHeight="476.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminFormEmpleadosController">
    <children>
       <Pane fx:id="Btn_Regresar" prefHeight="476.0" prefWidth="859.0" style="-fx-background-color: #002844;">
          <children>
-            <Pane layoutX="90.0" layoutY="67.0" prefHeight="371.0" prefWidth="724.0" style="-fx-background-color: #049C93;">
+            <Pane layoutX="89.0" layoutY="48.0" prefHeight="402.0" prefWidth="724.0" style="-fx-background-color: #049C93;">
                <children>
                   <Label layoutX="262.0" layoutY="14.0" text="Agregar Empleado" textFill="WHITE">
                      <font>
@@ -39,39 +39,39 @@
                      </font>
                   </Label>
                   <TextField fx:id="txtDUI" layoutX="58.0" layoutY="182.0" prefHeight="25.0" prefWidth="266.0" />
-                  <Label layoutX="371.0" layoutY="56.0" text="Telefono:" textFill="WHITE">
+                  <Label layoutX="360.0" layoutY="46.0" text="Telefono:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtTelefono" layoutX="363.0" layoutY="76.0" prefHeight="25.0" prefWidth="266.0" />
-                  <Label layoutX="363.0" layoutY="125.0" text="Email:" textFill="WHITE">
+                  <TextField fx:id="txtTelefono" layoutX="359.0" layoutY="64.0" prefHeight="25.0" prefWidth="266.0" />
+                  <Label layoutX="361.0" layoutY="101.0" text="Email:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtEmail" layoutX="363.0" layoutY="147.0" prefHeight="25.0" prefWidth="266.0" />
-                  <Label layoutX="359.0" layoutY="185.0" text="Direccion:" textFill="WHITE">
+                  <TextField fx:id="txtEmail" layoutX="359.0" layoutY="123.0" prefHeight="25.0" prefWidth="266.0" />
+                  <Label layoutX="358.0" layoutY="162.0" text="Direccion:" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="RdB_Mesero" layoutX="371.0" layoutY="230.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="80.0" text="Mesero" textFill="WHITE">
+                  <RadioButton fx:id="RdB_Mesero" layoutX="357.0" layoutY="240.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="80.0" text="Mesero" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="RdB_Cocinero" layoutX="466.0" layoutY="230.0" mnemonicParsing="false" text="Cocinero" textFill="WHITE">
+                  <RadioButton fx:id="RdB_Cocinero" layoutX="452.0" layoutY="240.0" mnemonicParsing="false" text="Cocinero" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <RadioButton fx:id="RdB_Repartidor" layoutX="564.0" layoutY="230.0" mnemonicParsing="false" text="Repartidor" textFill="WHITE">
+                  <RadioButton fx:id="RdB_Repartidor" layoutX="552.0" layoutY="240.0" mnemonicParsing="false" text="Repartidor" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </RadioButton>
-                  <Button fx:id="Btn_AgregarEmpleado" layoutX="292.0" layoutY="306.0" mnemonicParsing="false" onAction="#IngresarEmpleado" text="Agregar">
+                  <Button fx:id="Btn_AgregarEmpleado" layoutX="301.0" layoutY="341.0" mnemonicParsing="false" onAction="#IngresarEmpleado" text="Agregar">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -81,17 +81,33 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="PICKERContratacion" layoutX="79.0" layoutY="250.0" />
-                  <RadioButton fx:id="RbtnActivo" layoutX="423.0" layoutY="297.0" mnemonicParsing="false" text="Activo">
+                  <DatePicker fx:id="PICKERContratacion" layoutX="58.0" layoutY="238.0" />
+                  <RadioButton fx:id="RbtnActivo" layoutX="257.0" layoutY="298.0" mnemonicParsing="false" text="Activo" textFill="WHITE">
                      <toggleGroup>
                         <ToggleGroup fx:id="Estado" />
                      </toggleGroup>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
                   </RadioButton>
-                  <RadioButton fx:id="RbtnInactivo" layoutX="566.0" layoutY="298.0" mnemonicParsing="false" text="Inactivo" toggleGroup="$Estado" />
-                  <TextField fx:id="txtDireccion" layoutX="450.0" layoutY="183.0" prefHeight="25.0" prefWidth="266.0" />
+                  <RadioButton fx:id="RbtnInactivo" layoutX="337.0" layoutY="298.0" mnemonicParsing="false" text="Inactivo" textFill="WHITE" toggleGroup="$Estado">
+                     <font>
+                        <Font size="14.0" />
+                     </font></RadioButton>
+                  <TextField fx:id="txtDireccion" layoutX="359.0" layoutY="182.0" prefHeight="25.0" prefWidth="266.0" />
+                  <Label layoutX="357.0" layoutY="222.0" text="Rol:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="254.0" layoutY="272.0" text="Estado del empleado:" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
-            <Button fx:id="btnregresar" layoutX="36.0" layoutY="28.0" mnemonicParsing="false" onAction="#REGRESAR" style="-fx-background-color: #049C93;" text="&lt;">
+            <Button fx:id="btnregresar" layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#REGRESAR" style="-fx-background-color: #049C93;" text="&lt;">
                <font>
                   <Font size="18.0" />
                </font>
