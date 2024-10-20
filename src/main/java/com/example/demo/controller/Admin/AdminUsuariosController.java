@@ -82,7 +82,6 @@ public class AdminUsuariosController {
     public void initialize() throws SQLException {
         llenarTable();
     }
-    
     @FXML
     void ClickCategorias(MouseEvent event) {
         CambiarVista("AdminCategorias");

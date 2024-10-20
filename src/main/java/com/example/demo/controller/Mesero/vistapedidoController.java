@@ -1,5 +1,7 @@
 package com.example.demo.controller.Mesero;
 
+import com.example.demo.database.CategoriaDAO;
+import com.example.demo.database.conneection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,6 +18,22 @@ public class vistapedidoController {
     @FXML
     private Button but_pasarvista;
 
+    @FXML
+    private Button bt_buscar;
+
+    @FXML
+    private ComboBox<String> cboCategoria;
+    CategoriaDAO querysCategoria = new CategoriaDAO();
+
+    @FXML
+    public void initialize() {
+        cargarCategorias();
+    }
+
+    public void cargarCategorias() {
+        cboCategoria.getItems().clear();
+        cboCategoria.getItems().addAll(querysCategoria.obtenerCategorias());
+    }
 
     public void but_Pasarvista(ActionEvent actionEvent) {
         try {
@@ -52,6 +70,12 @@ public class vistapedidoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void cboCategoria(ActionEvent actionEvent) {
+    }
+
+    public void bt_buscar(ActionEvent actionEvent) {
     }
 }
 
