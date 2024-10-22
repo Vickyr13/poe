@@ -96,6 +96,23 @@ public class CategoriaDAO {
         return categorias;
     }
 
+    public List<String> obtenerCategoriasFiltradas() {
+        List<String> categorias = new ArrayList<>();
+        String sql = "SELECT nombre_categoria\n" +
+                "FROM categorias where estado_categoria = 1";
+        try (Connection con = conneection.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql);
+             ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                categorias.add(rs.getString("nombre_categoria"));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return categorias;
+    }
+
     public void actualizarCategoria(int id_categoria, String nombre_categoria, int estado_categoria) throws SQLException {
         String query = "UPDATE categorias SET  nombre_categoria = ?, estado_categoria = ?\n" +
                         "WHERE id_categoria = ?";

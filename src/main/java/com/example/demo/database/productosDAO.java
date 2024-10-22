@@ -115,7 +115,31 @@ public class productosDAO {
         }
     }
 
+    //metodo para buscar un producto en la barra de busqueda en la vista de pedidos
+    public void BuscarProductoFiltrado(String productos) throws SQLException {
+        // establecer la conexion a la base de datos
+        Connection con = conneection.getConnection();
 
+        // Verificamos la conexion a la base de datos
+        if (con != null && !con.isClosed()) {
+            // ejecutar la query para insertar empleado
+            try {
+                // query de buscar producto
+                String query = "select nombre_producto, descripcion, precio_unitario from productos where nombre_producto = '%"+productos+"%';";
 
+                // preparar la sentencia
+                java.sql.PreparedStatement pstmt = con.prepareStatement(query);
+
+                // ejecutar la sentencia
+                pstmt.execute();
+                JOptionPane.showMessageDialog(null, "Productos buscado correctamente");
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al buscar datos de productos: " + e.getMessage());
+                throw e;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
 }

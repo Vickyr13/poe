@@ -26,7 +26,7 @@
                               <Image url="@../../img/lupa.png" />
                            </image>
                         </ImageView>
-                        <TextField layoutX="69.0" layoutY="3.0" prefHeight="23.0" prefWidth="367.0" promptText="Buscar" style="-fx-background-radius: 25px; -fx-background-color: white;" styleClass="hover" stylesheets="@../../style/vista-pedido.css">
+                        <TextField fx:id="txt_buscar" layoutX="69.0" layoutY="3.0" prefHeight="23.0" prefWidth="367.0" promptText="Buscar" style="-fx-background-radius: 25px; -fx-background-color: white;" styleClass="hover" stylesheets="@../../style/vista-pedido.css">
                            <font>
                               <Font size="24.0" />
                            </font>
