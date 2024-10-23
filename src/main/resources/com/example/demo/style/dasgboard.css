@@ -3,7 +3,7 @@
 .Label-label{
     -fx-text-inner-color: #fff;
     -fx-font-family: "JetBrains Mono";
-    -fx-font-size: 18px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
 }
 
@@ -14,17 +14,133 @@
     -fx-font-weight: bold;
 }
 
-.estiloLetra{
+.estiloLetraCard{
   -fx-font-family: 'JetBrains Mono', monospace;
+  -fx-font-size: 20px;
+}
+
+/*Diseño paneles*/
+.Labelcardtitle{
+    -fx-text-inner-color: #fff;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.estiloLetraCard{
+  -fx-font-family: 'JetBrains Mono', monospace;
+  -fx-font-size: 18px;
+
+
+}
+
+.panels {
+    -fx-pref-width: 200px;  /* Ancho del panel */
+    -fx-pref-height: 100px; /* Altura del panel */
+    -fx-background-color: #D9D9D9;
+    -fx-padding: 10;
+    -fx-background-radius: 15;
+    -fx-border-color: #A0A0A0;
+    -fx-border-width: 1;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.1, 0, 2);
+    -fx-scale-x: 1;  /* Escala inicial */
+    -fx-scale-y: 1;
+    -fx-transition: all 0.3s ease-in-out;  /* Transición suave */
 }
 
 .panels:hover{
-    -fx-background-color: #0C4C81;
-    -fx-cursor: hand;
-    -fx-font-family: "JetBrains Mono";
-    -fx-font-size: 18px;
+      -fx-background-color: #f0f0f0;  /* Cambio a un tono más claro */
+      -fx-scale-x: 1.05;  /* Aumenta la escala en X */
+      -fx-scale-y: 1.05;  /* Aumenta la escala en Y */
+      -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 20, 0.3, 0, 4);  /* Sombra más intensa */
+      -fx-cursor: hand;  /* Cambia el cursor a mano */
+}
+.panelsgraf {
+    -fx-pref-width: 280px;  /* Ancho del panel */
+    -fx-pref-height: 400px; /* Altura del panel */
+    -fx-background-color: #D9D9D9;
+    -fx-padding: 10;
+    -fx-background-radius: 15;
+    -fx-border-color: #A0A0A0;
+    -fx-border-width: 1;
+    -fx-border-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0.1, 0, 2);
+    -fx-scale-x: 1;  /* Escala inicial */
+    -fx-scale-y: 1;
+    -fx-transition: all 0.3s ease-in-out;  /* Transición suave */
+}
+/*Diseño grafica*/
+/* Estilo general del BarChart */
+.bar-chart {
+    -fx-background-color: transparent; /* Fondo transparente */
+    -fx-padding: 10px;
 }
 
+/* Eje X (Categoría) */
+.bar-chart .axis .axis-label {
+    -fx-text-fill: #2E2E2E; /* Color gris oscuro */
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+.bar-chart .axis .tick-mark {
+    -fx-stroke: #B0BEC5; /* Color gris claro */
+}
+
+.bar-chart .axis .tick-label {
+    -fx-text-fill: #455A64; /* Texto en gris azulado */
+    -fx-font-size: 14px;
+}
+
+/* Eje Y (Valores) */
+.bar-chart .number-axis .tick-label {
+    -fx-text-fill: #455A64;
+    -fx-font-size: 14px;
+}
+
+/* Estilo de las barras */
+.bar-chart .chart-bar {
+    -fx-background-color: linear-gradient(to top, #42A5F5, #1E88E5); /* Degradado azul */
+    -fx-bar-gap: 5px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+/* Hover para las barras */
+.bar-chart .chart-bar:hover {
+    -fx-background-color: linear-gradient(to top, #1E88E5, #0D47A1); /* Azul más oscuro */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0, 0, 4); /* Sombra */
+}
+
+/* Animación suave al mostrar las barras */
+.bar-chart .chart-bar {
+    -fx-transition: -fx-bar-fill 0.5s ease-in-out;
+}
+
+/* Estilo de la leyenda */
+.chart-legend {
+    -fx-background-color: #ECEFF1; /* Fondo gris claro */
+    -fx-padding: 5px;
+    -fx-border-color: #B0BEC5;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+.chart-title {
+    -fx-text-fill: white;
+}
+
+/* Texto de la leyenda */
+.chart-legend-item {
+    -fx-text-fill: #37474F;
+    -fx-font-size: 13px;
+}
+
+/* Animación suave de hover para la leyenda */
+.chart-legend-item:hover {
+    -fx-text-fill: #1E88E5;
+    -fx-font-weight: bold;
+}
 
 /*---------------------------------------------------------*/
 
