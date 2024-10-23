@@ -1,7 +1,9 @@
 package com.example.demo.controller.Mesero;
 
+import com.example.demo.Model.productos;
 import com.example.demo.database.CategoriaDAO;
 import com.example.demo.database.conneection;
+import com.example.demo.database.productosDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +15,13 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class vistapedidoController {
     @FXML
     private Button but_pasarvista;
+    @FXML
+    private TextField txt_buscar;
 
     @FXML
     private Button bt_buscar;
@@ -32,7 +37,7 @@ public class vistapedidoController {
 
     public void cargarCategorias() {
         cboCategoria.getItems().clear();
-        cboCategoria.getItems().addAll(querysCategoria.obtenerCategorias());
+        cboCategoria.getItems().addAll(querysCategoria.obtenerCategoriasFiltradas());
     }
 
     public void but_Pasarvista(ActionEvent actionEvent) {
@@ -75,7 +80,13 @@ public class vistapedidoController {
     public void cboCategoria(ActionEvent actionEvent) {
     }
 
-    public void bt_buscar(ActionEvent actionEvent) {
+    public void bt_buscar(ActionEvent actionEvent) throws SQLException {
+        String producto = txt_buscar.getText();;
+
+        productosDAO produc = new productosDAO();;
+        produc.BuscarProductoFiltrado(producto);
+
+
     }
 }
 
