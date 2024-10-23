@@ -19,6 +19,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class login_meserosController {
 
@@ -114,19 +115,24 @@ public class login_meserosController {
     //metodo para ir a distintas vistas
     public void imgContinuar(MouseEvent mouseEvent) {
         try {
-            String ruta = tenerRuta(pwrdContra.getText());
-            if ("ruta no obtenida".equals(ruta) && validarContrasena()) {
-                JOptionPane.showMessageDialog(null, "La contraseña es incorrecta");
+            String pin = pwrdContra.getText();
+            String ruta = tenerRuta();
+
+            if (!validarContrasena()) {
+                JOptionPane.showMessageDialog(null, "Rango de Credencial Invalida");
                 pwrdContra.clear();                return;
-            } else {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(tenerRuta(pwrdContra.getText())));
+            } else if(!validarPinBDD(pin)) {
+                JOptionPane.showMessageDialog(null, "Credencial Invalida");
+                pwrdContra.clear();
+            }else{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
                 Parent root = loader.load();
 
                 Stage stage = (Stage) imgContinuar.getScene().getWindow();
                 Scene scene = new Scene(root);
 
                 stage.setScene(scene);
-               // stage.initStyle(StageStyle.UNDECORATED);
+                // stage.initStyle(StageStyle.UNDECORATED);
                 stage.setResizable(false);
                 stage.centerOnScreen();
 
@@ -137,41 +143,58 @@ public class login_meserosController {
             e.printStackTrace();
         }
     }
+    //redirigir segun el id_rol obtenido
+    public String tenerRuta() {
+        String pin = pwrdContra.getText();
+        String rol = obtenerRol(pin);
 
-    //odtener y validar la contraseña
-    public String tenerRuta(String IDContra) {
-        if (IDContra.equals("000") || (validar(IDContra, 1))) {
+        if (rol.equals("1")) {
             return "/com/example/demo/views/Mesero/vistamesa.fxml";
-        } else if (IDContra.equals("111") || validar(IDContra, 3)) {
-            return "/com/example/demo/views/Admin/hello-view.fxml";
-        } else if (IDContra.equals("222") || validar(IDContra, 2)) {
+        } else if (rol.equals("2")) {
             return "/com/example/demo/views/Mesero/vista-cocina.fxml";
+        } else if (rol.equals("3")) {
+            return "/com/example/demo/views/Admin/hello-view.fxml";
         } else {
-            return "ruta no octenedada";
+            return "0";
         }
     }
+    //validar que existe el pin ingresado
+    private boolean validarPinBDD(String pin) {
+        Connection conn = conneection.getConnection();
+        String sql = "SELECT * FROM empleados WHERE pin = ?";
 
-    private boolean validar(String pin, int rol) {
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, pin);
+            try (ResultSet resultSet = stmt.executeQuery()) {
+                return resultSet.next();
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    //metodo para obtener el rol y verificar el rol para redirigir a vistas correctas
+    public String obtenerRol(String pin) {
         // Conexión a la base de datos
         Connection conn = conneection.getConnection();
 
-        // Consulta SQL que valida tanto el pin como el rol
-        String sql = "SELECT * FROM empleados WHERE pin = ? AND id_rol = ?";
+        // Consulta SQL que valida el pin y obtiene el rol
+        String sql = "SELECT id_rol FROM empleados WHERE pin = ?";
 
         try {
             // Preparar la consulta
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setString(1, pin);
-            stmt.setInt(2, rol);
 
             ResultSet resultSet = stmt.executeQuery();
-            return resultSet.next();
-
+            if (resultSet.next()) {
+                return resultSet.getString("id_rol");
+            } else {
+                return "0";  // Retornar "0" si no se encuentra el rol
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-
     //validar campo paswords
     public boolean validarContrasena() {
         if (pwrdContra.getText().length() < 4) {

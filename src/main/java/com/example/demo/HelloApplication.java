@@ -23,9 +23,7 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.sizeToScene(); // Ajusta el tamaño de la ventana para adaptarse a la escena
 
-
         stage.show();
-
 
         if(conneection.getConnection() != null) {
             System.out.println("Conexión exitosa");
