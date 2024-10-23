@@ -1,7 +1,5 @@
 package com.example.demo.Model;
 
-import javafx.beans.property.SimpleIntegerProperty;
-
 public class productos {
 
     private int  id_productos;
@@ -10,20 +8,30 @@ public class productos {
     private double precio_unitario;
     private String descriccios_Producto;
     private int estado_Productos;
+    private int cantidad;
 
 
-    public productos() {
-    }
 
     public productos(int id_categoria, String nombre_Producto, double precio_unitario, String descriccios_Producto, int estado_Productos) {
-         this.id_categoria = id_categoria;
+        this.id_categoria = id_categoria;
         this.nombre_Producto = nombre_Producto;
         this.precio_unitario = precio_unitario;
         this.descriccios_Producto = descriccios_Producto;
         this.estado_Productos = estado_Productos;
     }
 
+    //costrctor par la parte de meseros
 
+    public productos(int id_producto,String nombre_Producto, String descriccios_Producto, double precio_unitario) {
+        this.id_productos = id_producto;
+        this.nombre_Producto = nombre_Producto;
+        this.descriccios_Producto = descriccios_Producto;
+        this.precio_unitario = precio_unitario;
+    }
+
+
+
+    // los geter y los seter
     public int getId_productos() {
         return id_productos;
     }
@@ -71,4 +79,8 @@ public class productos {
     public void setEstado_Productos(int estado_Productos) {
         this.estado_Productos = estado_Productos;
     }
+
+
+    //----------------------------------------------------------------
+
 }

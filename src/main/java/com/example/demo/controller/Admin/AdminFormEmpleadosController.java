@@ -1,18 +1,13 @@
 package com.example.demo.controller.Admin;
 
-import com.example.demo.Model.Direccion;
 import com.example.demo.Model.Empleado;
-import com.example.demo.Model.Telefono;
-import com.example.demo.Model.productos;
 import com.example.demo.database.*;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -28,10 +23,6 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Base64;
-import javax.crypto.Cipher;
-import javax.crypto.KeyGenerator;
-import javax.crypto.NoSuchPaddingException;
-import javax.crypto.SecretKey;
 
 import java.util.List;
 import java.util.Map;

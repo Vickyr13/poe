@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class productosDAO {
@@ -140,6 +142,34 @@ public class productosDAO {
         } else {
             JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+
+
+    //mostar datos en la parte de meseros
+
+    public static List<productos> productoBenta() throws SQLException {
+        List<productos> productosList = new ArrayList<>();
+        Connection con = conneection.getConnection();
+
+        if (con!= null) {
+            String sql = "select id_producto, nombre_producto, descripcion, precio_unitario from productos;";
+
+            PreparedStatement ps = con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+
+                int id_producto = rs.getInt("id_producto");
+                String nombre = rs.getString("nombre_producto");
+                String descripcion = rs.getString("descripcion");
+                double precio = rs.getDouble("precio_unitario");
+
+                productos aja = new productos(id_producto, nombre, descripcion, precio);
+                productosList.add(aja);
+            }
+        }
+        return productosList;
     }
 
 }
