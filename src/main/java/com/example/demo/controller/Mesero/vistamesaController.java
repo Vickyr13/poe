@@ -42,7 +42,6 @@ public class vistamesaController {
 
     }
 
-
     public void mesa5(MouseEvent mouseEvent) {
         if (mouseEvent.getClickCount() == 2) {
             numeeroMesa = 5;

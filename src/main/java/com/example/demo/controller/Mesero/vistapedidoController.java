@@ -20,6 +20,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -91,14 +92,11 @@ public class vistapedidoController {
 
     // llenar tabla
     public void llenarTabla() throws SQLException {
+
         List<productos> venta = productosDAO.productoBenta();
 
-
         tableView.getItems().addAll(venta);
-
-        columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
-        columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
-        columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
+        setTabla();
     }
 
     public void llenarTable_Odenes() throws SQLException {
@@ -184,14 +182,31 @@ public class vistapedidoController {
         }
     }
 
-    public void cboCategoria(ActionEvent actionEvent) {
+    public void cboCategoria(ActionEvent actionEvent) throws SQLException {
+
+        String categoriaSeleccionada = (String) cboCategoria.getValue();
+        List<productos> venta = productosDAO.productoFiltradoCategoria(categoriaSeleccionada);
+
+        tableView.getItems().clear();;
+        tableView.getItems().addAll(venta);
+        setTabla();
     }
 
     public void bt_buscar(ActionEvent actionEvent) throws SQLException {
         String producto = txt_buscar.getText();;
 
-        productosDAO produc = new productosDAO();;
-        produc.BuscarProductoFiltrado(producto);
+        List<productos> venta = productosDAO.productoFiltradoPalabra(producto);
+
+        tableView.getItems().clear();;
+        tableView.getItems().addAll(venta);
+        setTabla();
+
+    }
+
+    public void setTabla(){
+        columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
+        columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
+        columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
     }
 }
 
