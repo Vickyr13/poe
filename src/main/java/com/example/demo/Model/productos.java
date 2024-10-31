@@ -80,6 +80,10 @@ public class productos {
         this.estado_Productos = estado_Productos;
     }
 
+    public double getPrecio_unitario_subtotal() {
+        return 0;
+    }
+
 
     //----------------------------------------------------------------
 

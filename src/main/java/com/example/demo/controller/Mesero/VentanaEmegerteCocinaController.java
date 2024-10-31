@@ -1,13 +1,13 @@
 package com.example.demo.controller.Mesero;
 
-import com.example.demo.Model.Detalles_ordenes;
-import com.example.demo.database.Detalle_ordenesDAO;
-import com.example.demo.database.OrdenesDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.io.IOException;
 import java.sql.SQLException;
 
 public class VentanaEmegerteCocinaController {
@@ -15,54 +15,56 @@ public class VentanaEmegerteCocinaController {
     public Spinner<Integer> candidaPlato;
     public Label nombrePlato;
     public Button but_cofirmar;
+    public TextArea texMesaje;
 
     @FXML
     private Button but_cancelar;
 
-    private double precioTotal = 0.0;
-    private int idProducto;
-    private int idOrden;
-    private int numeroMesa;
-    private double sudtoTotal;
+    private int id_Producto; 
+    private String producto;
+    private double sub_Total;
 
 
     @FXML
-    public void initialize(int idOrden, int idProducto, int numeroMesa, double sudtoTotal) {
-        this.idOrden = idOrden;
-        this.idProducto = idProducto;
-        this.numeroMesa = numeroMesa;
-        this.sudtoTotal = sudtoTotal;
+    public void initialize( int idProducto, String Producto, double subTotal) {
+        this.id_Producto = idProducto;
+        this.producto = Producto;
+        this.sub_Total = subTotal;
 
         SpinnerValueFactory<Integer> valor = new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 10, 1);
-
         candidaPlato.setValueFactory(valor);
     }
 
-
     public void but_cancelar(ActionEvent actionEvent) {
-
         // Cierra la ventana actual (emergente)
         Stage stage = (Stage) but_cancelar.getScene().getWindow();
         stage.close();
 
     }
 
-    public void but_cofirmar(ActionEvent actionEvent) throws SQLException {
-        int cantidadPlato = candidaPlato.getValue();
+    public void but_cofirmar(ActionEvent actionEvent) throws SQLException, IOException {
 
-        // guardar los datos en la base de datos
-        OrdenesDAO ordenesDAO = new OrdenesDAO();
-        Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
+        String[] datos = new String[4];
+        datos[0] = texMesaje.getText();
+        datos[1] = String.valueOf(candidaPlato.getValue());
+        datos[2] = producto;
+        datos[3] = String.valueOf(sub_Total);
 
-        precioTotal = ordenesDAO.totalPrecio(numeroMesa);
 
-        // crear los detalles de la orden y guardarlos
-        Detalles_ordenes de = new Detalles_ordenes(idOrden, idProducto, numeroMesa, cantidadPlato, (sudtoTotal*cantidadPlato));
-        detallesOrdenes.insertDetallesOrdenes(de);
+        if (vistaPedido != null) {
+           vistaPedido.addProductToOrder(datos);
+        } else {
+            System.out.println("Error: Controlador 'vistapedidoController' no inicializado.");
+        }
 
         Stage stage = (Stage) but_cofirmar.getScene().getWindow();
         stage.close();
     }
 
+    private vistapedidoController vistaPedido;
+
+    public void setVistapedidoController(vistapedidoController vista) {
+        this.vistaPedido = vista;
+    }
 
 }

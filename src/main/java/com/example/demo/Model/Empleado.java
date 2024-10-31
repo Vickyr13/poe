@@ -36,6 +36,14 @@ public class Empleado {
     }
 
 
+    public Empleado(int id_Empleado, String nombre_Empleado, String apellido_Empleado) {
+        this.id_Empleado = id_Empleado;
+        this.nombre_Empleado = nombre_Empleado;
+        this.apellido_Empleado = apellido_Empleado;
+    }
+
+
+
     public String getDireccion() {
         return direccion;
     }

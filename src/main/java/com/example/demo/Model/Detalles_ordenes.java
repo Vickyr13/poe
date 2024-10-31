@@ -7,14 +7,17 @@ public class Detalles_ordenes {
     private int id_mesa;
     private int cantidad;
     private double sub_cantidad;
+    private int id_empleados;
+    private String mesaje;
 
-
-    public Detalles_ordenes(int id_orden, int id_Producto, int id_mesa, int cantidad, double sub_cantidad) {
+    public Detalles_ordenes(int id_orden, int id_Producto, int id_mesa, int cantidad, double sub_cantidad, int id_empleados , String mesaje) {
         this.id_orden = id_orden;
         this.id_Producto = id_Producto;
         this.id_mesa = id_mesa;
         this.cantidad = cantidad;
         this.sub_cantidad = sub_cantidad;
+        this.id_empleados = id_empleados;
+        this.mesaje = mesaje;
     }
 
     // getters y setters
@@ -64,4 +67,21 @@ public class Detalles_ordenes {
     public void setId_mesa(int id_mesa) {
         this.id_mesa = id_mesa;
     }
+
+    public int getId_empleados() {
+        return id_empleados;
+    }
+
+    public void setId_empleados(int id_empleados) {
+        this.id_empleados = id_empleados;
+    }
+
+    public String getMesaje() {
+        return mesaje;
+    }
+
+    public void setMesaje(String mesaje) {
+        this.mesaje = mesaje;
+    }
+
 }

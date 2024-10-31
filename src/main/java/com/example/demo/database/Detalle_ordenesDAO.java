@@ -19,7 +19,7 @@ public class Detalle_ordenesDAO {
             try{
                 //query de insertar empleado
                 //se hace de esta forma para evitar ataques de inyeccion SQL
-                String query = "INSERT INTO detalle_ordenes (id_orden, id_producto, id_mesa, cantidad, sub_total) values(?,?,?,?,?);";
+                String query = "INSERT INTO detalle_ordenes (id_orden, id_producto, id_mesa, cantidad, sub_total, id_empleado, mesaje) values(?,?,?,?,?,?, ?);";
 
                 //preparar la sentencia
                 java.sql.PreparedStatement pstmt = con.prepareStatement(query);
@@ -28,6 +28,9 @@ public class Detalle_ordenesDAO {
                 pstmt.setInt(3, detallesOrdenes.getId_mesa());
                 pstmt.setInt(4, detallesOrdenes.getCantidad());
                 pstmt.setDouble(5, detallesOrdenes.getSub_cantidad());
+                pstmt.setInt(6, detallesOrdenes.getId_empleados());
+                pstmt.setString(7, detallesOrdenes.getMesaje());
+
 
                 //ejecutar la sentencia
                 pstmt.execute();

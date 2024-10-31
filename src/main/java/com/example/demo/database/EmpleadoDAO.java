@@ -6,8 +6,12 @@ import javafx.collections.ObservableList;
 
 import javax.swing.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
+import static com.example.demo.database.conneection.getConnection;
 
 //clase que tiene las querys para las gestion de empleados
 public class EmpleadoDAO {
@@ -18,7 +22,7 @@ public class EmpleadoDAO {
     public void insertarEmpleado(Empleado empleado) throws SQLException {
         //establecer la conexion a la base de datos
 
-        Connection con = conneection.getConnection();
+        Connection con = getConnection();
         //Verificamos la conexion a la base de datos
         if(con!=null){
             //ejecutar la query para insertar empleado
@@ -61,7 +65,7 @@ public class EmpleadoDAO {
                 "from empleados " +
                 "join rol as r on empleados.id_rol = r.id_rol;";
 
-        try (Connection con = conneection.getConnection();
+        try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -97,13 +101,6 @@ public class EmpleadoDAO {
     }
 
 
-    public static void pruebaconection(){
-        System.out.println(
-                "funciona"
-        );
-    }
-
-
 
     public void actualizarEmpleado
             (String nombre_empleado, String apellido_empleado, String dui, String mail,
@@ -112,7 +109,7 @@ public class EmpleadoDAO {
         String query = "UPDATE empleados SET nombre_empleado = ?, apellido_empleado = ?, dui = ?, email = ?, " +
                 "direccion = ?, telefono = ?, fecha_contratacion = ?, id_rol = ?, estado_empleado = ? WHERE dui = ?";
 
-        try (Connection con = conneection.getConnection();
+        try (Connection con = getConnection();
              PreparedStatement ps = con.prepareStatement(query)) {
 
             ps.setString(1, nombre_empleado);           // nombre_empleado
@@ -136,5 +133,47 @@ public class EmpleadoDAO {
         }
     }
 
+    // odtener datos del empleado
+    public static List<Empleado> getDatosEnpleados(int pin, int rol ) throws SQLException {
+        List<Empleado> result = new ArrayList<>();
+
+        Connection con = getConnection();
+
+        if (con != null) {
+
+            String sql = "select \n" +
+                    "\tid_empleado, nombre_empleado, apellido_empleado \n" +
+                    "from\n" +
+                    "\templeados\n" +
+                    "where \n" +
+                    "\tpin = ? and id_rol = ?;";
+
+            try (PreparedStatement pstmt = con.prepareStatement(sql);) {
+                pstmt.setInt(1, pin);
+                pstmt.setInt(2, rol);
+
+                ResultSet rs = pstmt.executeQuery();
+
+                while (rs.next()) {
+
+                    int id_empleado = rs.getInt("id_empleado");
+                    String nombre_empleado = rs.getString("nombre_empleado");
+                    String apellido_empleado = rs.getString("apellido_empleado");
+
+                    Empleado empleado = new Empleado(id_empleado,nombre_empleado,apellido_empleado);
+                    result.add(empleado);
+                }
+
+
+                con.close(); //cerrar la conexion
+                rs.close();
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error al odtener datos de empleado: " + e);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos.");
+        }
+        return result;
+    }
 
 }

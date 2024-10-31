@@ -5,7 +5,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="287.0" prefWidth="454.0" stylesheets="@../../style/Editplatospopup.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.VentanaEmegerteCocinaController">
    <children>
-      <TextArea layoutX="30.0" layoutY="88.0" prefHeight="128.0" prefWidth="400.0" promptText="Extra" />
+      <TextArea fx:id="texMesaje" layoutX="30.0" layoutY="88.0" prefHeight="128.0" prefWidth="400.0" promptText="Extra" />
       <Button fx:id="but_cofirmar" layoutX="246.0" layoutY="231.0" onAction="#but_cofirmar" prefHeight="42.0" prefWidth="184.0" styleClass="my-button-confirmar" text="Confirmar" />
       <Button fx:id="but_cancelar" layoutX="30.0" layoutY="231.0" onAction="#but_cancelar" prefHeight="42.0" prefWidth="184.0" styleClass="my-button-cancelar" text="Cancelar" />
       <Spinner fx:id="candidaPlato" layoutX="316.0" layoutY="39.0" prefHeight="25.0" prefWidth="73.0" />

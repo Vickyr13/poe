@@ -106,15 +106,17 @@ public class OrdenesDAO {
         ObservableList<Map> lista = FXCollections.observableArrayList();
 
         String sql = "SELECT \n" +
-                "\to.id_orden,\n" +
-                "    cantidad, \n" +
-                "    p.nombre_producto, \n" +
-                "    sub_total\n" +
-                "FROM detalle_ordenes od\n" +
-                "JOIN mesa m ON od.id_mesa = m.id_mesa\n" +
-                "join ordenes o on od.id_orden = o.id_orden\n" +
-                "JOIN productos p ON od.id_producto = p.id_producto\n" +
-                "WHERE m.numero_mesa = ?;";
+                "                o.id_orden,\n" +
+                "                    cantidad,\n" +
+                "                    p.nombre_producto, \n" +
+                "                    mesaje,\n" +
+                "                   sub_total\n" +
+                "                FROM detalle_ordenes od\n" +
+                "                JOIN mesa m ON od.id_mesa = m.id_mesa\n" +
+                "                join ordenes o on od.id_orden = o.id_orden\n" +
+                "                JOIN productos p ON od.id_producto = p.id_producto\n" +
+                "                join categorias c On p.id_categoria = c.id_categoria\n" +
+                "                WHERE m.numero_mesa = ?;";
 
         try (Connection con = conneection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -131,6 +133,7 @@ public class OrdenesDAO {
                     producto.put("id_orden", rs.getInt("id_orden"));
                     producto.put("cantidad", rs.getInt("cantidad"));
                     producto.put("nombre_producto", rs.getString("nombre_producto"));
+                    producto.put("mesaje", rs.getString("mesaje"));
                     producto.put("sub_total", rs.getString("sub_total"));
 
                     lista.add(producto);
@@ -144,7 +147,7 @@ public class OrdenesDAO {
     }
 
 
-    // octener el precio total
+    // odtener el precio total
     public static double totalPrecio(int numero_mesa) {
         double total = 0;
         String sql = "select SUM(sub_total) AS total_sub_total\n" +
