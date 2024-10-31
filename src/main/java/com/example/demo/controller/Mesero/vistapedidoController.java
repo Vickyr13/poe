@@ -1,8 +1,6 @@
 package com.example.demo.controller.Mesero;
 
 import com.example.demo.Model.Detalles_ordenes;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import com.example.demo.Model.Ordenes;
 import com.example.demo.Model.productos;
 import com.example.demo.database.*;
@@ -26,9 +24,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 public class vistapedidoController {
     public Label label_precioTotal;
@@ -36,8 +31,10 @@ public class vistapedidoController {
     private Button but_pasarvista;
     @FXML
     private TextField txt_buscar;
+
     @FXML
     private Button bt_buscar;
+
     @FXML
     private ComboBox<String> cboCategoria;
 
@@ -45,64 +42,78 @@ public class vistapedidoController {
 
     @FXML
     private TableColumn<productos, String> columm_descripcion;
+
     @FXML
     private TableColumn<productos, Double> columm_precioUnitario;
+
     @FXML
     private TableColumn<productos, String> columm_producto;
+
     @FXML
     private TableView<productos> tableView;
-    //----------------------------------------------------------------
+
     @FXML
     private TableColumn<Map, Object> columm_cantidad;
+
     @FXML
     private TableColumn<Map, Object> columm_productoPedido;
+
     @FXML
     private TableColumn<Map, Object> columm_subTotal;
-    @FXML
-    public TableColumn<Map, Object> colummCategoria;
-    @FXML
-    private TableColumn<Map, Object> colummExtra;
+
     @FXML
     private TableView<Map> table_pedidos;
 
     @FXML
     private Label label_numeroMesa;
-
     private int nunMesa;
     private int idOrden = -1;
     private int id_producto;
-    private int id_empleado;
-
-    private double precioTotal = 0.0;
-
-
-    //----------------------------------------------------------------
-
-
-    CategoriaDAO querysCategoria = new CategoriaDAO();
-
-    @FXML
-    public void initialize(String numeromesa, int id_Empleado) throws SQLException {
-        nunMesa = Integer.parseInt(numeromesa);
-        id_empleado = id_Empleado;
-        label_numeroMesa.setText("El numero de la mesa: " + numeromesa);
-
-        idOrden = OrdenesDAO.obtenerOrdenActivaPorMesa(nunMesa);
-
-        cargarCategorias();
-        llenarTabla();
-//        llenarTable_Odenes();
-//        precioTotal();
-        siu();
-    }
-
 
     private String mensaje = "";
     private String cantidad = "";
     private String product = "";
     private String subtotal = "";
 
-    // Método para agregar un producto a la tabla y refrescar la vista
+    //----------------------------------------------------------------
+
+    private int id_empleado;
+    CategoriaDAO querysCategoria = new CategoriaDAO();
+
+    @FXML
+    public void initialize(String numeromesa, int id_Empleado) throws SQLException {
+        id_empleado = id_Empleado;
+        label_numeroMesa.setText("El numero de la mesa: " + numeromesa);
+
+        nunMesa = Integer.parseInt(numeromesa);
+        label_numeroMesa.setText(numeromesa);
+
+        idOrden = OrdenesDAO.obtenerOrdenActivaPorMesa(nunMesa);
+
+        llenarTabla();
+        cargarCategorias();
+        precioTotal();
+        siu();
+    }
+
+
+    // llenar tabla de producto
+    public void llenarTabla() throws SQLException {
+        List<productos> venta = productosDAO.productoBenta();
+        tableView.getItems().addAll(venta);
+
+        columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
+        columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
+        columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
+        System.out.println("valio pito");
+    }
+
+
+
+
+
+
+    // Método para pasar pasar datos
     public void addProductToOrder(String[] datos) {
         this.mensaje = mensaje = datos[0];
         this.cantidad = cantidad = String.valueOf(Integer.parseInt(datos[1]));
@@ -110,7 +121,7 @@ public class vistapedidoController {
         this.subtotal = subtotal = String.valueOf(Double.parseDouble(datos[3]));
     }
 
-
+//esto es para insertar la datos ala tabla
     public void siu() {
         Map<String, Object> nuevoPedido = new HashMap<>();
         nuevoPedido.put("cantidad", cantidad);
@@ -120,31 +131,17 @@ public class vistapedidoController {
         table_pedidos.getItems().add(nuevoPedido);
     }
 
-
+    //creo que este metodo se va a eliminar
     public void llenarTable_Odenes() throws SQLException {
         ObservableList<Map> lista = OrdenesDAO.datosOrden(nunMesa);
         table_pedidos.setItems(lista);
 
         columm_cantidad.setCellValueFactory(new MapValueFactory<>("cantidad"));
         columm_productoPedido.setCellValueFactory(new MapValueFactory<>("nombre_producto"));
-        colummExtra.setCellValueFactory(new MapValueFactory<>("mesaje"));
+        //  colummExtra.setCellValueFactory(new MapValueFactory<>("mesaje"));
         columm_subTotal.setCellValueFactory(new MapValueFactory<>("sub_total"));
     }
 
-
-    private String[] prievaArray;
-
-
-    // llenar tabla
-    public void llenarTabla() throws SQLException {
-        List<productos> venta = productosDAO.productoBenta();
-
-        tableView.getItems().addAll(venta);
-
-        columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
-        columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
-        columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
-    }
 
     private void precioTotal() throws SQLException {
         OrdenesDAO ordenDAO = new OrdenesDAO();
@@ -158,7 +155,7 @@ public class vistapedidoController {
         cboCategoria.getItems().addAll(querysCategoria.obtenerCategoriasFiltradas());
     }
 
-
+    // envia los datos a la otra vista
     public void but_Pasarvista(ActionEvent actionEvent) throws SQLException {
         try {
             productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
@@ -187,7 +184,6 @@ public class vistapedidoController {
             ventnanaEmegerteCocina.setVistapedidoController(this);
             ventnanaEmegerteCocina.initialize(id_producto, name, subTotal);
 
-
             // Crear y mostrar la nueva ventana
             Stage newStage = new Stage();
             Scene scene = new Scene(root);
@@ -196,7 +192,6 @@ public class vistapedidoController {
             newStage.initModality(Modality.APPLICATION_MODAL);
             newStage.showAndWait();
 
-            llenarTable_Odenes();
             precioTotal();
             siu();
 
@@ -204,6 +199,7 @@ public class vistapedidoController {
             throw new RuntimeException(e);
         }
     }
+
 
 
     public void but_menu(MouseEvent mouseEvent) {
@@ -225,13 +221,12 @@ public class vistapedidoController {
     }
 
     public void bt_buscar(ActionEvent actionEvent) throws SQLException {
-        String producto = txt_buscar.getText();
-        ;
+        String producto = txt_buscar.getText();;
 
-        productosDAO produc = new productosDAO();
-        ;
+        productosDAO produc = new productosDAO();;
         produc.BuscarProductoFiltrado(producto);
     }
+
 
 
     // a qui se va mandar a cocina siuuuuuu
@@ -242,16 +237,16 @@ public class vistapedidoController {
         OrdenesDAO ordenesDAO = new OrdenesDAO();
         Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
 
-        precioTotal = ordenesDAO.totalPrecio(nunMesa);
+        // precioTotal = ordenesDAO.totalPrecio(nunMesa);
         id_producto = productoSeleccionado.getId_productos();
 
         int cantidadPlato = Integer.parseInt(cantidad);
-        Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, (cantidadPlato * precioTotal), id_empleado, mensaje);
+
+        Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, (cantidadPlato * 0.0), id_empleado, mensaje);
         detallesOrdenes.insertDetallesOrdenes(de);
 
-        JOptionPane.showMessageDialog(null, "id_Orden:  " + idOrden + " id producto:  " + id_producto + " Numero mesa:  " + nunMesa + " Cantidad plato:  " + cantidad + " id Empleado:  " + id_empleado + " Mensaje:  " + mensaje);
+        JOptionPane.showMessageDialog(null, "id_Orden:  " + idOrden + " id producto:  " + id_producto + " Numero mesa:  " + nunMesa + " Cantidad plato:  " + cantidad + " id Empleado:  " + 2 + " Mensaje:  " + mensaje);
 
     }
 
 }
-

@@ -20,7 +20,7 @@ public class VentanaEmegerteCocinaController {
     @FXML
     private Button but_cancelar;
 
-    private int id_Producto; 
+    private int id_Producto;
     private String producto;
     private double sub_Total;
 
@@ -52,7 +52,7 @@ public class VentanaEmegerteCocinaController {
 
 
         if (vistaPedido != null) {
-           vistaPedido.addProductToOrder(datos);
+            vistaPedido.addProductToOrder(datos);
         } else {
             System.out.println("Error: Controlador 'vistapedidoController' no inicializado.");
         }
