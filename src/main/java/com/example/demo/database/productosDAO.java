@@ -176,6 +176,8 @@ public class productosDAO {
         }
         return productosList;
     }
+
+
     //filtro para buscar por palabra/nombre con el boton en la vista de meseros
     public static List<productos> productoFiltradoPalabra(String nombre_producto) throws SQLException {
         List<productos> productosList = new ArrayList<>();
@@ -229,7 +231,5 @@ public class productosDAO {
         }
         return productosList;
     }
-
-
 
 }

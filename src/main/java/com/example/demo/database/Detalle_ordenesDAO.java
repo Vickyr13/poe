@@ -33,10 +33,10 @@ public class Detalle_ordenesDAO {
 
 
                 //ejecutar la sentencia
-                pstmt.execute();
+                 pstmt.execute();
                 con.close();
             } catch (SQLException e) {
-                JOptionPane.showMessageDialog(null,"Error al insertar telefono en la base de datos: " + e.getMessage());
+                JOptionPane.showMessageDialog(null,"Error al insertar pedido: " + e.getMessage());
                 throw e;
             }
         }
