@@ -67,7 +67,7 @@
                   <columns>
                      <TableColumn fx:id="columm_cantidad" prefWidth="63.33343505859375" text="Cantidad" />
                      <TableColumn fx:id="columm_productoPedido" prefWidth="123.73333740234375" text="Producto" />
-                     <TableColumn fx:id="colummExtra" prefWidth="204.00006103515625" text="Extra" />
+                     <TableColumn fx:id="columm_Extra" prefWidth="204.00006103515625" text="Extra" />
                      <TableColumn fx:id="columm_subTotal" prefWidth="84.0" text="Sub Total" />
                   </columns>
                </TableView>

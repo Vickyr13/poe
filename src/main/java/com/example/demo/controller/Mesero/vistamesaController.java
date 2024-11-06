@@ -92,9 +92,6 @@ public class vistamesaController {
     }
 
 
-
-
-
     @FXML
     public void but_pagar() throws SQLException {
 
@@ -106,8 +103,17 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(1);
+
         }
     }
+
+    //como se menifiesta las relaciomes de amostad, y de que manesra y de qmanera ayudada a los personajes a superer ´rejiidios re rasiales y fortaleser amited como esquipo
+    //de que manera se presenta el amor familiar y su infliuencia en la formacion de la indentidad de los persomajes espacial meste en el contesto de los valores de permiten boome (el negriyo) y y0ast
+    // como se virdan el cinsecto con el sacrificio personal a foavor del vien comun, y como lo relaciona con el amor y amistad de los paesonajes
+    //que lecciones de la amistad, el amor y la unidad familiar se pude extraer del desarollo de los personajes principales de la peli
+    //relaciones las caracteristicas de amor y la amistad con la peli
+
+
 
     public void mesa2(MouseEvent mouseEvent) throws SQLException {
         if(mouseEvent.getClickCount() == 2) {

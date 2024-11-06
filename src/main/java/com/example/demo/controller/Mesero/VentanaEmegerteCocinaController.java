@@ -50,9 +50,8 @@ public class VentanaEmegerteCocinaController {
         datos[2] = producto;
         datos[3] = String.valueOf(sub_Total);
 
-
         if (vistaPedido != null) {
-            vistaPedido.addProductToOrder(datos);
+            vistaPedido.aptenerProductToOrder(datos);
         } else {
             System.out.println("Error: Controlador 'vistapedidoController' no inicializado.");
         }

@@ -13,12 +13,13 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
-        //FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+       // FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/Admin/AdminOrdenes.fxml"));
         Scene scene = new Scene(fxmlLoader.load()); // Crear la escena sin especificar tamaño
         stage.setTitle("Hello!");
 
         // Quitar la decoración de la ventana
         //stage.initStyle(StageStyle.UNDECORATED);
+
 
         stage.setScene(scene);
         stage.sizeToScene(); // Ajusta el tamaño de la ventana para adaptarse a la escena

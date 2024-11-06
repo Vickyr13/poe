@@ -1,29 +1,22 @@
 package com.example.demo.controller.Mesero;
-import javax.swing.table.DefaultTableModel;
-import com.example.demo.Model.Detalles_ordenes;
-import com.example.demo.Model.Ordenes;
-import com.example.demo.Model.productos;
+
+import com.example.demo.Model.*;
 import com.example.demo.database.*;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.cell.MapValueFactory;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.scene.control.*;
 
-import javax.swing.*;
+import javax.swing.JOptionPane; // Si solo se usa JOptionPane, se importa directamente
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*; // Para listas, ArrayList y otras clases de utilidad de java.util
 
 public class vistapedidoController {
     public Label label_precioTotal;
@@ -51,18 +44,22 @@ public class vistapedidoController {
 
     @FXML
     private TableView<productos> tableView;
+//----------------------------------------------------------------
 
     @FXML
-    private TableColumn<Map, Object> columm_cantidad;
+    private TableColumn<llenarTableOrdenes, String> columm_cantidad;
 
     @FXML
-    private TableColumn<Map, Object> columm_productoPedido;
+    private TableColumn<llenarTableOrdenes, String> columm_productoPedido;
 
     @FXML
-    private TableColumn<Map, Object> columm_subTotal;
+    public TableColumn<llenarTableOrdenes, String> columm_Extra;
 
     @FXML
-    private TableView<Map> table_pedidos;
+    private TableColumn<llenarTableOrdenes, String> columm_subTotal;
+
+    @FXML
+    private TableView<llenarTableOrdenes> table_pedidos;
 
     @FXML
     private Label label_numeroMesa;
@@ -92,59 +89,56 @@ public class vistapedidoController {
 
         llenarTabla();
         cargarCategorias();
-        precioTotal();
-        siu();
+        precioTotal(0.0);
     }
-
 
     // llenar tabla de producto
     public void llenarTabla() throws SQLException {
         List<productos> venta = productosDAO.productoBenta();
         tableView.getItems().addAll(venta);
 
-        setTabla();
-        System.out.println("valio pito");
+        columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
+        columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
+        columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
     }
 
 
+    //llenar table ordenes
+    public List<llenarTableOrdenes> llenarTavlarOrder() {
+        List<llenarTableOrdenes> orders = new ArrayList<>();
 
+        double cantidadP = Double.parseDouble(cantidad);
+        double Sub_cantidad = Double.parseDouble(subtotal);
 
+        orders.add(new llenarTableOrdenes(cantidad, product, mensaje, (Sub_cantidad * cantidadP)));
+
+        columm_cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        columm_productoPedido.setCellValueFactory(new PropertyValueFactory<>("producto"));
+        columm_Extra.setCellValueFactory(new PropertyValueFactory<>("mensajeP"));
+        columm_subTotal.setCellValueFactory(new PropertyValueFactory<>("subcantidad"));
+
+        table_pedidos.getItems().addAll(orders);
+
+        return orders;
+    }
 
 
     // Método para pasar pasar datos
-    public void addProductToOrder(String[] datos) {
+    public void aptenerProductToOrder(String[] datos) {
         this.mensaje = mensaje = datos[0];
         this.cantidad = cantidad = String.valueOf(Integer.parseInt(datos[1]));
         this.product = product = datos[2];
         this.subtotal = subtotal = String.valueOf(Double.parseDouble(datos[3]));
     }
 
-//esto es para insertar la datos ala tabla
-    public void siu() {
-        Map<String, Object> nuevoPedido = new HashMap<>();
-        nuevoPedido.put("cantidad", cantidad);
-        nuevoPedido.put("nombre_producto", product);
-        nuevoPedido.put("mesaje", mensaje);
-        nuevoPedido.put("sub_total", subtotal);
-        table_pedidos.getItems().add(nuevoPedido);
-    }
+    //metodo para ver el precio total
+    private void precioTotal(double total) throws SQLException {
 
-    //creo que este metodo se va a eliminar
-    public void llenarTable_Odenes() throws SQLException {
-        ObservableList<Map> lista = OrdenesDAO.datosOrden(nunMesa);
-        table_pedidos.setItems(lista);
-
-        columm_cantidad.setCellValueFactory(new MapValueFactory<>("cantidad"));
-        columm_productoPedido.setCellValueFactory(new MapValueFactory<>("nombre_producto"));
-        //  colummExtra.setCellValueFactory(new MapValueFactory<>("mesaje"));
-        columm_subTotal.setCellValueFactory(new MapValueFactory<>("sub_total"));
-    }
-
-
-    private void precioTotal() throws SQLException {
-        OrdenesDAO ordenDAO = new OrdenesDAO();
-        ordenDAO.totalPrecio(nunMesa);
-        label_precioTotal.setText("Precio Total: $" + OrdenesDAO.totalPrecio(nunMesa));
+        for (llenarTableOrdenes orden : table_pedidos.getItems()) {
+            double subTotal = orden.getSubcantidad();
+            total += subTotal;
+        }
+        label_precioTotal.setText("Precio Total: $" + total);
     }
 
 
@@ -152,6 +146,7 @@ public class vistapedidoController {
         cboCategoria.getItems().clear();
         cboCategoria.getItems().addAll(querysCategoria.obtenerCategoriasFiltradas());
     }
+
 
     // envia los datos a la otra vista
     public void but_Pasarvista(ActionEvent actionEvent) throws SQLException {
@@ -175,8 +170,7 @@ public class vistapedidoController {
             }
             id_producto = productoSeleccionado.getId_productos();
             String name = productoSeleccionado.getNombre_Producto();
-            double subTotal = productoSeleccionado.getPrecio_unitario_subtotal();
-
+            double subTotal = productoSeleccionado.getPrecio_unitario();
             //manda el id producto
             VentanaEmegerteCocinaController ventnanaEmegerteCocina = loader.getController();
             ventnanaEmegerteCocina.setVistapedidoController(this);
@@ -190,14 +184,15 @@ public class vistapedidoController {
             newStage.initModality(Modality.APPLICATION_MODAL);
             newStage.showAndWait();
 
-            precioTotal();
-            siu();
+            double Cantidad = Double.parseDouble(cantidad);
+            subTotal *= Cantidad;
+            precioTotal(subTotal);
+            llenarTavlarOrder();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
 
 
     public void but_menu(MouseEvent mouseEvent) {
@@ -224,6 +219,7 @@ public class vistapedidoController {
         setTabla();
     }
 
+
     public void bt_buscar(ActionEvent actionEvent) throws SQLException {
         String producto = txt_buscar.getText();;
 
@@ -232,7 +228,6 @@ public class vistapedidoController {
         tableView.getItems().clear();;
         tableView.getItems().addAll(venta);
         setTabla();
-
     }
 
     public void setTabla(){
@@ -241,26 +236,78 @@ public class vistapedidoController {
         columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
     }
 
-
-
     // a qui se va mandar a cocina siuuuuuu
     public void but_cocina(ActionEvent actionEvent) throws SQLException {
-        productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+        // Recorremos todos los elementos en la tabla
+        for (llenarTableOrdenes orden : table_pedidos.getItems()) {
 
-        // guardar los datos en la base de datos
-        OrdenesDAO ordenesDAO = new OrdenesDAO();
-        Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
+            String cantidad = orden.getCantidad();
+            String producto = orden.getProducto();
+            String mensaje = orden.getMensajeP();
+            double subTotal = orden.getSubcantidad();
+            int cantidadPlato = Integer.parseInt(cantidad);
 
-        // precioTotal = ordenesDAO.totalPrecio(nunMesa);
-        id_producto = productoSeleccionado.getId_productos();
+            productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+            id_producto = productoSeleccionado.getId_productos();
 
-        int cantidadPlato = Integer.parseInt(cantidad);
+            Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, subTotal, id_empleado, mensaje);
 
-        Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, (cantidadPlato * 0.0), id_empleado, mensaje);
-        detallesOrdenes.insertDetallesOrdenes(de);
+            Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
+            detallesOrdenes.insertDetallesOrdenes(de);
 
-        JOptionPane.showMessageDialog(null, "id_Orden:  " + idOrden + " id producto:  " + id_producto + " Numero mesa:  " + nunMesa + " Cantidad plato:  " + cantidad + " id Empleado:  " + 2 + " Mensaje:  " + mensaje);
-
+            JOptionPane.showMessageDialog(null, "id_Orden: " + idOrden + " id producto: " + id_producto +
+                    " Numero mesa: " + nunMesa + " Cantidad plato: " + cantidad + " id Empleado: " + id_empleado +
+                    " Mensaje: " + mensaje + " total: " + subTotal);
+        }
     }
+
+
+    // clase para la tabla de ordenes
+    public class llenarTableOrdenes {
+        private String cantidad;
+        private String productos;
+        private String mensajeP;  // El nombre del atributo es mensajeP
+        private double subcantidad;
+
+        public llenarTableOrdenes(String cantidad, String productos, String mensajeP, double subcantidad) {
+            this.cantidad = cantidad;
+            this.productos = productos;
+            this.mensajeP = mensajeP;
+            this.subcantidad = subcantidad;
+        }
+
+        public String getCantidad() {
+            return cantidad;
+        }
+
+        public void setCantidad(String cantidad) {
+            this.cantidad = cantidad;
+        }
+
+        public String getProducto() {
+            return productos;
+        }
+
+        public void setProducto(String producto) {
+            this.productos = producto;
+        }
+
+        public String getMensajeP() {  // Cambia de getMesajeP() a getMensajeP()
+            return mensajeP;
+        }
+
+        public void setMensajeP(String mensajeP) {
+            this.mensajeP = mensajeP;
+        }
+
+        public double getSubcantidad() {
+            return subcantidad;
+        }
+
+        public void setSubcantidad(double subcantidad) {
+            this.subcantidad = subcantidad;
+        }
+    }
+
 
 }
