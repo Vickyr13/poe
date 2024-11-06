@@ -1,0 +1,44 @@
+.nav-form{
+    -fx-background-color:linear-gradient(to bottom right, #020024, #851006, #851006)
+}
+
+.nav-button{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+    -fx-font-family:"Century";
+    -fx-font-size:14px;
+    -fx-text-fill:#fff;
+    -fx-alignment:center-left;
+}
+
+.logout{
+    -fx-background-color:#dd2a1d;
+    -fx-background-radius:10px;
+    -fx-cursor:hand;
+}
+
+.logout:hover{
+    -fx-background-color:#bf3d33;
+
+}
+
+.shadow{
+    -fx-effect:dropshadow(three-pass-box, rgba(0,0,0,0.5), 6,0,0,0)
+}
+
+
+.nav-button {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-font-family: "Century";
+    -fx-font-size: 14px;
+    -fx-text-fill: #fff;
+    -fx-alignment: center-left;
+}
+
+/* Efecto hover: cuando el mouse está sobre el botón */
+.nav-button:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1); /* Cambia el color de fondo al hacer hover */
+    -fx-text-fill: #d18c36; /* Cambia el color del texto al hacer hover */
+}
+

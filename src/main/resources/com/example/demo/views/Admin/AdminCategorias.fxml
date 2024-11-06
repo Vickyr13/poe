@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import java.lang.String?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminCategoriasController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminCategoriasController">
    <children>
       <AnchorPane prefHeight="742.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
          <children>
@@ -35,7 +41,7 @@
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="220.0" stylesheets="@../../style/dasgboard.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Usuarios" textFill="WHITE">
                      <font>
@@ -44,7 +50,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" stylesheets="@../../style/dasgboard.css">
                <children>
                   <Label layoutX="70.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
                      <font>
@@ -53,7 +59,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" onMouseClicked="#ClickOrdenes" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" onMouseClicked="#ClickOrdenes" prefHeight="50.0" prefWidth="220.0" stylesheets="@../../style/dasgboard.css">
                <children>
                   <Label layoutX="76.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                      <font>
@@ -62,7 +68,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" onMouseClicked="#ClickCategorias" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" onMouseClicked="#ClickCategorias" prefHeight="50.0" prefWidth="220.0" stylesheets="@../../style/dasgboard.css">
                <children>
                   <Label layoutX="66.0" layoutY="11.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textFill="WHITE">
                      <font>
@@ -71,7 +77,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" stylesheets="@../../style/dasgboard.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                      <font>
@@ -80,6 +86,24 @@
                   </Label>
                </children>
             </AnchorPane>
+            <Button fx:id="btnOut" layoutX="30.0" layoutY="653.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="41.0" stylesheets="@../../style/nav-menu.css">
+               <graphic>
+                  <FontAwesomeIcon fill="#fcfcfc" glyphName="SIGN_OUT" size="1.5em" />
+               </graphic>
+               <styleClass>
+                  <String fx:value="logout" />
+                  <String fx:value="shadow" />
+               </styleClass>
+            </Button>
+            <Label layoutX="79.0" layoutY="660.0" styleClass="tick-label" text="Cerrar sesión" textFill="#e8e8e8">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <stylesheets>
+                  <URL value="@../../style/nav-menu.css" />
+                  <URL value="@../../style/dasgboard.css" />
+               </stylesheets>
+            </Label>
          </children>
       </AnchorPane>
       <AnchorPane layoutX="222.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
@@ -95,7 +119,7 @@
             </Label>
          </children>
       </AnchorPane>
-      <TableView fx:id="tableCategorias" layoutX="349.0" layoutY="148.0" prefHeight="402.0" prefWidth="682.0">
+      <TableView fx:id="tableCategorias" layoutX="317.0" layoutY="148.0" prefHeight="402.0" prefWidth="682.0" stylesheets="@../../style/tableview.css">
         <columns>
           <TableColumn fx:id="columIdCategoria" prefWidth="239.199951171875" text="IdCategoria" />
           <TableColumn fx:id="columnCategoria" prefWidth="251.20001220703125" text="Nombre categoria" />
@@ -104,6 +128,6 @@
       </TableView>
       <Button fx:id="btnAgregar" layoutX="836.0" layoutY="604.0" mnemonicParsing="false" onAction="#AgregarCategoria" styleClass="boton-agregar" stylesheets="@../../style/vista-pedido.css" text="Agregar Categoria" textFill="WHITE" />
       <Button fx:id="btnEditar" layoutX="577.0" layoutY="604.0" mnemonicParsing="false" onAction="#EditarCategoria" prefHeight="52.0" prefWidth="222.0" styleClass="boton-editar" stylesheets="@../../style/vista-pedido.css" text="Editar" textFill="WHITE" />
-      <Button fx:id="btnEliminar" layoutX="317.0" layoutY="604.0" mnemonicParsing="false" onAction="#EliminarCategoria" prefHeight="52.0" prefWidth="206.0" styleClass="boton-Eliminar" stylesheets="@../../style/vista-pedido.css" text="Eliminar" textFill="WHITE" />
+      <Button fx:id="btnEliminar" layoutX="317.0" layoutY="604.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="206.0" styleClass="boton-Eliminar" stylesheets="@../../style/vista-pedido.css" text="Eliminar" textFill="WHITE" />
    </children>
 </AnchorPane>

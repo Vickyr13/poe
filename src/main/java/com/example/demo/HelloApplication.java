@@ -12,8 +12,8 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
-       // FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/Admin/AdminOrdenes.fxml"));
+       // FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/demo/views/Admin/AdminCategorias.fxml"));
         Scene scene = new Scene(fxmlLoader.load()); // Crear la escena sin especificar tamaño
         stage.setTitle("Hello!");
 
