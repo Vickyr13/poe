@@ -29,6 +29,13 @@ import javax.swing.*;
 
 public class vistamesaController {
     public Label labelNombre;
+    public Button but_agregar;
+    public Label lab_mesero;
+    public Label lab_numeroMesa;
+
+    public Label lab_dineroTotal;
+
+    public Label label_Total;
     @FXML
     private Pane Pmesa5;
 
@@ -61,23 +68,25 @@ public class vistamesaController {
     public int pin = 1234;
     private int id_empleado = 0;
 
+    private String nameEmpleado;
+    private String apellidoEmpleado;
+
     @FXML
     public void initialize() throws SQLException {
         List<Empleado> empleadosLis = EmpleadoDAO.getDatosEnpleados(pin, 1);
 
-
         if (!empleadosLis.isEmpty()) {
             Empleado empleado = empleadosLis.get(0);
 
-            String nameEmpleado = empleado.getNombre_Empleado();
-            String apellidoEmpleado = empleado.getApellido_Empleado();
-            id_empleado = empleado.getId_Empleado();
-
-            labelNombre.setText(nameEmpleado + " " + apellidoEmpleado);
+             nameEmpleado = empleado.getNombre_Empleado();
+             apellidoEmpleado = empleado.getApellido_Empleado();
+             id_empleado = empleado.getId_Empleado();
 
         } else {
             JOptionPane.showMessageDialog(null, "No se encontraron empleados con ese pin.");
         }
+
+        label_Total.setText( "El total a pagar es:  " + OrdenesDAO.totalPrecio(numeeroMesa));
     }
 
 
@@ -88,6 +97,13 @@ public class vistamesaController {
         columm_cantidad.setCellValueFactory(new MapValueFactory<>("cantidad"));
         columm_productoPedido.setCellValueFactory(new MapValueFactory<>("nombre_producto"));
         columm_comentario.setCellValueFactory(new MapValueFactory<>("mesaje"));
+
+        lab_mesero.setText(nameEmpleado + " " + apellidoEmpleado);
+
+       ;
+
+        label_Total.setText( "El total a pagar es:  " + OrdenesDAO.totalPrecio(nunMesa));
+
 
     }
 
@@ -103,16 +119,10 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(1);
-
+           // precioTotal();
+            numeeroMesa = 1;
         }
     }
-
-    //como se menifiesta las relaciomes de amostad, y de que manesra y de qmanera ayudada a los personajes a superer ´rejiidios re rasiales y fortaleser amited como esquipo
-    //de que manera se presenta el amor familiar y su infliuencia en la formacion de la indentidad de los persomajes espacial meste en el contesto de los valores de permiten boome (el negriyo) y y0ast
-    // como se virdan el cinsecto con el sacrificio personal a foavor del vien comun, y como lo relaciona con el amor y amistad de los paesonajes
-    //que lecciones de la amistad, el amor y la unidad familiar se pude extraer del desarollo de los personajes principales de la peli
-    //relaciones las caracteristicas de amor y la amistad con la peli
-
 
 
     public void mesa2(MouseEvent mouseEvent) throws SQLException {
@@ -121,6 +131,8 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(2);
+            numeeroMesa = 2;
+
         }
     }
 
@@ -130,6 +142,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(3);
+            numeeroMesa = 3;
         }
     }
 
@@ -139,6 +152,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(4);
+            numeeroMesa = 4;
         }
     }
 
@@ -148,6 +162,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(5);
+            numeeroMesa = 5;
         }
     }
 
@@ -157,6 +172,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(6);
+            numeeroMesa = 6;
         }
     }
 
@@ -166,6 +182,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(7);
+            numeeroMesa = 7;
         }
     }
 
@@ -175,6 +192,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(8);
+            numeeroMesa = 8;
         }
     }
 
@@ -184,6 +202,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(9);
+            numeeroMesa = 9;
         }
     }
 
@@ -193,6 +212,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(10);
+            numeeroMesa = 10;
         }
     }
 
@@ -202,6 +222,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(11);
+            numeeroMesa = 11;
         }
     }
 
@@ -209,8 +230,11 @@ public class vistamesaController {
         if(mouseEvent.getClickCount() == 2) {
             numeeroMesa = 12;
             navegar(rutaPedido);
+
         } else {
+           // precioTotal();
             llenarTable_Odenes(12);
+            numeeroMesa = 12;
         }
     }
 
@@ -220,6 +244,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(13);
+            numeeroMesa = 13;
         }
     }
 
@@ -229,6 +254,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(14);
+            numeeroMesa = 14;
         }
     }
 
@@ -238,6 +264,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(15);
+            numeeroMesa = 15;
         }
     }
 
@@ -247,6 +274,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(16);
+            numeeroMesa = 16;
         }
     }
 
@@ -256,6 +284,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(17);
+            numeeroMesa = 17;
         }
     }
 
@@ -265,6 +294,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(18);
+            numeeroMesa = 18;
         }
     }
 
@@ -274,6 +304,7 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(19);
+            numeeroMesa = 19;
         }
     }
 
@@ -283,20 +314,23 @@ public class vistamesaController {
             navegar(rutaPedido);
         } else {
             llenarTable_Odenes(20);
+            numeeroMesa = 20;
         }
     }
 
 
+    // solo son metodos para pasar de vistas
+
     // vistas emejertes
-    public void but_LimpiarMesa(ActionEvent actionEvent) {
-        navegarNo(rutaPentiende);
+    public void but_LimpiarMesa(ActionEvent actionEvent) throws IOException {
+       // navegarNo(rutaPentiende);
+        vistaVerOrdenes();
     }
 
     public void but_domicilio(ActionEvent actionEvent) {
 
         navegarNo(rutaDomicilio);
     }
-
 
     public void navegar(String ruta){
         try {
@@ -313,8 +347,8 @@ public class vistamesaController {
             Stage stage = (Stage) Pmesa5.getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
-
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -322,29 +356,64 @@ public class vistamesaController {
         }
     }
 
-
-    public void navegarNo(String ruta){
-
+    public void navegarNo(String ruta) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
             Parent root = loader.load();
 
+            // Obtener el controlador de la nueva vista
+            VentanaDomicilioController controller = loader.getController();
+            controller.setMainStage((Stage) Pmesa5.getScene().getWindow());
+            controller.initialize(id_empleado);
 
-
-
-            // Crear un nuevo Stage para la ventana emergente
             Stage newStage = new Stage();
             Scene scene = new Scene(root);
 
             newStage.setScene(scene);
-
-            // Mostrar la nueva ventana encima de la actual
-            newStage.initOwner(Pmesa5.getScene().getWindow()); // Establece el propietario como la ventana actual
-            newStage.initModality(Modality.APPLICATION_MODAL); // Hace que la ventana sea modal (bloquea la interacción con la ventana principal)
-            newStage.showAndWait(); // Espera a que la ventana se cierre antes de volver al control de la ventana principal
-
+            newStage.initOwner(Pmesa5.getScene().getWindow());
+            newStage.initModality(Modality.APPLICATION_MODAL);
+            newStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public  void vistaVerOrdenes() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/ventanaPedido.fxml"));
+        Parent root = loader.load();
+
+        Stage newStage = new Stage();
+        Scene scene = new Scene(root);
+
+        newStage.setScene(scene);
+        newStage.initOwner(Pmesa5.getScene().getWindow());
+        newStage.initModality(Modality.APPLICATION_MODAL);
+        newStage.showAndWait();
+
+    }
+
+
+    public void but_agregar(ActionEvent actionEvent) throws IOException, SQLException {
+
+        if(numeeroMesa == 0){
+            JOptionPane.showMessageDialog(null, "Selecciones una mesa");
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/vista-pedido.fxml"));
+        Parent root = loader.load();
+
+        vistapedidoController pedidoController = loader.getController();
+        pedidoController.initialize(String.valueOf(numeeroMesa), id_empleado);
+
+        // Cambiar la escena a la nueva vista
+        Stage stage = (Stage) Pmesa5.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void but_pedidoMesa(ActionEvent actionEvent) {
     }
 }

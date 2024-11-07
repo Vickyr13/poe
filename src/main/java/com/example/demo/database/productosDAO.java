@@ -152,13 +152,19 @@ public class productosDAO {
 
 
 
-    //mostar datos en la parte de meseros
+    //mostar datos en la parte de meseros los productos que se pudeden vender
+
+    //----------------------------------------------------------------
+    // Este metodo no esta conpleto solo falra filatear los productos que estan disponible eso dalta
+    //-----------------------------------------------------------------
     public static List<productos> productoBenta() throws SQLException {
         List<productos> productosList = new ArrayList<>();
         Connection con = conneection.getConnection();
 
         if (con!= null) {
-            String sql = "select id_producto, nombre_producto, descripcion, precio_unitario from productos;";
+            String sql = "select id_producto, nombre_producto, c.nombre_categoria, descripcion, precio_unitario \n" +
+                    "from productos p\n" +
+                    "join categorias c On p.id_categoria = c.id_categoria;";
 
             PreparedStatement ps = con.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -167,11 +173,12 @@ public class productosDAO {
 
                 int id_producto = rs.getInt("id_producto");
                 String nombre = rs.getString("nombre_producto");
+                String categoria = rs.getString("nombre_categoria");
                 String descripcion = rs.getString("descripcion");
                 double precio = rs.getDouble("precio_unitario");
 
-                productos aja = new productos(id_producto, nombre, descripcion, precio);
-                productosList.add(aja);
+                productos product = new productos(id_producto, nombre, categoria , descripcion, precio);
+                productosList.add(product);
             }
         }
         return productosList;

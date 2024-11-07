@@ -56,6 +56,10 @@ public class EmpleadoDAO {
 
     }
 
+
+
+
+
     // Método para obtener productos de la base de datos
     public ObservableList<Map> getEmpleados() throws SQLException {
         ObservableList<Map> lista = FXCollections.observableArrayList();

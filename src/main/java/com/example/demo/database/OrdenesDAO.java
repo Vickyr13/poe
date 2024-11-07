@@ -157,9 +157,7 @@ public class OrdenesDAO {
 
         try (Connection con = conneection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-
             ps.setInt(1, numero_mesa);
-
 
             // Ahora ejecutas la consulta
             try (ResultSet rs = ps.executeQuery()) {
@@ -204,4 +202,8 @@ public class OrdenesDAO {
 
         return idOrden;
     }
+
+
+
+
 }

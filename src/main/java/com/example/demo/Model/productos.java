@@ -5,6 +5,7 @@ public class productos {
     private int  id_productos;
     private int id_categoria;
     private String nombre_Producto;
+    private String categoria_Producto;
     private double precio_unitario;
     private String descriccios_Producto;
     private int estado_Productos;
@@ -28,6 +29,18 @@ public class productos {
         this.descriccios_Producto = descriccios_Producto;
         this.precio_unitario = precio_unitario;
     }
+
+
+    // este costructor es para la tabla de peedidos en la que muestra los productos
+
+    public productos(int id_producto,String nombre_Producto,  String categoria_Producto,  String descriccios_Producto, double precio_unitario) {
+        this.id_productos = id_producto;
+        this.nombre_Producto = nombre_Producto;
+        this.categoria_Producto = categoria_Producto;
+        this.descriccios_Producto = descriccios_Producto;
+        this.precio_unitario = precio_unitario;
+    }
+
 
 
 
@@ -54,6 +67,14 @@ public class productos {
 
     public void setNombre_Producto(String nombre_Producto) {
         this.nombre_Producto = nombre_Producto;
+    }
+
+    public String getCategoria_Producto() {
+        return categoria_Producto;
+    }
+
+    public void setCategoria_Producto(String categoria_Producto) {
+        this.categoria_Producto = categoria_Producto;
     }
 
     public double getPrecio_unitario() {

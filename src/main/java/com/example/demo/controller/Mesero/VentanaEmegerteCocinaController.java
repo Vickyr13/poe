@@ -2,13 +2,13 @@ package com.example.demo.controller.Mesero;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import javax.swing.*;
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.SQLException;
+import java.util.List;
 
 public class VentanaEmegerteCocinaController {
 
@@ -65,5 +65,17 @@ public class VentanaEmegerteCocinaController {
     public void setVistapedidoController(vistapedidoController vista) {
         this.vistaPedido = vista;
     }
+
+    public void actualizarTableOrdenes() {
+
+    }
+
+
+
+
+
+
+
+
 
 }

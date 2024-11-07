@@ -22,7 +22,7 @@
       <HBox alignment="CENTER" layoutX="50.0" layoutY="300.0" prefHeight="46.0" prefWidth="500.0" spacing="20.0">
          <children>
             <Button style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100px;" text="Cancelar" />
-            <Button prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100px;" text="OK" />
+            <Button fx:id="but_ok" onAction="#but_ok" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100px;" text="OK" />
          </children>
          <padding>
             <Insets bottom="10" left="50" right="50" top="10" />

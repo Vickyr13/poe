@@ -20,6 +20,7 @@ import java.util.*; // Para listas, ArrayList y otras clases de utilidad de java
 
 public class vistapedidoController {
     public Label label_precioTotal;
+
     @FXML
     private Button but_pasarvista;
     @FXML
@@ -41,6 +42,9 @@ public class vistapedidoController {
 
     @FXML
     private TableColumn<productos, String> columm_producto;
+
+    @FXML
+    public TableColumn <productos, String> colummCategoria;
 
     @FXML
     private TableView<productos> tableView;
@@ -98,6 +102,7 @@ public class vistapedidoController {
         tableView.getItems().addAll(venta);
 
         columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
+        colummCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria_Producto"));
         columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
         columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
     }
@@ -107,10 +112,14 @@ public class vistapedidoController {
     public List<llenarTableOrdenes> llenarTavlarOrder() {
         List<llenarTableOrdenes> orders = new ArrayList<>();
 
+        productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+        id_producto = productoSeleccionado.getId_productos();
+
+
         double cantidadP = Double.parseDouble(cantidad);
         double Sub_cantidad = Double.parseDouble(subtotal);
 
-        orders.add(new llenarTableOrdenes(cantidad, product, mensaje, (Sub_cantidad * cantidadP)));
+        orders.add(new llenarTableOrdenes(cantidad, product, mensaje, (Sub_cantidad * cantidadP) , id_producto));
 
         columm_cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
         columm_productoPedido.setCellValueFactory(new PropertyValueFactory<>("producto"));
@@ -239,26 +248,56 @@ public class vistapedidoController {
     // a qui se va mandar a cocina siuuuuuu
     public void but_cocina(ActionEvent actionEvent) throws SQLException {
         // Recorremos todos los elementos en la tabla
-        for (llenarTableOrdenes orden : table_pedidos.getItems()) {
+            for (llenarTableOrdenes orden : table_pedidos.getItems()) {
 
-            String cantidad = orden.getCantidad();
-            String producto = orden.getProducto();
-            String mensaje = orden.getMensajeP();
-            double subTotal = orden.getSubcantidad();
-            int cantidadPlato = Integer.parseInt(cantidad);
+                String cantidad = orden.getCantidad();
+                String producto = orden.getProducto();
+                String mensaje = orden.getMensajeP();
+                 id_producto = orden.getId_producto();
 
-            productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
-            id_producto = productoSeleccionado.getId_productos();
+                double subTotal = orden.getSubcantidad();
+                int cantidadPlato = Integer.parseInt(cantidad);
 
-            Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, subTotal, id_empleado, mensaje);
+                Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, subTotal, id_empleado, mensaje);
 
-            Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
-            detallesOrdenes.insertDetallesOrdenes(de);
+                Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
+                detallesOrdenes.insertDetallesOrdenes(de);
 
-            JOptionPane.showMessageDialog(null, "id_Orden: " + idOrden + " id producto: " + id_producto +
-                    " Numero mesa: " + nunMesa + " Cantidad plato: " + cantidad + " id Empleado: " + id_empleado +
-                    " Mensaje: " + mensaje + " total: " + subTotal);
+                JOptionPane.showMessageDialog(null, "id_Orden: " + idOrden + " id producto: " + id_producto +
+                        " Numero mesa: " + nunMesa + " Cantidad plato: " + cantidadPlato + " id Empleado: " + id_empleado +
+                        " Mensaje: " + mensaje + " total: " + subTotal);
+            }
+
+        table_pedidos.getItems().clear();
+    }
+
+    //metodo para editar las ordenes
+    public void but_editar(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/ventanaEmegerteCocina.fxml"));
+        Parent root = loader.load();
+
+        llenarTableOrdenes Taordeners = table_pedidos.getSelectionModel().getSelectedItem();
+        if (Taordeners == null){
+            JOptionPane.showMessageDialog(null, "Selecciones un ordenen");
+            return ;
         }
+
+        int cantida = Integer.parseInt(Taordeners.getCantidad());
+        String mensaje = Taordeners.getMensajeP();
+
+
+        VentanaEmegerteCocinaController ventanaEcocina = loader.getController();
+        ventanaEcocina.actualizarTableOrdenes();
+
+
+        Stage newStage = new Stage();
+        Scene scene = new Scene(root);
+        newStage.setScene(scene);
+        newStage.initOwner(but_pasarvista.getScene().getWindow());
+        newStage.initModality(Modality.APPLICATION_MODAL);
+        newStage.showAndWait();
+
     }
 
 
@@ -268,12 +307,14 @@ public class vistapedidoController {
         private String productos;
         private String mensajeP;  // El nombre del atributo es mensajeP
         private double subcantidad;
+        private int id_producto;
 
-        public llenarTableOrdenes(String cantidad, String productos, String mensajeP, double subcantidad) {
+        public llenarTableOrdenes(String cantidad, String productos, String mensajeP, double subcantidad, int id_producto) {
             this.cantidad = cantidad;
             this.productos = productos;
             this.mensajeP = mensajeP;
             this.subcantidad = subcantidad;
+            this.id_producto = id_producto;
         }
 
         public String getCantidad() {
@@ -307,7 +348,16 @@ public class vistapedidoController {
         public void setSubcantidad(double subcantidad) {
             this.subcantidad = subcantidad;
         }
+        public int getId_producto() {
+            return id_producto;
+        }
+        public void setId_producto(int id_producto) {
+            this.id_producto = id_producto;
+        }
     }
+
+
+
 
 
 }
