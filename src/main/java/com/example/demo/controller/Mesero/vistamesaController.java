@@ -70,6 +70,7 @@ public class vistamesaController {
 
     private String nameEmpleado;
     private String apellidoEmpleado;
+    int idOrden;
 
     @FXML
     public void initialize() throws SQLException {
@@ -86,236 +87,163 @@ public class vistamesaController {
             JOptionPane.showMessageDialog(null, "No se encontraron empleados con ese pin.");
         }
 
-        label_Total.setText( "El total a pagar es:  " + OrdenesDAO.totalPrecio(numeeroMesa));
+        label_Total.setText( "" + OrdenesDAO.totalPrecio(numeeroMesa));
     }
 
 
     public void llenarTable_Odenes(int nunMesa) throws SQLException {
-        ObservableList<Map> lista = OrdenesDAO.datosOrden(nunMesa);
-        table_pedidos.setItems(lista);
+        OrdenesDAO orden = new OrdenesDAO();
+        table_pedidos.getItems().clear();
+
+        List<Map<String, Object>> productos = orden.DatosOrden(nunMesa);
+
+        if (!productos.isEmpty()) {
+            table_pedidos.getItems().addAll(productos);
+        }
 
         columm_cantidad.setCellValueFactory(new MapValueFactory<>("cantidad"));
         columm_productoPedido.setCellValueFactory(new MapValueFactory<>("nombre_producto"));
         columm_comentario.setCellValueFactory(new MapValueFactory<>("mesaje"));
 
         lab_mesero.setText(nameEmpleado + " " + apellidoEmpleado);
+        label_Total.setText("" + OrdenesDAO.totalPrecio(nunMesa));
 
-       ;
-
-        label_Total.setText( "El total a pagar es:  " + OrdenesDAO.totalPrecio(nunMesa));
-
-
+        // Listener para obtener el id de la orden seleccionada
+        // Listener para obtener el id de la orden seleccionada
+        table_pedidos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            if (newSelection != null && newSelection.get("id_orden") != null) {
+                idOrden = (Integer) newSelection.get("id_orden");
+                System.out.println("ID de la orden seleccionada: " + idOrden);
+            }
+        });
     }
+
+
+
+    private void abrirNuevaVentanaConIdOrden(Integer idOrden) {
+        if (idOrden == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona una orden antes de proceder.");
+            return;
+        }
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/pago.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador del nuevo FXML y pasarle el idOrden
+            PagoController controlador = loader.getController();
+            controlador.recibirIdOrden(idOrden);
+
+            String total = label_Total.getText();
+            controlador.recibirTotal(total);
+
+            // Configurar y mostrar la nueva ventana
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 
     @FXML
-    public void but_pagar() throws SQLException {
+    public void but_pagar(ActionEvent event) {
+            // Verificar si se ha seleccionado una orden
+            if (idOrden == 0) {
+                JOptionPane.showMessageDialog(null, "Por favor selecciona una orden antes de proceder.");
+                return;
+            }
+            abrirNuevaVentanaConIdOrden(idOrden);
 
+    }
+
+    @FXML
+    public void abrirInterfazB() {
+        try {
+            // Cargar el FXML de InterfazB
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/pago.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador de InterfazB
+            PagoController controladorB = loader.getController();
+
+            String total = label_Total.getText();
+            // Pasar la variable mensaje a InterfazB
+            controladorB.recibirTotal((total));
+            controladorB.recibirIdOrden(idOrden);
+            System.out.println("pasando en vista mesa" +total);
+
+            // Mostrar InterfazB
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void mesa1(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 1;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(1);
-           // precioTotal();
-            numeeroMesa = 1;
-        }
+        ClickController(mouseEvent, 1);
     }
-
-
     public void mesa2(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 2;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(2);
-            numeeroMesa = 2;
-
-        }
+        ClickController(mouseEvent, 2);
     }
-
     public void mesa3(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 3;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(3);
-            numeeroMesa = 3;
-        }
+        ClickController(mouseEvent, 3);
     }
-
     public void mesa4(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 4;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(4);
-            numeeroMesa = 4;
-        }
+        ClickController(mouseEvent, 4);
     }
-
     public void mesa5(MouseEvent mouseEvent) throws SQLException {
-        if (mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 5;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(5);
-            numeeroMesa = 5;
-        }
+        ClickController(mouseEvent, 5);
     }
-
     public void mesa6(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 6;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(6);
-            numeeroMesa = 6;
-        }
+        ClickController(mouseEvent, 6);
     }
-
     public void mesa7(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 7;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(7);
-            numeeroMesa = 7;
-        }
+        ClickController(mouseEvent, 7);
     }
-
     public void mesa8(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 8;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(8);
-            numeeroMesa = 8;
-        }
+        ClickController(mouseEvent, 8);
     }
-
     public void mesa9(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 9;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(9);
-            numeeroMesa = 9;
-        }
+        ClickController(mouseEvent, 9);
     }
-
     public void mesa10(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 10;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(10);
-            numeeroMesa = 10;
-        }
+        ClickController(mouseEvent, 10);
     }
-
     public void mesa11(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 11;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(11);
-            numeeroMesa = 11;
-        }
+        ClickController(mouseEvent, 11);
     }
-
     public void mesa12(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 12;
-            navegar(rutaPedido);
-
-        } else {
-           // precioTotal();
-            llenarTable_Odenes(12);
-            numeeroMesa = 12;
-        }
+        ClickController(mouseEvent, 12);
     }
-
     public void mesa13(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 13;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(13);
-            numeeroMesa = 13;
-        }
+        ClickController(mouseEvent, 13);
     }
-
     public void mesa14(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 14;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(14);
-            numeeroMesa = 14;
-        }
-    }
+        ClickController(mouseEvent, 14);
 
+    }
     public void mesa15(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 15;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(15);
-            numeeroMesa = 15;
-        }
+        ClickController(mouseEvent, 15);
     }
-
     public void mesa16(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 16;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(16);
-            numeeroMesa = 16;
-        }
+        ClickController(mouseEvent, 16);
     }
-
     public void mesa17(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 17;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(17);
-            numeeroMesa = 17;
-        }
+        ClickController(mouseEvent, 17);
     }
-
     public void mesa18(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 18;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(18);
-            numeeroMesa = 18;
-        }
+        ClickController(mouseEvent, 18);
     }
-
     public void mesa19(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 19;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(19);
-            numeeroMesa = 19;
-        }
+        ClickController(mouseEvent, 19);
     }
-
     public void mesa20(MouseEvent mouseEvent) throws SQLException {
-        if(mouseEvent.getClickCount() == 2) {
-            numeeroMesa = 20;
-            navegar(rutaPedido);
-        } else {
-            llenarTable_Odenes(20);
-            numeeroMesa = 20;
-        }
+        ClickController(mouseEvent, 20);
     }
 
 
@@ -392,7 +320,6 @@ public class vistamesaController {
 
     }
 
-
     public void but_agregar(ActionEvent actionEvent) throws IOException, SQLException {
 
         if(numeeroMesa == 0){
@@ -415,5 +342,22 @@ public class vistamesaController {
     }
 
     public void but_pedidoMesa(ActionEvent actionEvent) {
+    }
+
+    public void ClickController(MouseEvent mouseEvent, int numeroMesa) throws SQLException {
+
+        if(mouseEvent.getClickCount() == 2) {
+            numeeroMesa = numeroMesa;
+            navegar(rutaPedido);
+        } else {
+            llenarTable_Odenes(numeroMesa);
+            // precioTotal();
+            numeeroMesa = numeroMesa;
+        }
+    }
+
+    int id;
+    public void recibirId(int idrecibido) {
+        id = idrecibido;// Muestra el mensaje en el Label
     }
 }

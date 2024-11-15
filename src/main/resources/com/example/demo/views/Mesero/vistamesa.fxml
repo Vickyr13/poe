@@ -290,11 +290,16 @@
                <Label layoutX="49.0" layoutY="66.0" text="Mesa #20" />
             </children>
          </Pane>
-      <Label fx:id="label_Total" layoutX="656.0" layoutY="664.0" text="Label" textFill="#04f400">
+      <Label layoutX="656.0" layoutY="664.0" text="Total a Pagar: $" textFill="WHITE">
          <font>
             <Font size="25.0" />
          </font>
       </Label>
       <Button layoutX="394.0" layoutY="662.0" mnemonicParsing="false" onAction="#but_LimpiarMesa" prefWidth="220.0" style="-fx-background-color: #4198DD;" text="Ver pedidos" />
+      <Label fx:id="label_Total" layoutX="856.0" layoutY="664.0" text="00.00" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
       </children>
    </Pane>

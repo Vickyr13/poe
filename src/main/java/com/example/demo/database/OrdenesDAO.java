@@ -3,15 +3,19 @@ package com.example.demo.database;
 import com.example.demo.Model.Ordenes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 
 import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static com.example.demo.database.conneection.getConnection;
 
 public class OrdenesDAO {
 
@@ -100,52 +104,50 @@ public class OrdenesDAO {
         return generatedId;
     }
 
+    public static List<Map<String, Object>> DatosOrden(int numeroMesa) throws SQLException {
+        Connection con = getConnection();
+        List<Map<String, Object>> listaProductos = new ArrayList<>();
 
-    //CONSULTA ESPECIAL
-    public static ObservableList<Map> datosOrden(int numeroMesa) {
-        ObservableList<Map> lista = FXCollections.observableArrayList();
+        if (con != null) {
+            try {
+                String sql = "SELECT " +
+                        "o.id_orden, " +
+                        "cantidad, " +
+                        "p.nombre_producto, " +
+                        "mesaje, " +
+                        "sub_total " +
+                        "FROM detalle_ordenes od " +
+                        "JOIN mesa m ON od.id_mesa = m.id_mesa " +
+                        "JOIN ordenes o ON od.id_orden = o.id_orden " +
+                        "JOIN productos p ON od.id_producto = p.id_producto " +
+                        "JOIN categorias c ON p.id_categoria = c.id_categoria " +
+                        "WHERE m.numero_mesa = ? AND o.estado = 'Activo'";
 
-        String sql = "SELECT \n" +
-                "                o.id_orden,\n" +
-                "                    cantidad,\n" +
-                "                    p.nombre_producto, \n" +
-                "                    mesaje,\n" +
-                "                   sub_total\n" +
-                "                FROM detalle_ordenes od\n" +
-                "                JOIN mesa m ON od.id_mesa = m.id_mesa\n" +
-                "                join ordenes o on od.id_orden = o.id_orden\n" +
-                "                JOIN productos p ON od.id_producto = p.id_producto\n" +
-                "                join categorias c On p.id_categoria = c.id_categoria\n" +
-                "                WHERE m.numero_mesa = ?;";
+                java.sql.PreparedStatement pstmt = con.prepareStatement(sql);
+                pstmt.setInt(1, numeroMesa);
 
-        try (Connection con = conneection.getConnection();
-             PreparedStatement ps = con.prepareStatement(sql)) {
+                try (ResultSet rs = pstmt.executeQuery()) {
+                    while (rs.next()) {
+                        Map<String, Object> producto = new HashMap<>();
+                        producto.put("id_orden", rs.getInt("id_orden"));
+                        producto.put("cantidad", rs.getInt("cantidad"));
+                        producto.put("nombre_producto", rs.getString("nombre_producto"));
+                        producto.put("mesaje", rs.getString("mesaje"));
+                        producto.put("sub_total", rs.getString("sub_total"));
 
-            // Establecer el valor del número de mesa en el PreparedStatement
-            ps.setInt(1, numeroMesa);
-
-            // Ahora ejecutas la consulta
-            try (ResultSet rs = ps.executeQuery()) {
-
-                // Procesar los resultados
-                while (rs.next()) {
-                    Map<String, Object> producto = new HashMap<>();
-                    producto.put("id_orden", rs.getInt("id_orden"));
-                    producto.put("cantidad", rs.getInt("cantidad"));
-                    producto.put("nombre_producto", rs.getString("nombre_producto"));
-                    producto.put("mesaje", rs.getString("mesaje"));
-                    producto.put("sub_total", rs.getString("sub_total"));
-
-                    lista.add(producto);
+                        listaProductos.add(producto);  // Agregar cada producto a la lista
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                 }
+                System.out.println("Órdenes procesadas correctamente");
+            } catch (SQLException e) {
+                System.out.println("Error al buscar la orden: " + e.getMessage());
+                throw e;
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error obtener los datos de la orden" + e.getMessage());
-            throw new RuntimeException(e);
         }
-        return lista;
+        return listaProductos;
     }
-
 
     // odtener el precio total
     public static double totalPrecio(int numero_mesa) {
@@ -174,8 +176,6 @@ public class OrdenesDAO {
         return total;
     }
 
-
-
     public static int obtenerOrdenActivaPorMesa(int numeroMesa) {
         String sql = "select o.id_orden \n" +
                 "from detalle_ordenes od \n" +
@@ -203,7 +203,19 @@ public class OrdenesDAO {
         return idOrden;
     }
 
+    public static void inactivarOrden(int idOrden) throws SQLException {
+        String sql = "UPDATE ordenes SET estado = 'inactiva' WHERE id_orden = ?";
 
+        try (Connection con = conneection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setInt(1, idOrden);
+            ps.executeUpdate();
+            System.out.println("orden inactiva!");
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error al inactivar la orden: " + e.getMessage());
+            throw e;
+        }
+    }
 
 
 }

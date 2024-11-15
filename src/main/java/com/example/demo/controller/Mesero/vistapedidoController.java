@@ -2,6 +2,8 @@ package com.example.demo.controller.Mesero;
 
 import com.example.demo.Model.*;
 import com.example.demo.database.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,10 +14,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import javax.swing.JOptionPane; // Si solo se usa JOptionPane, se importa directamente
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*; // Para listas, ArrayList y otras clases de utilidad de java.util
 
 public class vistapedidoController {
@@ -64,9 +70,17 @@ public class vistapedidoController {
 
     @FXML
     private TableView<llenarTableOrdenes> table_pedidos;
+    @FXML
+    private Label lb_fecha;
 
     @FXML
+    private Label lb_hora;
+
+    @FXML
+    private Label lb_nombre;
+    @FXML
     private Label label_numeroMesa;
+
     private int nunMesa;
     private int idOrden = -1;
     private int id_producto;
@@ -81,8 +95,15 @@ public class vistapedidoController {
     private int id_empleado;
     CategoriaDAO querysCategoria = new CategoriaDAO();
 
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+    private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+
+
     @FXML
     public void initialize(String numeromesa, int id_Empleado) throws SQLException {
+        obtenerHora();
+        obtenerFecha();
+        //-----------------------------------------------------------------
         id_empleado = id_Empleado;
         label_numeroMesa.setText("El numero de la mesa: " + numeromesa);
 
@@ -94,6 +115,41 @@ public class vistapedidoController {
         llenarTabla();
         cargarCategorias();
         precioTotal(0.0);
+
+
+    }
+    //inicializar hora
+    public void obtenerHora(){
+        // Configura un Timeline para actualizar el Label cada segundo
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            // Obtiene la hora actual y la formatea
+            String horaActual = LocalTime.now().format(formatter);
+            // Actualiza el texto del Label
+            lb_hora.setText(horaActual);
+        }));
+
+        // Ejecuta el Timeline indefinidamente
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
+
+    //inicialiar fecha
+    public void obtenerFecha(){
+        // Configura un Timeline para actualizar el Label cada minuto
+        Timeline timeline = new Timeline(new KeyFrame(Duration.minutes(1), event -> {
+            // Obtiene la fecha actual y la formatea
+            String fechaActual = LocalDate.now().format(dateFormatter);
+            // Actualiza el texto del Label
+            lb_fecha.setText(fechaActual);
+        }));
+
+        // Ejecuta el Timeline indefinidamente
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+
+        // Establece la fecha inicial al iniciar la aplicación
+        lb_fecha.setText(LocalDate.now().format(dateFormatter));
+
     }
 
     // llenar tabla de producto
@@ -102,7 +158,7 @@ public class vistapedidoController {
         tableView.getItems().addAll(venta);
 
         columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
-        colummCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria_Producto"));
+        //colummCategoria.setCellValueFactory(new PropertyValueFactory<>("categoria_Producto"));
         columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
         columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
     }
@@ -271,6 +327,29 @@ public class vistapedidoController {
         table_pedidos.getItems().clear();
     }
 
+    @FXML
+    public void abrirInterfazB() {
+        try {
+            // Cargar el FXML de InterfazB
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/pago.fxml"));
+            Parent root = loader.load();
+
+            // Obtener el controlador de InterfazB
+            vistamesaController controladorB = loader.getController();
+
+            int id = idOrden;
+            // Pasar la variable mensaje a InterfazB
+            controladorB.recibirId((id));
+            System.out.println("pasando el id de la orden" +id);
+
+            // Mostrar InterfazB
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     //metodo para editar las ordenes
     public void but_editar(ActionEvent actionEvent) throws IOException {
 
@@ -355,9 +434,6 @@ public class vistapedidoController {
             this.id_producto = id_producto;
         }
     }
-
-
-
 
 
 }

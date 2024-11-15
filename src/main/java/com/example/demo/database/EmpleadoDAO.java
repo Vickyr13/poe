@@ -21,7 +21,6 @@ public class EmpleadoDAO {
 
     public void insertarEmpleado(Empleado empleado) throws SQLException {
         //establecer la conexion a la base de datos
-
         Connection con = getConnection();
         //Verificamos la conexion a la base de datos
         if(con!=null){
