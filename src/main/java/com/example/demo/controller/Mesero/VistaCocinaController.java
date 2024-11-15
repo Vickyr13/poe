@@ -1,6 +1,6 @@
 package com.example.demo.controller.Mesero;
 
-import com.example.demo.database.OrdenesDAO;
+import com.example.demo.database.CocinaDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -48,7 +48,7 @@ public class VistaCocinaController {
     private TableView<Map<String, Object>> TableOrden04;
 
 
-    private OrdenesDAO ordenesDAO = new OrdenesDAO();
+    private CocinaDAO CocinaDAO = new CocinaDAO();
 
     @FXML
     private void initialize() {
@@ -90,7 +90,7 @@ public class VistaCocinaController {
 
 
     private void loadOrdenes() throws SQLException {
-        ObservableList<Map> ordenes = ordenesDAO.getOrdenes();
+        ObservableList<Map> ordenes = CocinaDAO.getOrdenes();
 
         int totalOrdenes = ordenes.size();
         int ordenesPorTableView = totalOrdenes / 4;
@@ -123,7 +123,7 @@ public class VistaCocinaController {
         if (selectedOrden != null) {
             int idOrden = (int) selectedOrden.get("id_orden");
             try {
-                ordenesDAO.finalizarOrden(idOrden);
+                CocinaDAO.finalizarOrden(idOrden);
                 tableView.getItems().remove(selectedOrden);
             } catch (SQLException e) {
                 e.printStackTrace();
