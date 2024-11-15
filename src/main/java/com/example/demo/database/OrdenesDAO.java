@@ -154,8 +154,8 @@ public class OrdenesDAO {
         double total = 0;
         String sql = "select SUM(sub_total) AS total_sub_total\n" +
                 "                FROM detalle_ordenes od\n" +
-                "                join mesa m On od.id_mesa = m.id_mesa\n" +
-                "                where m.numero_mesa = ?;";
+                "                join mesa m On od.id_mesa = m.id_mesa join ordenes o on o.id_orden = od.id_orden\n" +
+                "                where m.numero_mesa = ? and o.estado = 'Activo';";
 
         try (Connection con = conneection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {

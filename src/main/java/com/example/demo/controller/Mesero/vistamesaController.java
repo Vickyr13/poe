@@ -87,7 +87,7 @@ public class vistamesaController {
             JOptionPane.showMessageDialog(null, "No se encontraron empleados con ese pin.");
         }
 
-        label_Total.setText( "" + OrdenesDAO.totalPrecio(numeeroMesa));
+            label_Total.setText( "" + OrdenesDAO.totalPrecio(numeeroMesa));
     }
 
 
