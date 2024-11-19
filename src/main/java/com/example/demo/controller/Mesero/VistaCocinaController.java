@@ -39,6 +39,19 @@ public class VistaCocinaController {
     private Label NumMesa04;
 
     @FXML
+    private TableColumn<?, ?> Producto1;
+
+    @FXML
+    private TableColumn<?, ?> Producto11;
+
+    @FXML
+    private TableColumn<?, ?> Producto12;
+
+    @FXML
+    private TableColumn<?, ?> Producto13;
+
+
+    @FXML
     private TableView<Map<String, Object>> TableOrden01;
     @FXML
     private TableView<Map<String, Object>> TableOrden02;
@@ -47,8 +60,31 @@ public class VistaCocinaController {
     @FXML
     private TableView<Map<String, Object>> TableOrden04;
 
+    @FXML
+    private TableColumn<?, ?> mensaje1;
 
-    private CocinaDAO CocinaDAO = new CocinaDAO();
+    @FXML
+    private TableColumn<?, ?> mensaje11;
+
+    @FXML
+    private TableColumn<?, ?> mensaje12;
+
+    @FXML
+    private TableColumn<?, ?> mensaje13;
+
+    @FXML
+    private TableColumn<?, ?> Cantidad1;
+
+    @FXML
+    private TableColumn<?, ?> Cantidad11;
+
+    @FXML
+    private TableColumn<?, ?> Cantidad12;
+
+    @FXML
+    private TableColumn<?, ?> Cantidad13;
+
+    private CocinaDAO cocinaDAO = new CocinaDAO();
 
     @FXML
     private void initialize() {
@@ -70,30 +106,24 @@ public class VistaCocinaController {
     }
 
     private void configureTableColumns(TableView<Map<String, Object>> tableView) {
+        TableColumn<Map<String, Object>, Integer> cantidadCol = new TableColumn<>("Cantidad");
+        cantidadCol.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+
         TableColumn<Map<String, Object>, String> nombreProductoCol = new TableColumn<>("Nombre Producto");
         nombreProductoCol.setCellValueFactory(new PropertyValueFactory<>("nombre_producto"));
 
-        TableColumn<Map<String, Object>, String> idOrdenCol = new TableColumn<>("ID Orden");
-        idOrdenCol.setCellValueFactory(new PropertyValueFactory<>("id_orden"));
+        TableColumn<Map<String, Object>, String> mensajeCol = new TableColumn<>("Mensaje");
+        mensajeCol.setCellValueFactory(new PropertyValueFactory<>("mesaje"));
 
-        TableColumn<Map<String, Object>, String> fechaOrdenCol = new TableColumn<>("Fecha Orden");
-        fechaOrdenCol.setCellValueFactory(new PropertyValueFactory<>("fecha_orden"));
-
-        TableColumn<Map<String, Object>, Double> numeroMesaCol = new TableColumn<>("Numero Mesa");
-        numeroMesaCol.setCellValueFactory(new PropertyValueFactory<>("numero_mesa"));
-
-        TableColumn<Map<String, Object>, String> subTotalCol = new TableColumn<>("Sub Total");
-        subTotalCol.setCellValueFactory(new PropertyValueFactory<>("sub_total"));
-
-        tableView.getColumns().addAll(nombreProductoCol, idOrdenCol, fechaOrdenCol, numeroMesaCol, subTotalCol);
+        tableView.getColumns().addAll(cantidadCol, nombreProductoCol, mensajeCol);
     }
 
-
     private void loadOrdenes() throws SQLException {
-        ObservableList<Map> ordenes = CocinaDAO.getOrdenes();
+        ObservableList<Map> ordenes = cocinaDAO.datosOrden(1); // Cambiar 1 por el número de mesa deseado
 
+        // Dividir las órdenes en 4 listas para cada TableView
         int totalOrdenes = ordenes.size();
-        int ordenesPorTableView = totalOrdenes / 4;
+        int ordenesPorTableView = (totalOrdenes + 3) / 4; // Aseguramos que se distribuyan
 
         ObservableList<Map<String, Object>> list1 = FXCollections.observableArrayList();
         ObservableList<Map<String, Object>> list2 = FXCollections.observableArrayList();
@@ -121,9 +151,9 @@ public class VistaCocinaController {
     private void finalizarOrden(TableView<Map<String, Object>> tableView) {
         Map<String, Object> selectedOrden = tableView.getSelectionModel().getSelectedItem();
         if (selectedOrden != null) {
-            int idOrden = (int) selectedOrden.get("id_orden");
+            int idOrden = (int) selectedOrden.get("id_orden"); // Asegúrate de que "id_orden" esté en el mapa
             try {
-                CocinaDAO.finalizarOrden(idOrden);
+                cocinaDAO.finalizarOrden(idOrden);
                 tableView.getItems().remove(selectedOrden);
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -131,3 +161,4 @@ public class VistaCocinaController {
         }
     }
 }
+
