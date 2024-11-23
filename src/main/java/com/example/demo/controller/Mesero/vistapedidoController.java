@@ -436,4 +436,12 @@ public class vistapedidoController {
     }
 
 
+    //metodo que recibe el cliente
+    // Método para recibir el cliente
+    public void setCliente(client cliente) {
+        // this.cliente = cliente;
+        // Si deseas, puedes actualizar la interfaz con los datos del cliente
+        // lblNombreCliente.setText(cliente.getNombreCliente());
+    }
+
 }

@@ -59,7 +59,7 @@ public class VentanaDomicilioController {
 
         Cliente cliente = new Cliente(direccion, telefono, nombre, apellido);
         ClienteDAO clientedao = new ClienteDAO();
-        /// clientedao.ingresarCliente(cliente);
+         clientedao.ingresarCliente(cliente);
 
         vistapedidoController orden = loader.getController();
         orden.initialize("21" ,id_empleado);

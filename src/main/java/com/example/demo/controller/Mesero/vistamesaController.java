@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -60,7 +61,7 @@ public class vistamesaController {
     private TableView<Map> table_pedidos;
 
     private  String rutaPedido = "/com/example/demo/views/Mesero/vista-pedido.fxml";
-    private String rutaDomicilio= "/com/example/demo/views/Mesero/ventanaDomicilio.fxml";
+    private String rutaDomicilio= "/com/example/demo/views/Mesero/buscarcliente.fxml";
     private String rutaPentiende= "/com/example/demo/views/Mesero/ventanaPedido.fxml";
 
     private int numeeroMesa = 0;
@@ -254,11 +255,27 @@ public class vistamesaController {
        // navegarNo(rutaPentiende);
         vistaVerOrdenes();
     }
+    public void but_domicilio(ActionEvent actionEvent) throws IOException {
+        try {
+            // Cargar el FXML de la ruta especificada
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaDomicilio));
+            Parent root = loader.load();
 
-    public void but_domicilio(ActionEvent actionEvent) {
+            // Crear una nueva escena con el contenido cargado
+            Scene nuevaEscena = new Scene(root);
 
-        navegarNo(rutaDomicilio);
+            // Obtener el Stage actual desde el evento
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Establecer la nueva escena en el Stage y mostrarla
+            stage.setScene(nuevaEscena);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al cargar la vista de domicilio.");
+        }
     }
+
 
     public void navegar(String ruta){
         try {
