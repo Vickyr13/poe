@@ -96,7 +96,7 @@ public void setTabla(){
 
                 // Si necesitas pasar el cliente a la nueva ventana, puedes hacerlo a través del controlador
                 vistapedidoController nuevaVentanaController = loader.getController();
-                nuevaVentanaController.setCliente(clienteSeleccionado); // Método en la nueva ventana para recibir el cliente
+                nuevaVentanaController.setCliente(clienteSeleccionado, 1, 20); // Método en la nueva ventana para recibir el cliente
 
                 // Crear un nuevo Stage (ventana)
                 Stage stage = new Stage();
@@ -118,6 +118,8 @@ public void setTabla(){
                 alert.setHeaderText(null);
                 alert.setContentText("Hubo un error al abrir la ventana de creación de pedido.");
                 alert.showAndWait();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
     }
