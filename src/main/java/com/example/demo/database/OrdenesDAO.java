@@ -104,6 +104,20 @@ public class OrdenesDAO {
         return generatedId;
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     public static List<Map<String, Object>> DatosOrden(int numeroMesa) throws SQLException {
         Connection con = getConnection();
         List<Map<String, Object>> listaProductos = new ArrayList<>();
@@ -148,6 +162,33 @@ public class OrdenesDAO {
         }
         return listaProductos;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // odtener el precio total
     public static double totalPrecio(int numero_mesa) {

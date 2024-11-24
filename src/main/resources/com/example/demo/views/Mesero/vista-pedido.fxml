@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.vistapedidoController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.vistapedidoController">
    <Pane prefHeight="200.0" prefWidth="200.0">
       <children>
          <Pane layoutX="-40.0" layoutY="-6.0" prefHeight="731.0" prefWidth="711.0" styleClass="panel2" stylesheets="@../../style/vista-pedido.css">
@@ -68,15 +61,20 @@
                            <Image url="@../../img/logopng1.png" />
                         </image>
                      </ImageView>
-                     <Label fx:id="label_precioTotal" layoutX="299.0" layoutY="85.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="total" textFill="#00ff09f5">
+                     <Label fx:id="label_precioTotal" layoutX="396.0" layoutY="85.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="0.00" textFill="#00ff09f5">
                         <font>
                            <Font size="20.0" />
                         </font>
                      </Label>
                      <Label layoutX="185.0" layoutY="22.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="Empleado" textFill="WHITE" />
                      <Label fx:id="lb_nombre" layoutX="299.0" layoutY="22.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="nombre" textFill="WHITE" />
-                     <Label fx:id="lb_fecha" layoutX="32.0" layoutY="85.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="Fecha" textFill="WHITE" />
-                     <Label fx:id="lb_hora" layoutX="185.0" layoutY="85.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="Hora" textFill="WHITE" />
+                     <Label fx:id="lb_fecha" layoutX="28.0" layoutY="85.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="Fecha" textFill="WHITE" />
+                     <Label fx:id="lb_hora" layoutX="178.0" layoutY="85.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="Hora" textFill="WHITE" />
+                     <Label layoutX="307.0" layoutY="86.0" styleClass="tipografia" stylesheets="@../../style/vista-pedido.css" text="total $ " textFill="#00ff09f5">
+                        <font>
+                           <Font size="20.0" />
+                        </font>
+                     </Label>
                   </children>
                </Pane>
                <TableView fx:id="table_pedidos" layoutX="4.0" layoutY="153.0" prefHeight="489.0" prefWidth="606.0">
@@ -99,6 +97,7 @@
                   </image>
                </ImageView>
                <Button fx:id="but_editar" layoutX="219.0" layoutY="648.0" mnemonicParsing="false" onAction="#but_editar" prefHeight="57.0" prefWidth="162.0" styleClass="boton-editar" text="Editar" />
+               <Button fx:id="but_eliminar" layoutX="28.0" layoutY="652.0" mnemonicParsing="false" onAction="#but_eliminar" prefHeight="57.0" prefWidth="162.0" style="-fx-background-color: ff0000;" styleClass="boton-editar" text="Editar" />
             </children>
          </Pane>
       </children>

@@ -79,9 +79,9 @@ public class vistamesaController {
         if (!empleadosLis.isEmpty()) {
             Empleado empleado = empleadosLis.get(0);
 
-             nameEmpleado = empleado.getNombre_Empleado();
-             apellidoEmpleado = empleado.getApellido_Empleado();
-             id_empleado = empleado.getId_Empleado();
+            nameEmpleado = empleado.getNombre_Empleado();
+            apellidoEmpleado = empleado.getApellido_Empleado();
+            id_empleado = empleado.getId_Empleado();
 
         } else {
             JOptionPane.showMessageDialog(null, "No se encontraron empleados con ese pin.");
@@ -150,12 +150,12 @@ public class vistamesaController {
 
     @FXML
     public void but_pagar(ActionEvent event) {
-            // Verificar si se ha seleccionado una orden
-            if (idOrden == 0) {
-                JOptionPane.showMessageDialog(null, "Por favor selecciona una orden antes de proceder.");
-                return;
-            }
-            abrirNuevaVentanaConIdOrden(idOrden);
+        // Verificar si se ha seleccionado una orden
+        if (idOrden == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona una orden antes de proceder.");
+            return;
+        }
+        abrirNuevaVentanaConIdOrden(idOrden);
 
     }
 
@@ -251,7 +251,7 @@ public class vistamesaController {
 
     // vistas emejertes
     public void but_LimpiarMesa(ActionEvent actionEvent) throws IOException {
-       // navegarNo(rutaPentiende);
+        // navegarNo(rutaPentiende);
         vistaVerOrdenes();
     }
 
