@@ -17,6 +17,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
@@ -96,10 +97,15 @@ public void setTabla(){
 
                 // Si necesitas pasar el cliente a la nueva ventana, puedes hacerlo a través del controlador
                 vistapedidoController nuevaVentanaController = loader.getController();
-                nuevaVentanaController.setCliente(clienteSeleccionado); // Método en la nueva ventana para recibir el cliente
+
+                vistamesaController mesa = new vistamesaController();
+
+                nuevaVentanaController.setCliente(clienteSeleccionado, mesa.getId_empleado(), 20); // Método en la nueva ventana para recibir el cliente
+
+                JOptionPane.showMessageDialog(null, "este es el id_empleado: "  + mesa.getId_empleado());
 
                 // Crear un nuevo Stage (ventana)
-                Stage stage = new Stage();
+                 Stage stage = new Stage();
                 stage.setTitle("Crear Pedido");
                 stage.setScene(new Scene(root));
                 stage.show();
@@ -118,6 +124,8 @@ public void setTabla(){
                 alert.setHeaderText(null);
                 alert.setContentText("Hubo un error al abrir la ventana de creación de pedido.");
                 alert.showAndWait();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
         }
     }
