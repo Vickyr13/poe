@@ -1,0 +1,13 @@
+.label {
+    -fx-font-size: 12px;
+    -fx-text-fill: black;
+    -fx-cursor: hand; /* Cambia el cursor a una mano, indicando que es clickeable */
+    -fx-font-weight: normal;
+    -fx-underline: false; /* Asegura que el texto no está subrayado por defecto */
+}
+
+/* Estilo cuando el mouse pasa sobre el Label */
+.label:hover {
+    -fx-text-fill: blue; /* Cambia el color del texto a azul */
+    -fx-underline: true; /* Subraya el texto */
+}

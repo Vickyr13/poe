@@ -4,9 +4,6 @@ import com.example.demo.Model.*;
 import com.example.demo.database.*;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,7 +50,7 @@ public class vistapedidoController {
     private TableColumn<productos, String> columm_producto;
 
     @FXML
-    public TableColumn<productos, String> colummCategoria;
+    public TableColumn <productos, String> colummCategoria;
 
     @FXML
     private TableView<productos> tableView;
@@ -87,12 +84,11 @@ public class vistapedidoController {
     private int nunMesa;
     private int idOrden = -1;
     private int id_producto;
-    private int id_butoon;
 
     private String mensaje = "";
-    private String cantidad;
+    private String cantidad = "";
     private String product = "";
-    private String subtotal;
+    private String subtotal = "";
 
     //----------------------------------------------------------------
 
@@ -102,7 +98,6 @@ public class vistapedidoController {
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
     private final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    //-------------------------------------------------------------------------------------------------
 
     @FXML
     public void initialize(String numeromesa, int id_Empleado) throws SQLException {
@@ -119,31 +114,43 @@ public class vistapedidoController {
 
         llenarTabla();
         cargarCategorias();
-        updateCantidadDinerp(0.0);
-        llenarTabla();
-
-    }
-
-
-
-
-    public void updateCantidadDinerp(double dineroUnidad){
-
-
-            for(llenarTableOrdenes dinero : table_pedidos.getItems()){
-                double subDinero = dinero.getSubcantidad();
-                dineroUnidad += subDinero;
-            }
-            double Total = Math.round(dineroUnidad * 100.0) / 100.0;
-            label_precioTotal.setText(String.valueOf(Total));
-
+        precioTotal(0.0);
 
 
     }
+    //inicializar hora
+    public void obtenerHora(){
+        // Configura un Timeline para actualizar el Label cada segundo
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            // Obtiene la hora actual y la formatea
+            String horaActual = LocalTime.now().format(formatter);
+            // Actualiza el texto del Label
+            lb_hora.setText(horaActual);
+        }));
 
+        // Ejecuta el Timeline indefinidamente
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
+    }
 
+    //inicialiar fecha
+    public void obtenerFecha(){
+        // Configura un Timeline para actualizar el Label cada minuto
+        Timeline timeline = new Timeline(new KeyFrame(Duration.minutes(1), event -> {
+            // Obtiene la fecha actual y la formatea
+            String fechaActual = LocalDate.now().format(dateFormatter);
+            // Actualiza el texto del Label
+            lb_fecha.setText(fechaActual);
+        }));
 
+        // Ejecuta el Timeline indefinidamente
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
 
+        // Establece la fecha inicial al iniciar la aplicación
+        lb_fecha.setText(LocalDate.now().format(dateFormatter));
+
+    }
 
     // llenar tabla de producto
     public void llenarTabla() throws SQLException {
@@ -157,12 +164,46 @@ public class vistapedidoController {
     }
 
 
+    //llenar table ordenes
+    public List<llenarTableOrdenes> llenarTavlarOrder() {
+        List<llenarTableOrdenes> orders = new ArrayList<>();
+
+        productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
+        id_producto = productoSeleccionado.getId_productos();
+
+
+        double cantidadP = Double.parseDouble(cantidad);
+        double Sub_cantidad = Double.parseDouble(subtotal);
+
+        orders.add(new llenarTableOrdenes(cantidad, product, mensaje, (Sub_cantidad * cantidadP) , id_producto));
+
+        columm_cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
+        columm_productoPedido.setCellValueFactory(new PropertyValueFactory<>("producto"));
+        columm_Extra.setCellValueFactory(new PropertyValueFactory<>("mensajeP"));
+        columm_subTotal.setCellValueFactory(new PropertyValueFactory<>("subcantidad"));
+
+        table_pedidos.getItems().addAll(orders);
+
+        return orders;
+    }
+
+
     // Método para pasar pasar datos
     public void aptenerProductToOrder(String[] datos) {
         this.mensaje = mensaje = datos[0];
         this.cantidad = cantidad = String.valueOf(Integer.parseInt(datos[1]));
         this.product = product = datos[2];
         this.subtotal = subtotal = String.valueOf(Double.parseDouble(datos[3]));
+    }
+
+    //metodo para ver el precio total
+    private void precioTotal(double total) throws SQLException {
+
+        for (llenarTableOrdenes orden : table_pedidos.getItems()) {
+            double subTotal = orden.getSubcantidad();
+            total += subTotal;
+        }
+        label_precioTotal.setText("Precio Total: $" + total);
     }
 
 
@@ -175,8 +216,6 @@ public class vistapedidoController {
     // envia los datos a la otra vista
     public void but_Pasarvista(ActionEvent actionEvent) throws SQLException {
         try {
-            this.id_butoon = 0;
-
             productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
             // validar la linea
             if (productoSeleccionado == null) {
@@ -200,7 +239,7 @@ public class vistapedidoController {
             //manda el id producto
             VentanaEmegerteCocinaController ventnanaEmegerteCocina = loader.getController();
             ventnanaEmegerteCocina.setVistapedidoController(this);
-            ventnanaEmegerteCocina.initialize(id_producto, name, subTotal, id_butoon);
+            ventnanaEmegerteCocina.initialize(id_producto, name, subTotal);
 
             // Crear y mostrar la nueva ventana
             Stage newStage = new Stage();
@@ -212,17 +251,13 @@ public class vistapedidoController {
 
             double Cantidad = Double.parseDouble(cantidad);
             subTotal *= Cantidad;
-            updateCantidadDinerp(subTotal);
+            precioTotal(subTotal);
             llenarTavlarOrder();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
-
-    //subTotal
-    private double subTotal;
 
 
     public void but_menu(MouseEvent mouseEvent) {
@@ -244,114 +279,97 @@ public class vistapedidoController {
         String categoriaSeleccionada = (String) cboCategoria.getValue();
         List<productos> venta = productosDAO.productoFiltradoCategoria(categoriaSeleccionada);
 
-        tableView.getItems().clear();
-        ;
+        tableView.getItems().clear();;
         tableView.getItems().addAll(venta);
         setTabla();
     }
 
-    public void setTabla() {
+
+    public void bt_buscar(ActionEvent actionEvent) throws SQLException {
+        String producto = txt_buscar.getText();;
+
+        List<productos> venta = productosDAO.productoFiltradoPalabra(producto);
+
+        tableView.getItems().clear();;
+        tableView.getItems().addAll(venta);
+        setTabla();
+    }
+
+    public void setTabla(){
         columm_producto.setCellValueFactory(new PropertyValueFactory<>("nombre_Producto"));
         columm_descripcion.setCellValueFactory(new PropertyValueFactory<>("descriccios_Producto"));
         columm_precioUnitario.setCellValueFactory(new PropertyValueFactory<>("precio_unitario"));
     }
 
-
-    public void bt_buscar(ActionEvent actionEvent) throws SQLException {
-        String producto = txt_buscar.getText();
-        ;
-
-        List<productos> venta = productosDAO.productoFiltradoPalabra(producto);
-
-        tableView.getItems().clear();
-        ;
-        tableView.getItems().addAll(venta);
-        setTabla();
-    }
-
-
-
     // a qui se va mandar a cocina siuuuuuu
     public void but_cocina(ActionEvent actionEvent) throws SQLException {
+        // Recorremos todos los elementos en la tabla
+            for (llenarTableOrdenes orden : table_pedidos.getItems()) {
 
-        if (table_pedidos.getItems().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "No hay productos en la lista");
-            return;
-        }
+                String cantidad = orden.getCantidad();
+                String producto = orden.getProducto();
+                String mensaje = orden.getMensajeP();
+                 id_producto = orden.getId_producto();
 
-        for (llenarTableOrdenes orden : table_pedidos.getItems()) {
+                double subTotal = orden.getSubcantidad();
+                int cantidadPlato = Integer.parseInt(cantidad);
 
-            String cantidad = orden.getCantidad();
-            String producto = orden.getProducto();
-            String mensaje = orden.getMensajeP();
-            id_producto = orden.getIdProducto();
+                Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, subTotal, id_empleado, mensaje);
 
-            double subTotal = orden.getSubcantidad();
-            int cantidadPlato = Integer.parseInt(cantidad);
+                Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
+                detallesOrdenes.insertDetallesOrdenes(de);
 
-            Detalles_ordenes de = new Detalles_ordenes(idOrden, id_producto, nunMesa, cantidadPlato, subTotal, id_empleado, mensaje);
-
-            Detalle_ordenesDAO detallesOrdenes = new Detalle_ordenesDAO();
-            detallesOrdenes.insertDetallesOrdenes(de);
-
-//            JOptionPane.showMessageDialog(null, "id_Orden: " + idOrden + " id producto: " + id_producto +
-//                    " Numero mesa: " + nunMesa + " Cantidad plato: " + cantidadPlato + " id Empleado: " + id_empleado +
-//                    " Mensaje: " + mensaje + " total: " + subTotal);
-        }
+                JOptionPane.showMessageDialog(null, "id_Orden: " + idOrden + " id producto: " + id_producto +
+                        " Numero mesa: " + nunMesa + " Cantidad plato: " + cantidadPlato + " id Empleado: " + id_empleado +
+                        " Mensaje: " + mensaje + " total: " + subTotal);
+            }
 
         table_pedidos.getItems().clear();
     }
 
+    @FXML
+    public void abrirInterfazB() {
+        try {
+            // Cargar el FXML de InterfazB
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/pago.fxml"));
+            Parent root = loader.load();
 
+            // Obtener el controlador de InterfazB
+            vistamesaController controladorB = loader.getController();
 
+            int id = idOrden;
+            // Pasar la variable mensaje a InterfazB
+            controladorB.recibirId((id));
+            System.out.println("pasando el id de la orden" +id);
 
-    //llenar table ordenes
-    public List<llenarTableOrdenes> llenarTavlarOrder() {
-        List<llenarTableOrdenes> orders = new ArrayList<>();
-
-        productos productoSeleccionado = tableView.getSelectionModel().getSelectedItem();
-        id_producto = productoSeleccionado.getId_productos();
-
-
-        double cantidadP = Double.parseDouble(cantidad);
-        double Sub_cantidad = Double.parseDouble(subtotal);
-
-        double precioToalUnitario = Math.round((Sub_cantidad * cantidadP) * 100.0) / 100.0;
-
-        orders.add(new llenarTableOrdenes(cantidad, product, mensaje, precioToalUnitario, id_producto));
-
-        columm_cantidad.setCellValueFactory(new PropertyValueFactory<>("cantidad"));
-        columm_productoPedido.setCellValueFactory(new PropertyValueFactory<>("producto"));
-        columm_Extra.setCellValueFactory(new PropertyValueFactory<>("mensajeP"));
-        columm_subTotal.setCellValueFactory(new PropertyValueFactory<>("subcantidad"));
-
-        table_pedidos.getItems().addAll(orders);
-
-        return orders;
+            // Mostrar InterfazB
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-
-
     //metodo para editar las ordenes
     public void but_editar(ActionEvent actionEvent) throws IOException {
-        this.id_butoon = 1;
-        // Cargar la ventana emergente
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/ventanaEmegerteCocina.fxml"));
         Parent root = loader.load();
 
-        // Obtener la fila seleccionada
-        llenarTableOrdenes ordenSeleccionada = table_pedidos.getSelectionModel().getSelectedItem();
-        if (ordenSeleccionada == null) {
-            JOptionPane.showMessageDialog(null, "Seleccione una orden" + id_butoon);
-            return;
+        llenarTableOrdenes Taordeners = table_pedidos.getSelectionModel().getSelectedItem();
+        if (Taordeners == null){
+            JOptionPane.showMessageDialog(null, "Selecciones un ordenen");
+            return ;
         }
 
-        String PlatosTotal = (ordenSeleccionada.getCantidad());
+        int cantida = Integer.parseInt(Taordeners.getCantidad());
+        String mensaje = Taordeners.getMensajeP();
 
-        // Pasar datos al controlador de la ventana emergente
-        VentanaEmegerteCocinaController controladorEmergente = loader.getController();
-        controladorEmergente.actualizarTableOrdenes(ordenSeleccionada, PlatosTotal, mensaje, id_butoon, Double.parseDouble(subtotal));
 
-        // Mostrar la ventana emergente
+        VentanaEmegerteCocinaController ventanaEcocina = loader.getController();
+        ventanaEcocina.actualizarTableOrdenes();
+
+
         Stage newStage = new Stage();
         Scene scene = new Scene(root);
         newStage.setScene(scene);
@@ -359,144 +377,63 @@ public class vistapedidoController {
         newStage.initModality(Modality.APPLICATION_MODAL);
         newStage.showAndWait();
 
-
-
-
-
-
-
-
-
-
-
-
-
-      ///  double subTotal = ordenSeleccionada.getSubcantidad();
-        updateCantidadDinerp(subTotal);
-
-        table_pedidos.refresh(); // Refresca para mostrar cambios
     }
-
-
-    //inicializar hora
-    public void obtenerHora() {
-
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
-            // Obtiene la hora actual y la formatea
-            String horaActual = LocalTime.now().format(formatter);
-            // Actualiza el texto del Label
-            lb_hora.setText(horaActual);
-        }));
-
-        // Ejecuta el Timeline indefinidamente
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-    }
-
-
-    //inicialiar fecha
-    public void obtenerFecha() {
-        // Configura un Timeline para actualizar el Label cada minuto
-        Timeline timeline = new Timeline(new KeyFrame(Duration.minutes(1), event -> {
-            // Obtiene la fecha actual y la formatea
-            String fechaActual = LocalDate.now().format(dateFormatter);
-            // Actualiza el texto del Label
-            lb_fecha.setText(fechaActual);
-        }));
-
-        // Ejecuta el Timeline indefinidamente
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
-
-        // Establece la fecha inicial al iniciar la aplicación
-        lb_fecha.setText(LocalDate.now().format(dateFormatter));
-
-    }
-
-    @FXML
-    public void but_eliminar(ActionEvent actionEvent) {
-        llenarTableOrdenes ordenSeleccionada = table_pedidos.getSelectionModel().getSelectedItem();
-        if (ordenSeleccionada == null) {
-            JOptionPane.showMessageDialog(null, "Seleccione una orden");
-            return;
-        }
-
-        // Obtener y validar el precio actual del label
-        double total;
-        try {
-            total = Double.parseDouble(label_precioTotal.getText());
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Error al interpretar el precio total.");
-            return;
-        }
-
-        // Restar el subtotal del elemento seleccionado
-        double totalModificado = total - ordenSeleccionada.getSubcantidad();
-        totalModificado = Math.round(totalModificado * 100.0) / 100.0; // Redondear a 2 decimales
-        label_precioTotal.setText(String.valueOf(totalModificado));
-
-        // Eliminar la orden seleccionada de la lista
-        table_pedidos.getItems().remove(ordenSeleccionada);
-    }
-
 
 
     // clase para la tabla de ordenes
     public class llenarTableOrdenes {
-        private SimpleStringProperty cantidad;
-        private SimpleStringProperty producto;
-        private SimpleStringProperty mensajeP;
-        private SimpleDoubleProperty subcantidad;
-        private SimpleIntegerProperty idProducto;
+        private String cantidad;
+        private String productos;
+        private String mensajeP;  // El nombre del atributo es mensajeP
+        private double subcantidad;
+        private int id_producto;
 
-        public llenarTableOrdenes(String cantidad, String producto, String mensajeP, double subcantidad, int idProducto) {
-            this.cantidad = new SimpleStringProperty(cantidad);
-            this.producto = new SimpleStringProperty(producto);
-            this.mensajeP = new SimpleStringProperty(mensajeP);
-            this.subcantidad = new SimpleDoubleProperty(subcantidad);
-            this.idProducto = new SimpleIntegerProperty(idProducto);
+        public llenarTableOrdenes(String cantidad, String productos, String mensajeP, double subcantidad, int id_producto) {
+            this.cantidad = cantidad;
+            this.productos = productos;
+            this.mensajeP = mensajeP;
+            this.subcantidad = subcantidad;
+            this.id_producto = id_producto;
         }
 
         public String getCantidad() {
-            return cantidad.get();
+            return cantidad;
         }
 
         public void setCantidad(String cantidad) {
-            this.cantidad.set(cantidad);
+            this.cantidad = cantidad;
         }
 
         public String getProducto() {
-            return producto.get();
+            return productos;
         }
 
         public void setProducto(String producto) {
-            this.producto.set(producto);
+            this.productos = producto;
         }
 
-        public String getMensajeP() {
-            return mensajeP.get();
+        public String getMensajeP() {  // Cambia de getMesajeP() a getMensajeP()
+            return mensajeP;
         }
 
         public void setMensajeP(String mensajeP) {
-            this.mensajeP.set(mensajeP);
+            this.mensajeP = mensajeP;
         }
 
         public double getSubcantidad() {
-            return subcantidad.get();
+            return subcantidad;
         }
 
         public void setSubcantidad(double subcantidad) {
-            this.subcantidad.set(subcantidad);
+            this.subcantidad = subcantidad;
         }
-
-        public int getIdProducto() {
-            return idProducto.get();
+        public int getId_producto() {
+            return id_producto;
         }
-
-        public void setIdProducto(int idProducto) {
-            this.idProducto.set(idProducto);
+        public void setId_producto(int id_producto) {
+            this.id_producto = id_producto;
         }
     }
+
 
 }
