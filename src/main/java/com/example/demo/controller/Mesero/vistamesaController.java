@@ -67,7 +67,7 @@ public class vistamesaController {
     private int numeeroMesa = 0;
 
     public int pin = 1234;
-    private int id_empleado = 0;
+    private static int id_empleado = 0;
 
     private String nameEmpleado;
     private String apellidoEmpleado;
@@ -376,5 +376,13 @@ public class vistamesaController {
     int id;
     public void recibirId(int idrecibido) {
         id = idrecibido;// Muestra el mensaje en el Label
+    }
+
+    public int getId_empleado() {
+        return id_empleado;
+    }
+
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
     }
 }

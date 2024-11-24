@@ -489,7 +489,6 @@ public class vistapedidoController {
     public void setCliente(client cliente, int id_empleado, int nunMesa) throws SQLException {
         this.id_empleado = id_empleado;
         this.nunMesa = nunMesa;
-        // this.cliente = cliente;
 
         obtenerHora();
         obtenerFecha();
