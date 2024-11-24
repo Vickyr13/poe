@@ -1,5 +1,6 @@
 package com.example.demo.controller.Mesero;
 
+import com.example.demo.Model.Comanda;
 import com.example.demo.database.CocinaDAO;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -119,7 +120,7 @@ public class VistaCocinaController {
     }
 
     private void loadOrdenes() throws SQLException {
-        ObservableList<Map> ordenes = cocinaDAO.datosOrden(1); // Cambiar 1 por el número de mesa deseado
+        ObservableList<Comanda> ordenes = cocinaDAO.datosOrden(1); // Cambiar 1 por el número de mesa deseado
 
         // Dividir las órdenes en 4 listas para cada TableView
         int totalOrdenes = ordenes.size();
@@ -132,13 +133,13 @@ public class VistaCocinaController {
 
         for (int i = 0; i < totalOrdenes; i++) {
             if (i < ordenesPorTableView) {
-                list1.add(ordenes.get(i));
+                list1.add((Map<String, Object>) ordenes.get(i));
             } else if (i < 2 * ordenesPorTableView) {
-                list2.add(ordenes.get(i));
+                list2.add((Map<String, Object>) ordenes.get(i));
             } else if (i < 3 * ordenesPorTableView) {
-                list3.add(ordenes.get(i));
+                list3.add((Map<String, Object>) ordenes.get(i));
             } else {
-                list4.add(ordenes.get(i));
+                list4.add((Map<String, Object>) ordenes.get(i));
             }
         }
 

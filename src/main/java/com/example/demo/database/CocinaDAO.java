@@ -1,5 +1,6 @@
 package com.example.demo.database;
 
+import com.example.demo.Model.Comanda;
 import com.example.demo.Model.Ordenes;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,17 +16,17 @@ import java.util.Map;
 public class CocinaDAO {
 
     // Método para obtener las órdenes pendientes en la vista de cocina
-    public static ObservableList<Map> datosOrden(int numeroMesa) {
-        ObservableList<Map> lista = FXCollections.observableArrayList();
+    public static ObservableList<Comanda> datosOrden(int numeroMesa) {
+        ObservableList<Comanda> lista = FXCollections.observableArrayList();
 
-        String sql = "SELECT \n" +
-                "    cantidad,\n" +
-                "    p.nombre_producto, \n" +
-                "    mesaje\n" +
-                "FROM detalle_ordenes od\n" +
-                "JOIN mesa m ON od.id_mesa = m.id_mesa\n" +
-                "JOIN ordenes o ON od.id_orden = o.id_orden\n" +
-                "JOIN productos p ON od.id_producto = p.id_producto\n" +
+        String sql = "SELECT " +
+                "    cantidad, " +
+                "    p.nombre_producto, " +
+                "    mesaje " +
+                "FROM detalle_ordenes od " +
+                "JOIN mesa m ON od.id_mesa = m.id_mesa " +
+                "JOIN ordenes o ON od.id_orden = o.id_orden " +
+                "JOIN productos p ON od.id_producto = p.id_producto " +
                 "WHERE m.numero_mesa = ?;";
 
         try (Connection con = conneection.getConnection();
@@ -35,11 +36,12 @@ public class CocinaDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    Map<String, Object> producto = new HashMap<>();
-                    producto.put("cantidad", rs.getInt("cantidad"));
-                    producto.put("nombre_producto", rs.getString("nombre_producto"));
-                    producto.put("mesaje", rs.getString("mesaje"));
-                    lista.add(producto);
+                    int cantidad = rs.getInt("cantidad");
+                    String nombreProducto = rs.getString("nombre_producto");
+                    String mensaje = rs.getString("mesaje");
+
+                    Comanda comanda = new Comanda(cantidad, nombreProducto, mensaje);
+                    lista.add(comanda);
                 }
             }
         } catch (SQLException e) {
@@ -48,6 +50,7 @@ public class CocinaDAO {
         }
         return lista;
     }
+
 
     // Método para finalizar una orden
     public void finalizarOrden(int idOrden) throws SQLException {
