@@ -37,6 +37,9 @@ public class AdminFormCategoria {
     @FXML
     private RadioButton rdoInactivo;
 
+    private int idbuttom = 0;
+
+
     @FXML
     void REGRESAR(ActionEvent event) {
         CambiarVista("AdminCategorias");
@@ -75,6 +78,14 @@ public class AdminFormCategoria {
 
     public void Btn_Agregar_Plato(ActionEvent actionEvent) {
 
+        if(idbuttom == 2){
+            Ingresar_Usuario();
+        }else {
+            guardarCambios();
+        }
+    }
+
+    private void Ingresar_Usuario(){
         if(validate()){
 
             String nombre_categoria = Txt_NombreP.getText();
@@ -94,7 +105,6 @@ public class AdminFormCategoria {
             };
 
         }
-
     }
 
 
@@ -114,6 +124,8 @@ public class AdminFormCategoria {
     }
 
     private int id_categoria;  // Variable para almacenar el ID del producto que estamos editando
+
+
 
     public void cargarDatosParaEditarCatego(Map<String, Object> categoria, String id_categoria) {
         Txt_NombreP.setText((String) categoria.get("nombre_categoria"));

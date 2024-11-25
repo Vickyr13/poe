@@ -59,7 +59,7 @@ public class AdminCategoriasController {
     private TableColumn<Map, Object> columnEstado;    // Columna para el estado
 
 
-    private static int id_button = 1;
+    private static int id_button;
 
     // Método que se llamará para cargar los datos en el TableView
     public void initialize() throws SQLException {
@@ -67,13 +67,7 @@ public class AdminCategoriasController {
        llenarTable();
     }
 
-    // Metodo Asigna el valor a las columnas
-//    private void configurarColumnas() {
-//        columIdCategoria.setCellValueFactory(new PropertyValueFactory<>("id_cstegoria") );
-//        columnCategoria.setCellValueFactory(new PropertyValueFactory<>("nombre_categoria"));
-//        columnEstado.setCellValueFactory(new PropertyValueFactory<>("estado_categoria"));
-//    }
-//     Método que se llamará para llenar el TableView con los datos de la base de datos
+//    Metodo que se llamará para llenar el TableView con los datos de la base de datos
     public void llenarTable() throws SQLException {
     ObservableList<Map> lista = CategoriaDAO.getCategoria();
     tableCategorias.setItems(lista);
@@ -128,8 +122,6 @@ public class AdminCategoriasController {
         }
     }
 
-    public void btnAgregar(javafx.event.ActionEvent actionEvent) {CambiarVista("AdminFormcategoria");}
-
     public void AgregarCategoria(ActionEvent actionEvent) {
         id_button = 2;
         CambiarVista("AdminFormCategoria");
@@ -168,10 +160,6 @@ public class AdminCategoriasController {
         } else {
             JOptionPane.showMessageDialog(null, "No se ha seleccionado ninguna fila");
         }
-    }
-
-    public static int getIdButton() {
-        return id_button;
     }
 
 }
