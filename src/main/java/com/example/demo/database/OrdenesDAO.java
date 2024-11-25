@@ -244,12 +244,14 @@ public class OrdenesDAO {
         return idOrden;
     }
 
-    public static void inactivarOrden(int idOrden) throws SQLException {
-        String sql = "UPDATE ordenes SET estado = 'inactiva' WHERE id_orden = ?";
+    public static void inactivarOrden(int idOrden, double precioTotal) throws SQLException {
+        String sql = "UPDATE ordenes SET precio_total = ?, estado = 'inactiva' WHERE id_orden = ?;";
 
         try (Connection con = conneection.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
-            ps.setInt(1, idOrden);
+            ps.setDouble(1, precioTotal);
+            ps.setInt(2, idOrden);
+
             ps.executeUpdate();
             System.out.println("orden inactiva!");
         } catch (SQLException e) {

@@ -14,6 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.MapValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -40,6 +41,7 @@ public class vistamesaController {
     public Label label_Total;
     @FXML
     public Label lb_mesa;
+    public ImageView login;
     @FXML
     private Pane Pmesa5;
 
@@ -191,7 +193,7 @@ public class vistamesaController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
+    } // ???
 
     public void mesa1(MouseEvent mouseEvent) throws SQLException {
         ClickController(mouseEvent, 1);
@@ -234,7 +236,6 @@ public class vistamesaController {
     }
     public void mesa14(MouseEvent mouseEvent) throws SQLException {
         ClickController(mouseEvent, 14);
-
     }
     public void mesa15(MouseEvent mouseEvent) throws SQLException {
         ClickController(mouseEvent, 15);
@@ -260,9 +261,10 @@ public class vistamesaController {
 
     // vistas emejertes
     public void but_LimpiarMesa(ActionEvent actionEvent) throws IOException {
-        // navegarNo(rutaPentiende);
         vistaVerOrdenes();
     }
+
+
     public void but_domicilio(ActionEvent actionEvent) throws IOException {
         try {
             // Cargar el FXML de la ruta especificada
@@ -309,27 +311,6 @@ public class vistamesaController {
         }
     }
 
-    public void navegarNo(String ruta) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(ruta));
-            Parent root = loader.load();
-
-            // Obtener el controlador de la nueva vista
-            VentanaDomicilioController controller = loader.getController();
-            controller.setMainStage((Stage) Pmesa5.getScene().getWindow());
-            controller.initialize(id_empleado);
-
-            Stage newStage = new Stage();
-            Scene scene = new Scene(root);
-
-            newStage.setScene(scene);
-            newStage.initOwner(Pmesa5.getScene().getWindow());
-            newStage.initModality(Modality.APPLICATION_MODAL);
-            newStage.showAndWait();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 
     public  void vistaVerOrdenes() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/ventanaPedido.fxml"));
@@ -366,11 +347,9 @@ public class vistamesaController {
 
     }
 
-    public void but_pedidoMesa(ActionEvent actionEvent) {
-    }
+
 
     public void ClickController(MouseEvent mouseEvent, int numeroMesa) throws SQLException {
-
         if(mouseEvent.getClickCount() == 2) {
             numeeroMesa = numeroMesa;
             navegar(rutaPedido);
@@ -379,11 +358,6 @@ public class vistamesaController {
             // precioTotal();
             numeeroMesa = numeroMesa;
         }
-    }
-
-    int id;
-    public void recibirId(int idrecibido) {
-        id = idrecibido;// Muestra el mensaje en el Label
     }
 
     public int getId_empleado() {
@@ -400,5 +374,16 @@ public class vistamesaController {
 
     public static void setName(String name) {
         vistamesaController.name = name;
+    }
+
+    public void but_login(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/login-mesero.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) login.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
+        stage.show();
     }
 }

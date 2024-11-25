@@ -11,6 +11,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 public class AdminDashboardController {
 
+    public ImageView logo;
     @FXML
     private AnchorPane CategoriasPAnel;
 
@@ -195,6 +197,18 @@ public class AdminDashboardController {
         ObservableList<PieChart.Data> datos = dashboardDAO.obtenerTopEmpleadosVentas();
         pieChartVentas.setData(datos);
     }
+
+    public void but_login(MouseEvent mouseEvent) throws IOException {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/login-mesero.fxml"));
+                Parent root = loader.load();
+
+                Stage stage = (Stage) logo.getScene().getWindow();
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+
+                stage.show();
+            }
+
 }
 
 

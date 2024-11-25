@@ -1,16 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<Pane fx:id="panel" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.vistamesaController">
+<Pane fx:id="panel" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.vistamesaController">
       <children>
          <Pane prefHeight="119.0" prefWidth="1008.0" style="-fx-background-color: #003E45;">
             <children>
-               <ImageView fitHeight="78.0" fitWidth="79.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <ImageView fx:id="login" fitHeight="78.0" fitWidth="79.0" layoutX="14.0" layoutY="10.0" onMouseClicked="#but_login" pickOnBounds="true" preserveRatio="true">
                   <image>
                      <Image url="@../../img/logopng1.png" />
                   </image>

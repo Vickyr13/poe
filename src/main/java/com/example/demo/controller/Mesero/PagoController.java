@@ -44,7 +44,7 @@ public class PagoController {
                 System.out.println("el id recibido de la orden es" + idOrden);
 
                 OrdenesDAO queryOrden = new OrdenesDAO();
-                queryOrden.inactivarOrden(idOrden);
+                queryOrden.inactivarOrden(idOrden, total);
                 orden.finalizarOrden(nmesa);
 
                 Stage stage = (Stage) bt_pagar.getScene().getWindow();

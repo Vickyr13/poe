@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" stylesheets="@../../style/dasgboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminDashboardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #002844;" stylesheets="@../../style/dasgboard.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminDashboardController">
    <children>
       <AnchorPane layoutX="200.0" prefHeight="80.0" prefWidth="1082.0" style="-fx-background-color: #0F2027;">
          <children>
@@ -30,7 +30,7 @@
       </AnchorPane>
       <AnchorPane layoutY="1.0" prefHeight="756.0" prefWidth="200.0" style="-fx-background-color: #0F2027;">
          <children>
-            <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="logo" fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" onMouseClicked="#but_login" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../img/logopng1.png" />
                </image>
