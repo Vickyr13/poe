@@ -12,13 +12,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style/dasgboard.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminUsuariosController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../../style/dasgboard.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Admin.AdminUsuariosController">
    <children>
-      <Pane fx:id="backPanel" layoutX="-45.0" layoutY="-36.0" prefHeight="757.0" prefWidth="1280.0" style="-fx-background-color: #002844;">
+      <Pane fx:id="backPanel" layoutY="-1.0" prefHeight="762.0" prefWidth="1235.0" style="-fx-background-color: #002844;">
          <children>
             <Pane layoutX="235.0" prefHeight="80.0" prefWidth="1045.0">
                <children>
-                  <AnchorPane layoutX="-16.0" prefHeight="80.0" prefWidth="1061.0" style="-fx-background-color: #0F2027;">
+                  <AnchorPane layoutX="-23.0" prefHeight="80.0" prefWidth="1022.0" style="-fx-background-color: #0F2027;">
                      <children>
                         <Label layoutX="367.0" layoutY="9.0" stylesheets="@../../style/dasgboard.css" text="Empleados" textFill="WHITE">
                            <font>
@@ -33,7 +33,7 @@
                   </AnchorPane>
                </children>
             </Pane>
-            <TableView fx:id="tablaEmpleados" editable="true" layoutX="237.0" layoutY="141.0" prefHeight="482.0" prefWidth="1030.0" style="-fx-background-radius: 25;" tableMenuButtonVisible="true">
+            <TableView fx:id="tablaEmpleados" editable="true" layoutX="237.0" layoutY="141.0" prefHeight="482.0" prefWidth="982.0" style="-fx-background-radius: 25;" tableMenuButtonVisible="true">
               <columns>
                 <TableColumn fx:id="nombre" prefWidth="111.20001220703125" text="Nombre" />
                 <TableColumn fx:id="apellido" prefWidth="87.20001220703125" text="Apellido" />
@@ -42,8 +42,8 @@
                   <TableColumn fx:id="mail" prefWidth="132.00006103515625" text="Correo" />
                   <TableColumn fx:id="contraro" minWidth="0.0" prefWidth="154.66668701171875" text="Fecha Contratacion" />
                   <TableColumn fx:id="cargo" prefWidth="111.333251953125" text="Cargo" />
-                  <TableColumn fx:id="estado" prefWidth="109.3331298828125" text="Estado" />
-                  <TableColumn fx:id="pin" prefWidth="90.0001220703125" text="Pin" />
+                  <TableColumn fx:id="estado" prefWidth="102.0" text="Estado" />
+                  <TableColumn fx:id="pin" prefWidth="99.0" text="Pin" />
               </columns>
                <opaqueInsets>
                   <Insets />
@@ -51,6 +51,7 @@
             </TableView>
             <Button fx:id="btnEditar" layoutX="614.0" layoutY="671.0" mnemonicParsing="false" onAction="#btnEditar" prefHeight="52.0" prefWidth="302.0" style="-fx-background-color: E26913;" styleClass="boton-editar" stylesheets="@../../style/vista-pedido.css" text="Editar" />
             <Button fx:id="btnEliminar" layoutX="381.0" layoutY="671.0" mnemonicParsing="false" onAction="#EliminarEmpleado" prefHeight="52.0" prefWidth="172.0" styleClass="boton-Eliminar" stylesheets="@../../style/vista-pedido.css" text="Eliminar" />
+            <Button fx:id="btnAgregar" layoutX="973.0" layoutY="673.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="52.0" prefWidth="255.0" styleClass="boton-agregar" stylesheets="@../../style/vista-pedido.css" text="Agregar Emplado" />
          </children>
       </Pane>
       <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="24.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
@@ -58,7 +59,7 @@
             <Image url="@../../img/logopng1.png" />
          </image>
       </ImageView>
-      <AnchorPane prefHeight="756.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
+      <AnchorPane prefHeight="756.0" prefWidth="200.0" style="-fx-background-color: #0F2027;">
          <children>
             <ImageView fitHeight="80.0" fitWidth="80.0" layoutX="14.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -85,7 +86,7 @@
                   <Font name="Cambria Bold" size="14.0" />
                </font>
             </Label>
-            <AnchorPane fx:id="UsuariosPanel" layoutY="233.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="UsuariosPanel" layoutX="-1.0" layoutY="240.0" onMouseClicked="#ClickUsuarios" prefHeight="50.0" prefWidth="150.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Empleados" textFill="WHITE">
                      <font>
@@ -94,16 +95,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="ProductosPanel" layoutX="1.0" layoutY="284.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
-               <children>
-                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="OrdenesPanel" layoutX="2.0" layoutY="336.0" onMouseClicked="#ClickOrdenes" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="OrdenesPanel" layoutX="-1.0" layoutY="364.0" onMouseClicked="#ClickOrdenes" prefHeight="62.0" prefWidth="190.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                      <font>
@@ -112,7 +104,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="CategoriasPAnel" layoutX="2.0" layoutY="387.0" onMouseClicked="#ClickCategorias" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="CategoriasPAnel" layoutY="426.0" onMouseClicked="#ClickCategorias" prefHeight="52.0" prefWidth="220.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textFill="WHITE">
                      <font>
@@ -121,7 +113,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="50.0" prefWidth="220.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+            <AnchorPane fx:id="DashboardPanel" layoutX="-1.0" layoutY="178.0" onMouseClicked="#ClickDashboard" prefHeight="52.0" prefWidth="150.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                <children>
                   <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                      <font>
@@ -130,8 +122,16 @@
                   </Label>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="ProductosPanel" layoutX="2.0" layoutY="302.0" onMouseClicked="#ClickProductos" prefHeight="50.0" prefWidth="220.0" styleClass="panel" stylesheets="@../../style/Panels.css">
+               <children>
+                  <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <Button fx:id="btnAgregar" layoutX="935.0" layoutY="670.0" mnemonicParsing="false" onAction="#btnAgregar" prefHeight="52.0" prefWidth="255.0" styleClass="boton-agregar" stylesheets="@../../style/vista-pedido.css" text="Agregar Emplado" />
    </children>
 </AnchorPane>

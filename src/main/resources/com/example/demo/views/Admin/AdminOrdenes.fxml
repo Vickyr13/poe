@@ -29,7 +29,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane prefHeight="756.0" prefWidth="222.0" style="-fx-background-color: #0F2027;">
+            <Pane prefHeight="756.0" prefWidth="199.0" style="-fx-background-color: #0F2027;">
                <children>
                   <Label layoutX="112.0" layoutY="23.0" text="Sal" textFill="WHITE">
                      <font>
@@ -51,25 +51,25 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Pane fx:id="UsuariosPanel" layoutY="235.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="UsuariosPanel" layoutY="237.0" onMouseClicked="#ClickUsuarios" prefHeight="61.0" prefWidth="193.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                      <children>
-                        <Label layoutX="67.0" layoutY="15.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Emplados" textAlignment="CENTER" textFill="WHITE">
+                        <Label layoutX="61.0" layoutY="17.0" prefHeight="27.0" prefWidth="87.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Empleados" textAlignment="CENTER" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="DashboardPanel" layoutY="183.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="DashboardPanel" layoutY="176.0" onMouseClicked="#ClickDashboard" prefHeight="61.0" prefWidth="200.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                      <children>
-                        <Label layoutX="67.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
+                        <Label layoutX="57.0" layoutY="17.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Dashboard" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="ProductosPanel" layoutY="287.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="ProductosPanel" layoutY="287.0" onMouseClicked="#ClickProductos" prefHeight="61.0" prefWidth="199.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                      <children>
                         <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Productos" textAlignment="CENTER" textFill="WHITE">
                            <font>
@@ -78,7 +78,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="OrdenesPanel" layoutY="339.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="OrdenesPanel" layoutY="339.0" onMouseClicked="#ClickOrdenes" prefHeight="61.0" prefWidth="199.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                      <children>
                         <Label layoutX="67.0" layoutY="13.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Ordenes" textFill="WHITE">
                            <font>
@@ -87,7 +87,7 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane fx:id="CategoriasPanel" layoutY="391.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="238.0" styleClass="panels" stylesheets="@../../style/dasgboard.css">
+                  <Pane fx:id="CategoriasPanel" layoutX="-1.0" layoutY="389.0" onMouseClicked="#ClickCategorias" prefHeight="61.0" prefWidth="199.0" styleClass="panel" stylesheets="@../../style/Panels.css">
                      <children>
                         <Label layoutX="67.0" layoutY="14.0" styleClass="estiloLetra" stylesheets="@../../style/dasgboard.css" text="Categorias" textAlignment="CENTER" textFill="WHITE">
                            <font>

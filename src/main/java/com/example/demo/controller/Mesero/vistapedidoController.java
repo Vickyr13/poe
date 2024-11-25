@@ -118,6 +118,7 @@ public class vistapedidoController {
 
 
     }
+
     //inicializar hora
     public void obtenerHora(){
         // Configura un Timeline para actualizar el Label cada segundo
