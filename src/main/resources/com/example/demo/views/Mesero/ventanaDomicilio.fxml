@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<Pane stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.VentanaDomicilioController">
+<Pane stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.VentanaDomicilioController">
     <children>
         <VBox alignment="CENTER" prefHeight="300.0" prefWidth="500.0" spacing="15.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 25px;">
             <children>
@@ -23,7 +28,7 @@
                 <TextArea fx:id="tex_direccion" prefHeight="100.0" prefWidth="400.0" promptText="Dirección del cliente" />
                 <HBox alignment="CENTER" spacing="30.0">
                     <children>
-                        <Button style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Cancelar" />
+                        <Button onAction="#but_cancelar" style="-fx-background-color: #f44336; -fx-text-fill: white;" text="Cancelar" />
                         <Button fx:id="but_confirmar" onAction="#but_confirmar" style="-fx-background-color: #66cc66; -fx-text-fill: white;" text="Confirmar" />
                     </children>
                 </HBox>

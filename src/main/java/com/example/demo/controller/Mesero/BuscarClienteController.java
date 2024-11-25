@@ -69,6 +69,7 @@ public class BuscarClienteController {
 public void setTabla(){
     column_cliente.setCellValueFactory(new PropertyValueFactory<>("nombreCliente"));
 }
+
     // llenar tabla de producto
     public void llenarTabla() throws SQLException {
         List<client> client = ClienteDAO.SelectClientes();
@@ -100,9 +101,7 @@ public void setTabla(){
 
                 vistamesaController mesa = new vistamesaController();
 
-                nuevaVentanaController.setCliente(clienteSeleccionado, mesa.getId_empleado(), 20); // Método en la nueva ventana para recibir el cliente
-
-                JOptionPane.showMessageDialog(null, "este es el id_empleado: "  + mesa.getId_empleado());
+                nuevaVentanaController.setCliente(clienteSeleccionado, mesa.getId_empleado(), 20, vistamesaController.getName());
 
                 // Crear un nuevo Stage (ventana)
                  Stage stage = new Stage();
@@ -133,7 +132,19 @@ public void setTabla(){
 
     @FXML
     void but_atras(ActionEvent event) {
+        try {
 
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) bt_buscar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void abrirNuevaVentanaYCerrar() {

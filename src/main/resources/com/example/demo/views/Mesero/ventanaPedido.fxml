@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 
-<Pane prefHeight="360.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10;" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.VentanaPedidoController">
+<Pane prefHeight="360.0" prefWidth="600.0" style="-fx-background-color: #f0f0f0; -fx-background-radius: 10;" stylesheets="@../../style/vistaMesa.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.controller.Mesero.VentanaPedidoController">
    <children>
       <!-- Título -->
       <Label layoutX="220.0" layoutY="20.0" style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Pedidos Pendientes" />
 
       <!-- Tabla de Pedidos -->
-      <TableView layoutX="50.0" layoutY="70.0" prefHeight="200.0" prefWidth="500.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-background-radius: 5;">
+      <TableView fx:id="table_ordenesActivas" layoutX="50.0" layoutY="70.0" prefHeight="200.0" prefWidth="500.0" style="-fx-border-color: lightgray; -fx-border-radius: 5; -fx-background-radius: 5;">
          <columns>
-            <TableColumn prefWidth="150.0" text="Nombre" />
-            <TableColumn prefWidth="200.0" text="Dirección" />
-            <TableColumn prefWidth="100.0" text="Precio" />
+            <TableColumn fx:id="Column_NumeroOrden" prefWidth="150.0" text="Numero orden" />
+            <TableColumn fx:id="Column_numeroMesa" prefWidth="200.0" text="Numero mesa " />
+            <TableColumn fx:id="Column_precio" prefWidth="146.0" text="Precio" />
          </columns>
       </TableView>
 
       <!-- Botones de Acción -->
       <HBox alignment="CENTER" layoutX="50.0" layoutY="300.0" prefHeight="46.0" prefWidth="500.0" spacing="20.0">
          <children>
-            <Button style="-fx-background-color: #f44336; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100px;" text="Cancelar" />
-            <Button fx:id="but_ok" onAction="#but_ok" prefHeight="41.0" prefWidth="122.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100px;" text="OK" />
+            <Button fx:id="but_ok" onAction="#but_ok" prefHeight="41.0" prefWidth="155.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold; -fx-pref-width: 100px;" text="OK" />
          </children>
          <padding>
             <Insets bottom="10" left="50" right="50" top="10" />
          </padding>
       </HBox>
-      <Button fx:id="atras" mnemonicParsing="false" onAction="#but_atras" prefHeight="41.0" prefWidth="22.0" style="-fx-background-color: #f44336;" text="X" />
    </children>
 </Pane>

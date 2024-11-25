@@ -259,4 +259,44 @@ public class OrdenesDAO {
     }
 
 
+
+    // mostar las ordens en la vista de mesa
+
+    public static List<Ordenes> ordenesActivas() throws SQLException {
+        List<Ordenes> listaOrdenes = new ArrayList<>();
+        String sql = """
+                SELECT\s
+                    o.id_orden,\s
+                    m.numero_mesa,\s
+                    SUM(d.sub_total) AS total_dinero
+                FROM\s
+                    ordenes o
+                JOIN\s
+                    detalle_ordenes d ON o.id_orden = d.id_orden
+                JOIN\s
+                    mesa m ON d.id_mesa = m.id_mesa
+                WHERE\s
+                    o.estado = 'Activo'
+                GROUP BY\s
+                    o.id_orden, m.numero_mesa;
+                """;
+
+        try (Connection con = conneection.getConnection();
+             PreparedStatement ps = con.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                int idOrden = rs.getInt("id_orden");
+                int numeroMesa = rs.getInt("numero_mesa");
+                double totalDinero = rs.getDouble("total_dinero");
+                Ordenes ordenes = new Ordenes(idOrden, numeroMesa, totalDinero);
+                listaOrdenes.add(ordenes);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listaOrdenes;
+    }
+
+
 }

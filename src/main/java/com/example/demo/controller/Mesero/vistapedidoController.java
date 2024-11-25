@@ -88,6 +88,7 @@ public class vistapedidoController {
     private int idOrden = -1;
     private int id_producto;
     private int id_butoon;
+    private double subTotal;
 
     private String mensaje = "";
     private String cantidad;
@@ -105,15 +106,16 @@ public class vistapedidoController {
     //-------------------------------------------------------------------------------------------------
 
     @FXML
-    public void initialize(String numeromesa, int id_Empleado) throws SQLException {
+    public void initialize(String numeromesa, int id_Empleado, String name) throws SQLException {
         obtenerHora();
         obtenerFecha();
+        lb_nombre.setText(name);
         //-----------------------------------------------------------------
         id_empleado = id_Empleado;
-        label_numeroMesa.setText("El numero de la mesa: " + numeromesa);
+        label_numeroMesa.setText("Mesa # " + numeromesa);
 
         nunMesa = Integer.parseInt(numeromesa);
-        label_numeroMesa.setText(numeromesa);
+      //  label_numeroMesa.setText(numeromesa);
 
         idOrden = OrdenesDAO.obtenerOrdenActivaPorMesa(nunMesa);
 
@@ -128,8 +130,6 @@ public class vistapedidoController {
 
 
     public void updateCantidadDinerp(double dineroUnidad){
-
-
         for(llenarTableOrdenes dinero : table_pedidos.getItems()){
             double subDinero = dinero.getSubcantidad();
             dineroUnidad += subDinero;
@@ -221,12 +221,14 @@ public class vistapedidoController {
     }
 
 
-    //subTotal
-    private double subTotal;
-
-
     public void but_menu(MouseEvent mouseEvent) {
         try {
+            if(!table_pedidos.getItems().isEmpty()) {
+                if (!confirmarAccion("¿Seguro que quiere salir?", "Salir de la orden")) {
+                    return;
+                }
+            }
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
             Parent root = loader.load();
 
@@ -278,6 +280,9 @@ public class vistapedidoController {
             JOptionPane.showMessageDialog(null, "No hay productos en la lista");
             return;
         }
+        if (!confirmarAccion("¿Seguro que quiere enciar a cosina?", "Enviar a Cocina")) {
+            return;
+        }
 
         for (llenarTableOrdenes orden : table_pedidos.getItems()) {
 
@@ -301,6 +306,20 @@ public class vistapedidoController {
 
         table_pedidos.getItems().clear();
         label_precioTotal.setText("0.00");
+    }
+
+    public boolean confirmarAccion(String mensaje, String titulo) {
+        // Mostrar un cuadro de confirmación
+        int opcion = JOptionPane.showConfirmDialog(
+                null,
+                mensaje,
+                titulo,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE
+        );
+
+        // Retornar true si el usuario seleccionó "Sí", false si seleccionó "No"
+        return opcion == JOptionPane.YES_OPTION;
     }
 
 
@@ -407,6 +426,9 @@ public class vistapedidoController {
             return;
         }
 
+        if (!confirmarAccion("¿Seguro que quiere eliminar?", "Eliminar orden")) {
+            return;
+        }
         // Obtener y validar el precio actual del label
         double total;
         try {
@@ -486,10 +508,12 @@ public class vistapedidoController {
 
     //metodo que recibe el cliente
     // Método para recibir el cliente
-    public void setCliente(client cliente, int id_empleado, int nunMesa) throws SQLException {
+    public void setCliente(client cliente, int id_empleado, int nunMesa, String name) throws SQLException {
         this.id_empleado = id_empleado;
         this.nunMesa = nunMesa;
 
+        lb_nombre.setText(name);
+        label_numeroMesa.setText("A domicilio");
         obtenerHora();
         obtenerFecha();
         //-----------------------------------------------------------------
