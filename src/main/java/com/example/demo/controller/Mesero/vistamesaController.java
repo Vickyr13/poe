@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -33,9 +34,12 @@ public class vistamesaController {
     public Label lab_mesero;
     public Label lab_numeroMesa;
 
+    @FXML
     public Label lab_dineroTotal;
 
     public Label label_Total;
+    @FXML
+    public Label lb_mesa;
     @FXML
     private Pane Pmesa5;
 
@@ -60,16 +64,17 @@ public class vistamesaController {
     private TableView<Map> table_pedidos;
 
     private  String rutaPedido = "/com/example/demo/views/Mesero/vista-pedido.fxml";
-    private String rutaDomicilio= "/com/example/demo/views/Mesero/ventanaDomicilio.fxml";
+    private String rutaDomicilio= "/com/example/demo/views/Mesero/buscarcliente.fxml";
     private String rutaPentiende= "/com/example/demo/views/Mesero/ventanaPedido.fxml";
 
     private int numeeroMesa = 0;
 
     public int pin = 1234;
-    private int id_empleado = 0;
+    private static int id_empleado = 0;
 
-    private String nameEmpleado;
+    private static String nameEmpleado;
     private String apellidoEmpleado;
+    private static String name;
     int idOrden;
 
     @FXML
@@ -79,15 +84,17 @@ public class vistamesaController {
         if (!empleadosLis.isEmpty()) {
             Empleado empleado = empleadosLis.get(0);
 
-             nameEmpleado = empleado.getNombre_Empleado();
-             apellidoEmpleado = empleado.getApellido_Empleado();
-             id_empleado = empleado.getId_Empleado();
+            nameEmpleado = empleado.getNombre_Empleado();
+            apellidoEmpleado = empleado.getApellido_Empleado();
+            id_empleado = empleado.getId_Empleado();
 
         } else {
             JOptionPane.showMessageDialog(null, "No se encontraron empleados con ese pin.");
         }
-
-            label_Total.setText( "" + OrdenesDAO.totalPrecio(numeeroMesa));
+        name = nameEmpleado + " " + apellidoEmpleado;
+        labelNombre.setText(name);
+        label_Total.setText( "" + OrdenesDAO.totalPrecio(numeeroMesa));
+        lb_mesa.setText("");
     }
 
 
@@ -105,7 +112,9 @@ public class vistamesaController {
         columm_productoPedido.setCellValueFactory(new MapValueFactory<>("nombre_producto"));
         columm_comentario.setCellValueFactory(new MapValueFactory<>("mesaje"));
 
-        lab_mesero.setText(nameEmpleado + " " + apellidoEmpleado);
+        name = nameEmpleado + " " + apellidoEmpleado;
+        lab_mesero.setText("Numero de mesa: ");
+        lb_mesa.setText(String.valueOf(nunMesa));
         label_Total.setText("" + OrdenesDAO.totalPrecio(nunMesa));
 
         // Listener para obtener el id de la orden seleccionada
@@ -150,12 +159,12 @@ public class vistamesaController {
 
     @FXML
     public void but_pagar(ActionEvent event) {
-            // Verificar si se ha seleccionado una orden
-            if (idOrden == 0) {
-                JOptionPane.showMessageDialog(null, "Por favor selecciona una orden antes de proceder.");
-                return;
-            }
-            abrirNuevaVentanaConIdOrden(idOrden);
+        // Verificar si se ha seleccionado una orden
+        if (idOrden == 0) {
+            JOptionPane.showMessageDialog(null, "Por favor selecciona una orden antes de proceder.");
+            return;
+        }
+        abrirNuevaVentanaConIdOrden(idOrden);
 
     }
 
@@ -251,14 +260,30 @@ public class vistamesaController {
 
     // vistas emejertes
     public void but_LimpiarMesa(ActionEvent actionEvent) throws IOException {
-       // navegarNo(rutaPentiende);
+        // navegarNo(rutaPentiende);
         vistaVerOrdenes();
     }
+    public void but_domicilio(ActionEvent actionEvent) throws IOException {
+        try {
+            // Cargar el FXML de la ruta especificada
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaDomicilio));
+            Parent root = loader.load();
 
-    public void but_domicilio(ActionEvent actionEvent) {
+            // Crear una nueva escena con el contenido cargado
+            Scene nuevaEscena = new Scene(root);
 
-        navegarNo(rutaDomicilio);
+            // Obtener el Stage actual desde el evento
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+
+            // Establecer la nueva escena en el Stage y mostrarla
+            stage.setScene(nuevaEscena);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al cargar la vista de domicilio.");
+        }
     }
+
 
     public void navegar(String ruta){
         try {
@@ -269,7 +294,7 @@ public class vistamesaController {
             vistapedidoController pedidoController = loader.getController();
 
             // Pasar el número de mesa al método initialize
-            pedidoController.initialize(String.valueOf(numeeroMesa), id_empleado);
+            pedidoController.initialize(String.valueOf(numeeroMesa), id_empleado, name);
 
             // Cambiar la escena a la nueva vista
             Stage stage = (Stage) Pmesa5.getScene().getWindow();
@@ -331,7 +356,7 @@ public class vistamesaController {
         Parent root = loader.load();
 
         vistapedidoController pedidoController = loader.getController();
-        pedidoController.initialize(String.valueOf(numeeroMesa), id_empleado);
+        pedidoController.initialize(String.valueOf(numeeroMesa), id_empleado, name);
 
         // Cambiar la escena a la nueva vista
         Stage stage = (Stage) Pmesa5.getScene().getWindow();
@@ -359,5 +384,21 @@ public class vistamesaController {
     int id;
     public void recibirId(int idrecibido) {
         id = idrecibido;// Muestra el mensaje en el Label
+    }
+
+    public int getId_empleado() {
+        return id_empleado;
+    }
+
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
+    }
+
+    public static String getName() {
+        return name;
+    }
+
+    public static void setName(String name) {
+        vistamesaController.name = name;
     }
 }

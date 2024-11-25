@@ -42,7 +42,6 @@ public class VentanaDomicilioController {
     }
 
 
-
     // Método para establecer el Stage principal
     public void setMainStage(Stage stage) {
         this.mainStage = stage;
@@ -59,10 +58,12 @@ public class VentanaDomicilioController {
 
         Cliente cliente = new Cliente(direccion, telefono, nombre, apellido);
         ClienteDAO clientedao = new ClienteDAO();
-        /// clientedao.ingresarCliente(cliente);
+         clientedao.ingresarCliente(cliente);
+
+         String name = (nombre + " " + apellido);
 
         vistapedidoController orden = loader.getController();
-        orden.initialize("21" ,id_empleado);
+        orden.initialize("21" ,id_empleado, name);
 
         Stage currentStage = (Stage) but_confirmar.getScene().getWindow();
         currentStage.close();
@@ -79,7 +80,39 @@ public class VentanaDomicilioController {
     }
 
     public void but_atras(ActionEvent actionEvent) {
-        Stage stage = (Stage) atras.getScene().getWindow();
-        stage.close();
+        try {
+
+           // private String rutaDomicilio= "/com/example/demo/views/Mesero/buscarcliente.fxml";
+
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/vistamesa.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) but_confirmar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void but_cancelar(ActionEvent event) {
+        try {
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/demo/views/Mesero/buscarcliente.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) but_confirmar.getScene().getWindow();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

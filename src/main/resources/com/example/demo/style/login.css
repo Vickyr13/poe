@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 .login-bg{
-    -fx-background-color:linear-gradient(to bottom right, #0f2027, #000000, #006197);
+    -fx-background-color:linear-gradient(to bottom right, #13085c, #000000, #006197);
 }
 
 .label-titulo{

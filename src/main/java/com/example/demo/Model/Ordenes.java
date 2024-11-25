@@ -8,9 +8,18 @@ public class Ordenes {
     private double precio_orden;
     private String estado_orden;
 
+    private int numeroMesa;
+    private double totalDinero;
 
     // Constructor vacío y constructor con parámetros para la clase Ordenes
+
     public Ordenes() {
+    }
+
+    public Ordenes(int idOrden, int numeroMesa, double totalDinero) {
+        this.id_orden = idOrden;
+        this.numeroMesa = numeroMesa;
+        this.totalDinero = totalDinero;
     }
 
     public Ordenes(double precio_orden, int fecha_orden, String estado_orden) {
@@ -59,4 +68,22 @@ public class Ordenes {
     public void setEstado_orden(String estado_orden) {
         this.estado_orden = estado_orden;
     }
+
+    public int getNumeroMesa() {
+        return numeroMesa;
+    }
+
+    public void setNumeroMesa(int numeroMesa) {
+        this.numeroMesa = numeroMesa;
+    }
+
+    public double getTotalDinero() {
+        return totalDinero;
+    }
+
+    public void setTotalDinero(double totalDinero) {
+        this.totalDinero = totalDinero;
+    }
+
+
 }

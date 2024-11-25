@@ -393,6 +393,7 @@ public class AdminFormEmpleadosController {
     private int id_Empleado;
     private int idrol;  // Variable para almacenar el ID del producto que estamos editando
     int idRol= 0;
+
     public void cargarDatosParaEditar(Map<String, Object> rol, String idrol) {
         txtNombre.setText((String) rol.get("nombre_empleado"));
         txtApellido.setText(String.valueOf(rol.get("apellido_empleado")));
